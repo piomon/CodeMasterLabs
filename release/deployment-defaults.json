@@ -1,0 +1,11 @@
+{
+  "primaryDomain": "codemasterlabs.pl",
+  "aliases": [
+    "codemasterlabs.com",
+    "www.codemasterlabs.pl",
+    "www.codemasterlabs.com"
+  ],
+  "redirectStatus": 308,
+  "database": "SQLite, single-host only",
+  "ownership": "Domains supplied by the owner; DNS and mailbox provisioning are not implied."
+}

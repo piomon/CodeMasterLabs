@@ -1,0 +1,6 @@
+import type {Locale} from '@/types/site'
+import {pick} from '@/lib/i18n'
+const stack=['Next.js','React','TypeScript','Payload CMS','PostgreSQL','SQLite','Docker','Node.js']
+const integrations=['Microsoft 365','Teams','Outlook','Slack','Google Workspace','Shopify','HubSpot','REST API','GraphQL','Webhooks']
+function Belt({items,reverse=false}:{items:string[];reverse?:boolean}){const repeated=[...items,...items];return <div className={`logo-belt ${reverse?'reverse':''}`}><div className="logo-track">{repeated.map((item,i)=><span key={`${item}-${i}`} aria-hidden={i>=items.length||undefined}>{item}</span>)}</div></div>}
+export function TechnologyBelts({locale}:{locale:Locale}){return <section className="technology-belts" aria-label={pick(locale,'Technologie i integracje','Technology and integrations')}><div className="container belt-heading"><span>STACK / 01</span><p>{pick(locale,'Technologie dobieramy do problemu','We choose technology to fit the problem')}</p></div><Belt items={stack}/><div className="container belt-heading second"><span>INTEGRACJE / 02</span><p>{pick(locale,'Systemy, które możemy połączyć','Systems we can connect')}</p></div><Belt items={integrations} reverse/></section>}

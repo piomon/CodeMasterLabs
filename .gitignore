@@ -1,0 +1,92 @@
+node_modules/
+.next/
+.env
+.env.*
+!.env.example
+!.env.production.example
+*.db
+*.db-*
+media/
+private-uploads/
+exports/
+.qa-release/
+reports/runtime/
+test-results/
+*.tsbuildinfo
+*.zip
+
+__pycache__/
+*.pyc
+*.tsbuildinfo
+RELEASE.json
+SOURCE_COMMIT.txt
+SHA256SUMS.txt
+
+.functional-local/
+.test-browser-fixture/
+
+# ============================================================
+# CodeMaster production safety
+# ============================================================
+
+# dependencies / builds
+node_modules/
+.next/
+dist/
+out/
+coverage/
+
+# test output
+playwright-report/
+test-results/
+
+# local runtime
+.cache/
+.tmp/
+*.log
+
+# secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# credentials
+*credentials*
+preview-credentials*
+admin-credentials*
+
+# databases
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+
+# user/runtime content
+media/
+private-uploads/
+quarantine/
+
+# backups
+backups/
+*.tar
+*.tar.gz
+*.tgz
+
+# system/editor
+.DS_Store
+Thumbs.db
+# CodeMaster generated security / release evidence
+trivy-final-*/
+.trivy/
+# temporary evidence
+.evidence/
+# Local development / repair artifacts
+*.before-*
+*.orig
+*.rej
+*~

@@ -1,0 +1,115 @@
+.project-site.nora-site{--site-paper:#f2eee3;--site-ink:#283929;--n-ink:#283929;--n-cream:#f2eee3;--n-sage:#d8dfc7;--n-light:#e9e5d9;--n-muted:#697768;background:var(--n-cream);color:var(--n-ink);font-family:'DM Sans Variable',sans-serif;line-height:1.55;overflow:hidden}
+.nora-site .n-serif{font-family:'Cormorant Garamond Variable',Georgia,serif;font-weight:400}
+.nora-site .n-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.nora-site .n-wrap{width:min(100% - 10vw,1360px);margin-inline:auto}
+.nora-site .n-header{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:22px 5vw;border-bottom:1px solid #28392935;background:var(--n-cream)}
+.nora-site .n-logo{font:600 36px/1 'Cormorant Garamond Variable',serif;letter-spacing:.22em;text-indent:.22em}
+.nora-site .n-nav{display:flex;gap:38px;align-items:center}
+.nora-site .n-nav a{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:600;transition:opacity .2s}
+.nora-site .n-nav a:hover{opacity:.55}
+.nora-site .n-header-action{font-size:11px;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid currentColor;padding-bottom:5px}
+.nora-site .n-menu{display:none;border:0;background:none;color:inherit;font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.nora-site .n-hero{display:grid;grid-template-columns:45% 55%;min-height:720px;min-height:min(820px,calc(100svh - 80px))}
+.nora-site .n-hero-copy{padding:70px 5vw 65px;display:flex;flex-direction:column;justify-content:space-between;align-items:start}
+.nora-site .n-hero-copy .n-hero-eyebrow{display:flex;align-items:center;gap:14px;color:var(--n-muted)}
+.nora-site .n-hero-eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.nora-site .n-hero-title{font-size:clamp(86px,9.1vw,160px);line-height:.79;letter-spacing:-.055em;margin:55px 0 35px}
+.nora-site .n-hero-title em{font-weight:300}
+.nora-site .n-hero-copy p{font-size:16px;max-width:340px;line-height:1.65;color:#58665a}
+.nora-site .n-text-link{display:inline-flex;align-items:center;gap:45px;border-bottom:1px solid currentColor;padding-bottom:10px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;transition:gap .25s}
+.nora-site .n-text-link:hover{gap:60px}
+.nora-site .n-text-link span{font-size:20px;line-height:0;font-weight:400}
+.nora-site .n-hero-copy .n-text-link{margin-top:35px}
+.nora-site .n-hero-image{position:relative;background:#d3d6bf;min-height:620px;overflow:hidden}
+.nora-site .n-hero-image img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.nora-site .n-hero-image::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#26362770,transparent 30%)}
+.nora-site .n-image-caption{position:absolute;bottom:32px;left:35px;z-index:1;color:#f5f1e7}
+.nora-site .n-marquee{background:#dce3cb;padding:17px 0;text-align:center;font:italic 28px 'Cormorant Garamond Variable',serif;letter-spacing:.04em}
+.nora-site .n-intro{padding:140px 0 150px;display:grid;grid-template-columns:1fr 1.6fr;gap:8vw}
+.nora-site .n-intro .n-label{padding-top:12px}
+.nora-site .n-intro h2{font-size:clamp(52px,5.7vw,90px);line-height:.99;letter-spacing:-.035em;max-width:770px}
+.nora-site .n-intro h2 em{color:#819077}
+.nora-site .n-intro p{font-size:16px;color:#637163;max-width:490px;margin-top:35px}
+.nora-site .n-collection{padding:100px 0 120px;background:#e5e9da}
+.nora-site .n-section-heading{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:45px}
+.nora-site .n-section-heading h2{font-size:clamp(59px,6vw,96px);line-height:.92;letter-spacing:-.035em;margin-top:22px}
+.nora-site .n-section-heading p{font-size:14px;max-width:240px;color:#637163}
+.nora-site .n-filters{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 26px;margin-bottom:32px;border-bottom:1px solid #77887665}
+.nora-site .n-filter{border:1px solid #9cab97;border-radius:50px;color:var(--n-ink);background:transparent;padding:9px 18px;font-size:11px;letter-spacing:.04em;min-height:40px}
+.nora-site .n-filter[aria-pressed=true]{background:var(--n-ink);color:#f3f0e7;border-color:var(--n-ink)}
+.nora-site .n-product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 16px}
+.nora-site .n-product{min-width:0}
+.nora-site .n-product-art{position:relative;background:var(--n-product-bg,#d3dbca);height:390px;overflow:hidden;display:grid;place-items:center}
+.nora-site .n-product-art::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 60% 80%,#ffffff80,transparent 52%),linear-gradient(125deg,transparent 36%,#ffffff35 37%,transparent 55%)}
+.nora-site .n-bottle{position:relative;z-index:1;width:125px;height:235px;background:linear-gradient(95deg,#5d705a99,#dbe5cf 22%,#aec3a8 55%,#516b5780 93%);border-radius:13px 13px 18px 18px;box-shadow:inset -14px 0 14px #263a3124,12px 24px 28px #43544033;display:flex;align-items:center;justify-content:center;transform:rotate(-5deg);transition:transform .4s}
+.nora-site .n-product:hover .n-bottle{transform:rotate(1deg) translateY(-10px)}
+.nora-site .n-bottle::before{content:"";position:absolute;bottom:100%;left:31%;width:38%;height:23px;background:linear-gradient(90deg,#e5e2d6,#a3aa9d,#e9e9df);border-radius:3px 3px 0 0}
+.nora-site .n-bottle::after{content:"";position:absolute;bottom:calc(100% + 22px);left:26%;width:48%;height:13px;background:#303d30;border-radius:2px 2px 0 0}
+.nora-site .n-bottle.n-jar{width:175px;height:125px;margin-top:105px;border-radius:8px 8px 27px 27px}
+.nora-site .n-bottle.n-jar::before{left:-2%;width:104%;height:24px;background:linear-gradient(90deg,#d7d5c9,#8b9585,#dee1d1);border-radius:6px}
+.nora-site .n-bottle.n-jar::after{display:none}
+.nora-site .n-bottle.n-mist{width:93px;height:258px;border-radius:8px 8px 15px 15px}
+.nora-site .n-bottle.n-mist::after{height:26px}
+.nora-site .n-bottle-label{background:#f3f0e7d9;width:75%;padding:12px 5px;text-align:center;color:#31422e;font:600 14px 'Cormorant Garamond Variable',serif;letter-spacing:.14em}
+.nora-site .n-bottle-label small{display:block;font:6px 'DM Sans Variable',sans-serif;letter-spacing:.08em;margin-top:5px;text-transform:uppercase}
+.nora-site .n-product-art .n-art-index{position:absolute;left:19px;top:18px;z-index:2}
+.nora-site .n-product-info{padding:17px 2px 0}
+.nora-site .n-product-meta{display:flex;align-items:center;justify-content:space-between;color:#6c7b6a;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.nora-site .n-product-info h3{font:500 33px/1 'Cormorant Garamond Variable',serif;margin:10px 0 8px}
+.nora-site .n-product-info p{font-size:12px;color:#687767;min-height:36px}
+.nora-site .n-product-link{border:0;background:none;padding:13px 0 2px;border-bottom:1px solid var(--n-ink);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-top:9px}
+.nora-site .n-story{display:grid;grid-template-columns:1fr 1fr;background:#d1dac6;min-height:680px}
+.nora-site .n-story-image{min-height:600px;background:url('/images/showcase/nora-ritual.jpg') center/cover}
+.nora-site .n-story-copy{padding:7vw;display:flex;flex-direction:column;justify-content:center;align-items:start}
+.nora-site .n-story-copy h2{font-size:clamp(60px,7vw,113px);letter-spacing:-.04em;line-height:.87;margin:40px 0 33px}
+.nora-site .n-story-copy p{font-size:16px;max-width:400px;line-height:1.7;color:#50634f}
+.nora-site .n-story-copy .n-text-link{margin-top:45px}
+.nora-site .n-ingredients{padding:120px 0;background:var(--n-cream)}
+.nora-site .n-ingredient-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:65px}
+.nora-site .n-ingredient{padding:30px;border:1px solid #aab7a3;min-height:270px;display:flex;flex-direction:column;justify-content:space-between}
+.nora-site .n-ingredient .n-symbol{font:italic 88px/.8 'Cormorant Garamond Variable',serif;color:#8b9d80}
+.nora-site .n-ingredient h3{font:500 34px 'Cormorant Garamond Variable',serif}
+.nora-site .n-ingredient p{font-size:12px;color:#657364;max-width:270px}
+.nora-site .n-routine{background:#354839;color:#f0eee3;padding:110px 0 130px}
+.nora-site .n-routine .n-section-heading p{color:#bccbb8}
+.nora-site .n-quiz{display:grid;grid-template-columns:.8fr 1.2fr;gap:7vw;border-top:1px solid #aabbaa80;padding-top:60px;min-height:390px}
+.nora-site .n-quiz-progress{display:flex;gap:7px;margin-top:45px}
+.nora-site .n-quiz-progress span{width:45px;height:2px;background:#8fa38c}
+.nora-site .n-quiz-progress span[data-active=true]{background:#ecf5d0}
+.nora-site .n-quiz h3{font:500 clamp(43px,5vw,73px)/.98 'Cormorant Garamond Variable',serif;letter-spacing:-.025em;margin:0 0 32px}
+.nora-site .n-quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nora-site .n-quiz-choice{background:transparent;border:1px solid #9caf9a;color:#f0eee3;padding:17px;text-align:left;font-size:13px;min-height:62px}
+.nora-site .n-quiz-choice:hover,.nora-site .n-quiz-choice[aria-pressed=true]{background:#edf0d9;color:#273d2f}
+.nora-site .n-quiz-actions{display:flex;gap:12px;margin-top:29px;align-items:center}
+.nora-site .n-quiz-next{border:0;background:#edf0d9;color:#273d2f;padding:16px 24px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+.nora-site .n-quiz-next:disabled{opacity:.4}
+.nora-site .n-quiz-back{border:0;background:none;color:#f0eee3;text-decoration:underline;padding:12px;font-size:12px}
+.nora-site .n-result{border-top:1px solid #9caf9a;padding-top:25px}
+.nora-site .n-result h3{font:500 clamp(48px,5vw,78px)/.95 'Cormorant Garamond Variable',serif;letter-spacing:-.035em;margin:15px 0 23px}
+.nora-site .n-result p{max-width:580px;color:#d5dfd1}
+.nora-site .n-result-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:35px 0}
+.nora-site .n-result-step{border:1px solid #879e87;padding:18px;min-height:120px}
+.nora-site .n-result-step strong{display:block;font:25px 'Cormorant Garamond Variable',serif;margin-top:13px}
+.nora-site .n-dialog{background:#f2eee3;width:min(760px,calc(100vw - 30px));padding:0}
+.nora-site .n-dialog-inner{display:grid;grid-template-columns:42% 58%;min-height:490px}
+.nora-site .n-dialog-art{background:#d7dfcd;display:grid;place-items:center;min-height:400px}
+.nora-site .n-dialog-art .n-bottle{transform:scale(1.15) rotate(-5deg)}
+.nora-site .n-dialog-copy{padding:45px 40px;position:relative}
+.nora-site .n-dialog-close{position:absolute;top:15px;right:18px;background:none;border:0;font-size:26px;line-height:1;padding:8px}
+.nora-site .n-dialog-copy h2{font:500 55px/.95 'Cormorant Garamond Variable',serif;letter-spacing:-.04em;margin:45px 0 18px}
+.nora-site .n-dialog-copy p{font-size:14px;color:#53634f;line-height:1.65}
+.nora-site .n-dialog-copy dl{border-top:1px solid #9ba992;margin:30px 0 0;padding-top:19px;font-size:12px}
+.nora-site .n-dialog-copy dt{font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-top:17px}
+.nora-site .n-dialog-copy dd{margin:5px 0 0;color:#657364}
+.nora-site .n-end{background:#dce3cb;text-align:center;padding:125px 20px 135px}
+.nora-site .n-end h2{font-size:clamp(70px,11vw,165px);line-height:.82;letter-spacing:-.06em;margin:30px auto;max-width:1050px}
+.nora-site .n-end p{font-size:16px;max-width:410px;margin:0 auto 40px}
+.nora-site .n-footer{padding:50px 5vw 28px;background:#283929;color:#e7ecdd}
+.nora-site .n-footer-top{display:flex;justify-content:space-between;gap:35px;align-items:start;padding-bottom:65px}
+.nora-site .n-footer .n-logo{font-size:48px}
+.nora-site .n-footer-links{display:flex;gap:55px;font-size:12px}
+.nora-site .n-footer-links a{border-bottom:1px solid #cdd7c3;padding-bottom:4px}
+.nora-site .n-footer-bottom{border-top:1px solid #ffffff55;padding-top:22px;display:flex;justify-content:space-between;gap:20px;color:#bbcbb7}
+@media(max-width:900px){.nora-site .n-hero{grid-template-columns:48% 52%}.nora-site .n-hero-title{font-size:clamp(75px,10vw,110px)}.nora-site .n-product-art{height:300px}.nora-site .n-story-copy{padding:5vw}.nora-site .n-quiz{gap:4vw}}
+@media(max-width:700px){.nora-site .n-wrap{width:calc(100% - 40px)}.nora-site .n-header{padding:18px 20px}.nora-site .n-logo{font-size:31px}.nora-site .n-header-action{display:none}.nora-site .n-menu{display:block}.nora-site .n-nav{display:none;position:absolute;top:69px;left:0;right:0;background:var(--n-cream);padding:24px 20px;box-shadow:0 18px 20px #25352720;flex-direction:column;align-items:start;gap:22px}.nora-site .n-nav[data-open=true]{display:flex}.nora-site .n-hero{display:flex;flex-direction:column;min-height:0}.nora-site .n-hero-copy{min-height:510px;padding:48px 20px 45px}.nora-site .n-hero-title{font-size:clamp(88px,22vw,130px);margin:45px 0 25px}.nora-site .n-hero-image{min-height:450px}.nora-site .n-marquee{font-size:21px;padding:14px 12px}.nora-site .n-intro{display:block;padding:90px 0}.nora-site .n-intro h2{font-size:clamp(55px,13vw,80px);margin-top:35px}.nora-site .n-intro p{margin-top:28px}.nora-site .n-collection{padding:80px 0}.nora-site .n-section-heading{display:block}.nora-site .n-section-heading h2{font-size:67px}.nora-site .n-section-heading p{margin-top:20px}.nora-site .n-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 10px}.nora-site .n-product-art{height:230px}.nora-site .n-bottle{transform:scale(.7) rotate(-5deg)}.nora-site .n-product:hover .n-bottle{transform:scale(.7) rotate(1deg)}.nora-site .n-product-info h3{font-size:27px}.nora-site .n-product-info p{font-size:11px}.nora-site .n-story{grid-template-columns:1fr}.nora-site .n-story-image{min-height:440px}.nora-site .n-story-copy{padding:75px 20px 85px}.nora-site .n-ingredients{padding:90px 0}.nora-site .n-ingredient-grid{grid-template-columns:1fr;gap:10px;margin-top:40px}.nora-site .n-ingredient{min-height:210px}.nora-site .n-routine{padding:85px 0 95px}.nora-site .n-quiz{display:block;padding-top:35px}.nora-site .n-quiz-progress{margin:18px 0 35px}.nora-site .n-quiz h3{font-size:55px}.nora-site .n-result-steps{grid-template-columns:1fr}.nora-site .n-result-step{min-height:90px}.nora-site .n-dialog-inner{display:block}.nora-site .n-dialog-art{min-height:250px}.nora-site .n-dialog-art .n-bottle{transform:scale(.8) rotate(-5deg)}.nora-site .n-dialog-copy{padding:30px 25px 45px}.nora-site .n-dialog-copy h2{margin-top:20px;font-size:44px}.nora-site .n-end{padding:95px 20px}.nora-site .n-end h2{font-size:clamp(70px,17vw,105px)}.nora-site .n-footer{padding:45px 20px 25px}.nora-site .n-footer-top{display:block}.nora-site .n-footer-links{margin-top:30px;gap:24px;flex-wrap:wrap}.nora-site .n-footer-bottom{display:block}.nora-site .n-footer-bottom span{display:block;margin-top:10px}}
+@media(max-width:420px){.nora-site .n-product-art{height:190px}.nora-site .n-bottle{transform:scale(.57) rotate(-5deg)}.nora-site .n-product:hover .n-bottle{transform:scale(.57) rotate(1deg)}.nora-site .n-quiz-options{grid-template-columns:1fr}}

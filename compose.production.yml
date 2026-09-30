@@ -1,0 +1,103 @@
+x-common: &common
+  restart: unless-stopped
+  init: true
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "5"
+x-app-environment: &env
+  NODE_ENV: production
+  SEED_CONTENT: "false"
+  PAYLOAD_DROP_DATABASE: "false"
+  DATABASE_URL: file:/data/codemaster.db
+  MEDIA_DIR: /app/media
+  PRIVATE_UPLOAD_DIR: /app/private-uploads
+  QUARANTINE_DIR: /app/quarantine
+  CLAMAV_HOST: clamav
+  CLAMAV_PORT: "3310"
+x-volumes: &volumes
+  - ${CM_DATA_ROOT:-/var/lib/codemaster}/data:/data
+  - ${CM_DATA_ROOT:-/var/lib/codemaster}/media:/app/media
+  - ${CM_DATA_ROOT:-/var/lib/codemaster}/private:/app/private-uploads
+  - ${CM_DATA_ROOT:-/var/lib/codemaster}/quarantine:/app/quarantine
+services:
+  codemaster:
+    <<: *common
+    image: ${APP_IMAGE:?Resolve immutable app image tag first}
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+      target: app
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:?Pin immutable runtime base image digest}
+        PLAYWRIGHT_IMAGE: ${PLAYWRIGHT_IMAGE:-invalid.invalid/codemaster-playwright-image-required}
+        NEXT_PUBLIC_SERVER_URL: ${NEXT_PUBLIC_SERVER_URL:?Configure canonical HTTPS URL}
+    user: "10001:10001"
+    ports:
+      - "127.0.0.1:${CM_APP_PORT:-3000}:3000"
+    env_file:
+      - path: ${CM_ENV_FILE:-/etc/codemaster/.env.production}
+        format: raw
+    environment: *env
+    volumes: *volumes
+    read_only: true
+    tmpfs:
+      - /tmp:rw,nosuid,noexec,size=128m,uid=10001,gid=10001,mode=1770
+      - /app/.next/cache:rw,nosuid,noexec,size=128m,uid=10001,gid=10001,mode=0770
+    mem_limit: 2300m
+    pids_limit: 256
+    stop_grace_period: 30s
+    depends_on:
+      clamav:
+        condition: service_healthy
+  ops:
+    <<: *common
+    image: ${OPS_IMAGE:?Resolve immutable ops image tag first}
+    profiles: [ops]
+    restart: "no"
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+      target: ops
+      args:
+        NODE_IMAGE: ${NODE_IMAGE}
+        PLAYWRIGHT_IMAGE: ${PLAYWRIGHT_IMAGE:-invalid.invalid/codemaster-playwright-image-required}
+        NEXT_PUBLIC_SERVER_URL: ${NEXT_PUBLIC_SERVER_URL}
+    user: "10001:10001"
+    env_file:
+      - path: ${CM_ENV_FILE:-/etc/codemaster/.env.production}
+        format: raw
+    environment: *env
+    volumes: *volumes
+    mem_limit: 2000m
+    pids_limit: 256
+  clamav:
+    # Official image starts as root to initialize its owned signature volume,
+    # then uses its upstream clamd user. No host socket or public port is mounted.
+    image: ${CLAMAV_IMAGE:?Pin official ClamAV digest}
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - clamav-signatures:/var/lib/clamav
+    mem_limit: 4g
+    pids_limit: 256
+    healthcheck:
+      test: ["CMD", "clamdscan", "--ping=1"]
+      interval: 30s
+      timeout: 10s
+      start_period: 240s
+      retries: 10
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "5"
+volumes:
+  clamav-signatures:

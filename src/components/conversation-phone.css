@@ -1,0 +1,57 @@
+.conversation-stories{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:22px}.conversation-stories button{border:1px solid #ffffff30;border-radius:18px;padding:10px 12px;background:#131a24;color:#aab8c9;cursor:pointer;font-size:11px;min-height:44px}.conversation-stories button[aria-pressed=true]{background:#dae6f7;color:#152334;border-color:#dae6f7}
+.conversation-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(36px,7vw,110px);align-items:center;max-width:1120px;margin:0 auto}
+.conversation-copy h2{font-size:clamp(30px,3.15vw,46px);line-height:1.12;letter-spacing:-.045em;white-space:pre-line;color:#f4f4f5;max-width:580px;margin:18px 0 28px}
+.conversation-copy .eyebrow{color:#a5a5af}
+.conversation-steps{display:grid;gap:0;margin-bottom:26px}
+.conversation-steps article{display:flex;gap:19px;padding:17px 0;border-top:1px solid #ffffff1b}
+.conversation-steps article>span{font:11px/1.8 var(--mono);color:#84848f;padding-top:2px}
+.conversation-steps h3{font:600 15px/1.5 var(--font);letter-spacing:-.015em;color:#ededf0;margin:0 0 6px}
+.conversation-steps p{font:400 13px/1.7 var(--font);color:#a4a4af;margin:0;max-width:430px}
+.conversation-copy .button-text{font-size:13px;min-height:42px;color:#eee;border-color:#ffffff40;border-radius:6px;padding-inline:17px}
+.imessage-presentation{margin:0;display:flex;flex-direction:column;align-items:center;gap:18px}
+.imessage-device{position:relative;width:294px;height:590px;padding:5px;border-radius:49px;background:linear-gradient(110deg,#babac0,#44444a 25%,#8d8d94 52%,#323238 75%,#b0b0b7);border:1px solid #aaaaaf;box-shadow:inset 0 0 0 1px #e2e2e5,0 0 0 1px #151517,0 28px 70px #0007,10px 10px 35px #0008}
+.imessage-device:before,.imessage-device:after{content:"";position:absolute;width:3px;background:linear-gradient(90deg,#777,#bbb,#444);border-radius:2px}
+.imessage-device:before{left:-3px;top:122px;height:60px;box-shadow:0 73px 0 #797980}
+.imessage-device:after{right:-3px;top:167px;height:79px}
+.imessage-screen{height:100%;background:#fafafa;color:#17171b;border:4px solid #070708;border-radius:44px;overflow:hidden;position:relative;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif}
+.imessage-status{height:41px;flex:none;position:relative;display:flex;align-items:center;padding:9px 22px 0;font-size:12px;gap:7px;color:#161618}
+.imessage-status b{font-weight:600;margin-right:auto}
+.imessage-island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:84px;height:24px;border-radius:20px;background:#060607;z-index:1}
+.imessage-island:after{content:"";position:absolute;right:9px;top:9px;width:6px;height:6px;border-radius:50%;background:#141b2b;box-shadow:inset 0 0 2px #304363}
+.imessage-signal{display:flex;gap:2px;align-items:end;height:10px}
+.imessage-signal i{width:3px;background:#1d1d21;border-radius:1px}
+.imessage-signal i:nth-child(1){height:4px}.imessage-signal i:nth-child(2){height:6px}.imessage-signal i:nth-child(3){height:8px}.imessage-signal i:nth-child(4){height:10px}
+.imessage-battery{display:block;width:18px;height:9px;border:1px solid #666;border-radius:2px;padding:1px;background:linear-gradient(90deg,#222 80%,transparent 80%);background-clip:content-box;position:relative}
+.imessage-battery:after{content:"";position:absolute;width:2px;height:3px;right:-3px;top:2px;background:#777}
+.imessage-header{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:5px 15px 10px;background:#f3f3f5;border-bottom:1px solid #d7d7da;flex:none}
+.imessage-avatar{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(#b6b6be,#92929d);color:#fff;font-size:13px;letter-spacing:-.02em}
+.imessage-header strong{font-size:11px;font-weight:500;color:#1d1d22}
+.imessage-header strong span{margin-left:3px;color:#8e8e95;font-size:16px}
+.imessage-back{position:absolute;left:14px;top:7px;font-size:36px;color:#007aff;font-weight:300;line-height:1}
+.imessage-transcript{min-height:0;flex:1;overflow:auto;scrollbar-width:thin;scrollbar-color:#d7d7dd transparent;padding:10px 12px 13px;overscroll-behavior:contain}
+.imessage-date{text-align:center;font-size:9px;line-height:1.4;color:#939399;margin:0 0 11px;font-weight:500}
+.imessage-bubble{max-width:90%;border-radius:16px;padding:9px 11px;margin-bottom:9px;font-size:13px;line-height:1.42;letter-spacing:-.012em;position:relative}
+.imessage-bubble p{margin:0;font:inherit;color:inherit}
+.imessage-bubble.sent{background:#007aff;color:#fff;margin-left:auto;border-bottom-right-radius:5px}
+.imessage-bubble.received{background:#e7e7ec;color:#171719;margin-right:auto;border-bottom-left-radius:5px}
+.imessage-composer{display:flex;align-items:center;gap:9px;padding:9px 12px 10px;background:#fafafa;color:#81818a;flex:none}
+.imessage-composer>span{width:25px;height:25px;border-radius:50%;background:#ececf0;font-size:22px;line-height:24px;text-align:center}
+.imessage-composer>div{border:1px solid #d1d1d8;border-radius:20px;flex:1;height:30px;display:flex;align-items:center;justify-content:space-between;padding:3px 5px 3px 10px;font-size:11px}
+.imessage-composer>div>span{border-radius:50%;width:22px;height:22px;background:#c6c6ce;color:#fff;display:grid;place-items:center;font-size:16px}
+.imessage-home{height:4px;width:100px;border-radius:4px;background:#141416;margin:0 auto 8px;flex:none}
+.imessage-presentation figcaption{font-size:10px;line-height:1.4;color:#8a8a96;text-align:center}
+@media(max-width:760px){.conversation-layout{grid-template-columns:1fr;gap:34px}.conversation-copy h2{max-width:510px}.imessage-device{width:286px;height:574px}.conversation-steps p{max-width:100%}}
+@media(max-width:360px){.imessage-device{width:270px;height:557px}.imessage-bubble{font-size:12.5px}}
+
+/* CM_WCAG_AA_20260930 */
+.imessage-date{
+  color:#62666d;
+}
+.imessage-bubble.sent{
+  background:#0066cc;
+  color:#fff;
+}
+.imessage-composer{
+  color:#62666d;
+}
+

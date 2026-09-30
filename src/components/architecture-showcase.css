@@ -1,0 +1,191 @@
+/* CodeMaster's architectural specimen: a warm editorial counterpoint to the graphite shell.
+   All product styling is explicitly scoped so the legacy homepage cannot leak into the demo. */
+.cm-architecture{position:relative}
+.cm-architecture .cm-product-intro{display:flex;align-items:end;justify-content:space-between;gap:32px;margin:0 0 28px}
+.cm-architecture .cm-product-intro .cm-overline{font:500 10px/1.5 var(--mono,monospace);letter-spacing:.2em;color:#aeb3bd;text-transform:uppercase;margin:0 0 14px}
+.cm-architecture .cm-product-intro h3{font-size:clamp(25px,2.7vw,42px);font-weight:500;line-height:1.14;letter-spacing:-.055em;max-width:750px;margin:0;color:#f2f1ed}
+.cm-architecture .cm-product-intro h3 em{font-style:normal;color:#a6abb3}
+.cm-architecture .cm-product-index{font:500 10px var(--mono,monospace);letter-spacing:.12em;color:#aeb3bd;white-space:nowrap;margin:0 0 5px}
+.cm-architecture .cm-display{position:relative;perspective:1500px;perspective-origin:50% 25%;padding:6px 5% 55px;isolation:isolate}
+.cm-architecture .cm-display:before{content:"";position:absolute;z-index:-1;inset:10% 2% 3%;background:radial-gradient(ellipse at 52% 67%,#c8a38b21,transparent 62%);pointer-events:none}
+.cm-architecture .cm-shadow{position:absolute;z-index:-1;width:77%;height:15%;bottom:12px;left:13%;border-radius:50%;background:#000b;filter:blur(35px);transform:rotate(-3deg);pointer-events:none}
+.cm-architecture .cm-float{position:relative;width:min(100%,1110px);margin:auto;transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-10deg) rotateZ(-2deg) translate3d(0,var(--cm-parallax,0px),0);transition:transform .65s cubic-bezier(.2,.75,.2,1)}
+.cm-architecture .cm-display:not(:focus-within):hover .cm-float{transform:rotateX(5deg) rotateY(-5deg) rotateZ(-1deg) translate3d(0,var(--cm-parallax,0px),0)}
+.cm-architecture .cm-display:focus-within .cm-float,.cm-architecture .cm-display[data-frozen=true] .cm-float{transform:none}
+[data-motion=off] .cm-architecture .cm-float,[data-motion=off] .cm-architecture .cm-display:not(:focus-within):hover .cm-float{transform:rotateX(8deg) rotateY(-10deg) rotateZ(-2deg);transition:none}
+[data-motion=off] .cm-architecture .cm-display:focus-within .cm-float{transform:none}
+.cm-architecture .cm-lid{position:relative;padding:12px 12px 14px;border-radius:19px 19px 5px 5px;border:1px solid #757a83;background:linear-gradient(125deg,#7c8188,#202329 5%,#0e1014 65%,#444951);box-shadow:inset 0 1px #e4e6ea88,0 5px #2b2f34,0 28px 70px #0008;transform:translateZ(32px)}
+.cm-architecture .cm-lid:before{content:"";position:absolute;top:5px;left:50%;width:5px;height:5px;border-radius:50%;background:#2b2f36;box-shadow:0 0 0 1px #777b83}
+.cm-architecture .cm-screen{height:clamp(440px,48vw,650px);overflow:auto;overscroll-behavior:contain;background:#ece9e1;border-radius:5px;border:1px solid #121417;scrollbar-width:thin;scrollbar-color:#a89f91 #edeae3}
+.cm-architecture .cm-hinge{height:8px;margin:0 -10px;background:linear-gradient(90deg,#17191c,#777b7f 12%,#292b2e 26%,#313337 75%,#777c80 90%,#1b1d20);border-radius:0 0 40% 40%;transform:translateZ(20px)}
+.cm-architecture .cm-deck{position:relative;height:76px;margin:0 -6%;border:1px solid #a4a6a7;border-radius:3px 3px 44% 44% / 3px 3px 75% 75%;background:linear-gradient(178deg,#a0a2a2 0%,#5c6062 15%,#777b7d 79%,#343639 100%);box-shadow:inset 0 2px #e8e9e7aa,0 13px 12px #0008;transform:rotateX(66deg) translateZ(22px);transform-origin:top center}
+.cm-architecture .cm-deck:before{content:"";position:absolute;inset:9px 20% 25px;background:repeating-linear-gradient(90deg,#292b2cae 0 3.3%,transparent 3.3% 4.1%);opacity:.55;border-radius:3px}
+.cm-architecture .cm-deck:after{content:"";position:absolute;width:17%;height:20px;bottom:5px;left:41.5%;border:1px solid #31353866;border-radius:3px;background:#8a8d8d6b}
+.cm-architecture .cm-product-caption{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 0 0;border-top:1px solid #6a6e7866;color:#aeb2bc;font-size:12px;line-height:1.6}
+.cm-architecture .cm-product-caption p{max-width:630px;margin:0}
+.cm-architecture .cm-product-caption a{color:#f3f1ed;text-decoration:none;border-bottom:1px solid #aab0b8;padding:6px 0;white-space:nowrap}
+.cm-architecture .cm-product-caption a:hover{color:#d5c1b0}
+@media(max-width:750px){
+ .cm-architecture .cm-product-intro{display:block}
+ .cm-architecture .cm-product-index{margin-top:15px}
+ .cm-architecture .cm-display{padding:0 0 12px;perspective:none}
+ .cm-architecture .cm-float,.cm-architecture .cm-display:not(:focus-within):hover .cm-float{transform:none}
+ .cm-architecture .cm-lid{padding:5px 5px 6px;border-radius:10px 10px 3px 3px}
+ .cm-architecture .cm-screen{height:550px}
+ .cm-architecture .cm-deck{height:37px}
+ .cm-architecture .cm-product-caption{display:block}
+ .cm-architecture .cm-product-caption a{display:inline-block;margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ .cm-architecture .cm-float,.cm-architecture .cm-display:not(:focus-within):hover .cm-float{transform:rotateX(8deg) rotateY(-10deg) rotateZ(-2deg);transition:none}
+ .cm-architecture .cm-display:focus-within .cm-float{transform:none}
+}
+
+.forma-app{--f-paper:#eeece5;--f-ink:#202824;--f-olive:#435a4e;--f-line:#cecfc6;--f-muted:#68736d;--f-peach:#d2a58f;position:relative;background:var(--f-paper);color:var(--f-ink);font-family:'DM Sans Variable',sans-serif;font-size:14px;line-height:1.5;isolation:isolate}
+.forma-app:not(.forma-embedded){margin-top:70px;min-height:100dvh}
+.forma-app *{box-sizing:border-box}
+.forma-app .f-ready{min-width:0;margin:0;padding:0;border:0}
+.forma-app button,.forma-app input,.forma-app select,.forma-app textarea{font:inherit}
+.forma-app button{cursor:pointer}
+.forma-app button:disabled{cursor:not-allowed;opacity:.45}
+.forma-app :focus-visible{outline:2px solid #966d56;outline-offset:3px}
+.forma-app .f-topbar{height:62px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 clamp(20px,4vw,58px);background:#f2f0e9;border-bottom:1px solid var(--f-line)}
+.forma-app .f-logo{display:flex;align-items:center;gap:12px;color:var(--f-ink);font-weight:600;letter-spacing:.28em;font-size:19px;text-decoration:none}
+.forma-app .f-logo-mark{width:24px;height:24px;border:1px solid var(--f-olive);transform:rotate(45deg);display:grid;place-items:center}
+.forma-app .f-logo-mark:after{content:'';width:10px;height:10px;border:1px solid var(--f-olive)}
+.forma-app .f-top-right{display:flex;align-items:center;gap:12px}
+.forma-app .f-project-id{color:var(--f-muted);font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.13em}
+.forma-app .f-nav{display:flex;gap:4px;background:#e4e6dc;padding:4px;border-radius:3px}
+.forma-app .f-nav button{border:0;background:transparent;color:#58655e;padding:7px 12px;font-size:11px;font-weight:600;white-space:nowrap}
+.forma-app .f-nav button[aria-pressed=true]{background:#f9f7f1;color:#27342d;box-shadow:0 1px 5px #283b2a1a}
+.forma-app .f-hero{position:relative;min-height:clamp(310px,35vw,470px);overflow:hidden;background:#48544d;color:#f8f5ed}
+.forma-app .f-hero-image{position:absolute;inset:0;background:url('/images/forma-residence.webp') center 54% / cover no-repeat;filter:saturate(.79)}
+.forma-app .f-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#202b29b3 0%,#28302d75 36%,transparent 77%),linear-gradient(0deg,#20262170,transparent 40%)}
+.forma-app .f-hero-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:start;justify-content:end;min-height:inherit;padding:36px clamp(24px,5vw,68px) 38px;max-width:760px}
+.forma-app .f-kicker{font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.19em;text-transform:uppercase}
+.forma-app .f-hero h1,.forma-app .f-hero h2{font-family:Georgia,serif;font-size:clamp(39px,5.3vw,78px);line-height:.99;font-weight:400;letter-spacing:-.055em;margin:15px 0 16px;color:inherit}
+.forma-app .f-hero h1 em,.forma-app .f-hero h2 em{font-weight:400}
+.forma-app .f-hero p{max-width:435px;margin:0 0 22px;font-size:13px;line-height:1.65;color:#f0eee5}
+.forma-app .f-hero button,.forma-app .f-solid{background:#f3f0e7;border:1px solid #f3f0e7;color:#2a362e;padding:12px 19px;font-size:11px;font-weight:700;letter-spacing:.035em}
+.forma-app .f-hero button:hover{background:#d7d7c8}
+.forma-app .f-hero-aside{position:absolute;right:clamp(24px,5vw,68px);bottom:35px;z-index:2;color:#fff;font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.08em}
+.forma-app .f-content{padding:40px clamp(20px,5vw,68px) 65px}
+.forma-app .f-section-heading{display:flex;justify-content:space-between;align-items:end;gap:22px;margin:0 0 22px}
+.forma-app .f-section-heading h2,.forma-app .f-section-heading h3{font:400 clamp(30px,3.2vw,46px)/1.1 Georgia,serif;letter-spacing:-.04em;margin:8px 0 0;color:var(--f-ink)}
+.forma-app .f-section-heading p{color:var(--f-muted);max-width:370px;margin:0;font-size:12px}
+.forma-app .f-section-heading .f-kicker{color:var(--f-olive)}
+.forma-app .f-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:13px 0;border-top:1px solid var(--f-line);border-bottom:1px solid var(--f-line)}
+.forma-app .f-search,.forma-app .f-select{border:1px solid var(--f-line);background:#f7f5ee;color:var(--f-ink);border-radius:0;min-height:37px;padding:0 11px;font-size:12px}
+.forma-app .f-search{min-width:180px;flex:1}
+.forma-app .f-select{min-width:125px}
+.forma-app .f-text-button{border:1px solid var(--f-line);background:transparent;color:var(--f-ink);min-height:37px;padding:0 12px;font-size:11px;font-weight:600}
+.forma-app .f-text-button:hover,.forma-app .f-text-button[aria-pressed=true]{background:#dfe3d7;border-color:#b8c3b8}
+.forma-app .f-results{font:500 10px 'IBM Plex Mono',monospace;color:var(--f-muted);padding:16px 0 10px;letter-spacing:.05em}
+.forma-app .f-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.forma-app .f-card{background:#f8f6ef;border:1px solid #d9d9d0;min-width:0;transition:transform .25s,border-color .25s}
+.forma-app .f-card:hover{transform:translateY(-3px);border-color:#8e9b8d}
+.forma-app .f-card-visual{position:relative;height:126px;background:#d7ddd3;overflow:hidden}
+.forma-app .f-card:nth-child(2n) .f-card-visual{background:#e3d7cb}
+.forma-app .f-card:nth-child(3n) .f-card-visual{background:#d7d8d0}
+.forma-app .f-card-visual svg{position:absolute;width:170px;height:110px;left:50%;top:50%;transform:translate(-50%,-50%);opacity:.7}
+.forma-app .f-card-visual .f-card-floor{position:absolute;left:14px;top:12px;font:500 9px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#465a4b}
+.forma-app .f-card-body{padding:14px}
+.forma-app .f-card-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.forma-app .f-card h3{font-family:Georgia,serif;font-weight:400;font-size:24px;line-height:1;margin:0;color:var(--f-ink)}
+.forma-app .f-status{font:600 9px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;color:#435a4e}
+.forma-app .f-status[data-status=reserved]{color:#9b6b4f}
+.forma-app .f-status[data-status=sold]{color:#79817b}
+.forma-app .f-card-metrics{display:flex;gap:12px;color:var(--f-muted);font-size:11px;margin:12px 0}
+.forma-app .f-card-bottom{border-top:1px solid var(--f-line);padding-top:11px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.forma-app .f-card-bottom strong{font-weight:600;font-size:13px;color:var(--f-ink)}
+.forma-app .f-card-actions{display:flex;gap:4px}
+.forma-app .f-icon-button{display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--f-line);background:transparent;color:#54685a;font-size:17px;line-height:1}
+.forma-app .f-icon-button:hover,.forma-app .f-icon-button[aria-pressed=true]{background:#dfe5da}
+.forma-app .f-small-button{border:1px solid var(--f-olive);background:var(--f-olive);color:#fff;padding:6px 10px;font-size:10px;font-weight:600}
+.forma-app .f-small-button:hover,.forma-app .f-solid:hover{background:#354d3f;color:#fff}
+.forma-app .f-empty{padding:44px;text-align:center;border:1px solid var(--f-line);background:#f8f6ef}
+.forma-app .f-empty strong{display:block;font:400 27px Georgia,serif;margin-bottom:8px}
+.forma-app .f-empty p{color:var(--f-muted);margin:0 0 18px}
+.forma-app .f-pagination{display:flex;justify-content:center;gap:8px;margin:25px 0 0}
+.forma-app .f-pagination button{border:1px solid var(--f-line);background:transparent;padding:9px 14px;color:var(--f-ink)}
+.forma-app .f-pagination button[aria-current=page]{background:var(--f-olive);color:white}
+.forma-app .f-architecture{display:grid;grid-template-columns:1fr 1fr;background:#dce0d7;min-height:290px}
+.forma-app .f-architecture img{width:100%;height:100%;min-height:290px;object-fit:cover}
+.forma-app .f-architecture-copy{padding:35px clamp(24px,5vw,65px);display:flex;flex-direction:column;justify-content:center}
+.forma-app .f-architecture h2,.forma-app .f-architecture h3{font:400 clamp(30px,3vw,43px)/1.1 Georgia,serif;letter-spacing:-.04em;margin:12px 0}
+.forma-app .f-architecture p{font-size:12px;line-height:1.7;max-width:380px;color:#536359}
+.forma-app .f-footer{padding:16px clamp(20px,5vw,68px);display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--f-line);font-size:10px;color:var(--f-muted)}
+.forma-app .f-manager{min-height:590px;padding:34px clamp(20px,5vw,68px) 56px}
+.forma-app .f-manager-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:25px}
+.forma-app .f-manager h1,.forma-app .f-manager h2{font:400 clamp(35px,4vw,54px)/1 Georgia,serif;letter-spacing:-.05em;margin:10px 0 0;color:var(--f-ink)}
+.forma-app .f-manager-actions{display:flex;gap:8px;flex-wrap:wrap}
+.forma-app .f-summary{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--f-line);margin-bottom:24px;background:#f6f4ed}
+.forma-app .f-summary div{padding:18px;border-right:1px solid var(--f-line)}
+.forma-app .f-summary div:last-child{border:0}
+.forma-app .f-summary strong{display:block;font:400 32px Georgia,serif;color:var(--f-ink)}
+.forma-app .f-summary span{font-size:10px;color:var(--f-muted)}
+.forma-app .f-roster{width:100%;border-collapse:collapse;background:#f8f6ef}
+.forma-app .f-roster th{text-align:left;background:#e5e8df;color:#536359;padding:12px;font:600 10px 'IBM Plex Mono',monospace}
+.forma-app .f-roster td{padding:12px;border-bottom:1px solid var(--f-line);font-size:11px;color:var(--f-ink)}
+.forma-app .f-roster tr:last-child td{border-bottom:0}
+.forma-app .f-roster .f-select{min-width:105px;max-width:130px;height:31px;min-height:31px;padding:0 5px}
+.forma-app .f-roster-wrap{overflow-x:auto;border:1px solid var(--f-line)}
+.forma-app .f-history{margin-top:30px}
+.forma-app .f-history h3{font:400 27px Georgia,serif}
+.forma-app .f-history p{font-size:12px;color:var(--f-muted)}
+.forma-app .f-dialog-backdrop{position:fixed;inset:0;z-index:100;background:#1a211dcc;display:grid;place-items:center;padding:20px}
+.forma-app .f-dialog{position:relative;background:#f5f2e9;width:min(100%,720px);max-height:min(90dvh,850px);overflow:auto;box-shadow:0 25px 90px #07100c77;color:var(--f-ink)}
+.forma-app .f-dialog-close{position:absolute;right:15px;top:15px;z-index:2;width:36px;height:36px;border:1px solid #c4c9be;background:#f4f1e8;color:#293a30;font-size:20px}
+.forma-app .f-dialog-photo{height:150px;background:url('/images/forma-residence.webp') center 52%/cover}
+.forma-app .f-dialog-content{padding:25px clamp(20px,4vw,35px) 35px}
+.forma-app .f-dialog h2{font:400 42px Georgia,serif;letter-spacing:-.05em;margin:9px 0}
+.forma-app .f-dialog-sub{color:var(--f-muted);font-size:12px}
+.forma-app .f-detail-layout{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:24px 0}
+.forma-app .f-plan{min-height:205px;background:#dce2d7;display:grid;place-items:center;padding:16px}
+.forma-app .f-plan svg{width:100%;max-width:270px}
+.forma-app .f-detail-stats{display:grid;grid-template-columns:1fr 1fr;align-content:start;gap:10px}
+.forma-app .f-detail-stats div{border-bottom:1px solid var(--f-line);padding:6px 0}
+.forma-app .f-detail-stats span{display:block;font-size:10px;color:var(--f-muted)}
+.forma-app .f-detail-stats strong{font-weight:600;font-size:14px}
+.forma-app .f-dialog-actions{display:flex;gap:8px;flex-wrap:wrap}
+.forma-app .f-dialog-actions button{min-height:39px}
+.forma-app .f-note{display:block;font-size:11px;color:var(--f-muted);margin:16px 0}
+.forma-app .f-note textarea{display:block;width:100%;min-height:65px;resize:vertical;margin-top:7px;padding:9px;border:1px solid var(--f-line);background:#fffdf6;color:var(--f-ink)}
+.forma-app .f-dialog-confirm{padding:42px;max-width:480px}
+.forma-app .f-dialog-confirm h2{font-size:35px}
+.forma-app .f-dialog-confirm p{color:var(--f-muted);font-size:13px;line-height:1.65}
+.forma-app .f-loading{min-height:550px;padding:60px}
+.forma-app .f-skeleton{height:25px;background:#d9ded4;margin:18px 0;animation:f-pulse 1.4s ease-in-out infinite alternate}
+.forma-app .f-skeleton:first-child{height:250px}
+@keyframes f-pulse{to{opacity:.45}}
+@media(max-width:760px){
+ .forma-app .f-project-id{display:none}
+ .forma-app .f-topbar{padding-inline:16px}
+ .forma-app .f-logo{font-size:15px;gap:8px}
+ .forma-app .f-nav button{padding:7px}
+ .forma-app .f-hero-aside{display:none}
+ .forma-app .f-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .forma-app .f-architecture{grid-template-columns:1fr}
+ .forma-app .f-architecture img{height:220px;min-height:0}
+ .forma-app .f-manager-head,.forma-app .f-section-heading{display:block}
+ .forma-app .f-manager-actions{margin-top:15px}
+ .forma-app .f-summary div{padding:12px}
+}
+@media(max-width:500px){
+ .forma-app .f-topbar{height:56px}
+ .forma-app .f-logo-mark{width:18px;height:18px}
+ .forma-app .f-logo-mark:after{width:7px;height:7px}
+ .forma-app .f-nav button{font-size:10px}
+ .forma-app .f-hero{min-height:380px}
+ .forma-app .f-hero-content{padding:24px}
+ .forma-app .f-grid{grid-template-columns:1fr}
+ .forma-app .f-card-visual{height:110px}
+ .forma-app .f-controls>*{flex:1}
+ .forma-app .f-summary{grid-template-columns:repeat(2,1fr)}
+ .forma-app .f-summary div:nth-child(2){border-right:0}
+ .forma-app .f-summary div:nth-child(-n+2){border-bottom:1px solid var(--f-line)}
+ .forma-app .f-detail-layout{grid-template-columns:1fr}
+ .forma-app .f-dialog-photo{height:100px}
+ .forma-app .f-footer{display:block}
+}
+@media(prefers-reduced-motion:reduce){.forma-app .f-card{transition:none}.forma-app .f-skeleton{animation:none}}

@@ -1,0 +1,83 @@
+.project-site.atelier-site{--at-paper:#e9e6dc;--at-ink:#282c27;--at-muted:#6d7269;--at-line:#bcbeb2;--at-accent:#a44131;background:var(--at-paper);color:var(--at-ink);font-family:'DM Sans Variable',sans-serif;line-height:1.45;overflow:hidden}
+.atelier-site button{border:0;background:none;color:inherit}
+.atelier-site .at-shell{width:min(100% - 104px,1600px);margin-inline:auto}
+.atelier-site .at-kicker{font:500 11px/1.4 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.13em}
+.atelier-site .at-rule{border-top:1px solid var(--at-line)}
+.atelier-site .at-header{height:94px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--at-ink);position:relative;z-index:10}
+.atelier-site .at-brand{font-weight:600;font-size:27px;letter-spacing:-.085em;line-height:1}
+.atelier-site .at-brand small{font:500 9px 'IBM Plex Mono',monospace;letter-spacing:.06em;display:block;margin-top:7px}
+.atelier-site .at-nav{display:flex;align-items:center;gap:38px}
+.atelier-site .at-nav a,.atelier-site .at-nav button{font-size:12px;font-weight:600;transition:opacity .25s}
+.atelier-site .at-nav a:hover,.atelier-site .at-nav button:hover{opacity:.48}
+.atelier-site .at-nav .at-contact-link{border:1px solid var(--at-ink);padding:12px 18px}
+.atelier-site .at-menu-toggle{display:none}
+.atelier-site .at-hero{padding-top:85px}
+.atelier-site .at-hero-top{display:grid;grid-template-columns:1.35fr .65fr;align-items:end;gap:60px;padding-bottom:50px}
+.atelier-site .at-hero h1{font-weight:400;font-size:clamp(92px,12vw,215px);letter-spacing:-.105em;line-height:.77;margin-left:-.06em}
+.atelier-site .at-hero h1 span{display:block;color:var(--at-accent)}
+.atelier-site .at-hero-note{max-width:315px;margin-left:auto}
+.atelier-site .at-hero-note p{font:400 clamp(17px,1.6vw,24px)/1.35 'Cormorant Garamond Variable',serif;margin-top:22px}
+.atelier-site .at-hero-visual{height:min(62vw,690px);min-height:430px;position:relative;overflow:hidden;background:#b5aa95}
+.atelier-site .at-hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center 47%}
+.atelier-site .at-hero-visual:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,24,19,.46),transparent 38%)}
+.atelier-site .at-image-label{position:absolute;bottom:32px;left:38px;right:38px;z-index:1;color:#f1ede4;display:flex;justify-content:space-between;align-items:end;gap:20px}
+.atelier-site .at-image-label strong{font:400 32px/1 'Cormorant Garamond Variable',serif}
+.atelier-site .at-image-label span{font:11px 'IBM Plex Mono',monospace}
+.atelier-site .at-intro{display:grid;grid-template-columns:1fr 2fr;gap:50px;padding-block:145px 160px}
+.atelier-site .at-intro h2{font:400 clamp(37px,5.2vw,82px)/1.05 'Cormorant Garamond Variable',serif;letter-spacing:-.035em;max-width:1000px}
+.atelier-site .at-intro h2 em{color:var(--at-accent);font-weight:400}
+.atelier-site .at-intro p{max-width:450px;color:var(--at-muted);margin-top:40px;font-size:15px;line-height:1.75}
+.atelier-site .at-section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;padding-top:25px;margin-bottom:62px}
+.atelier-site .at-section-head h2{font-size:clamp(44px,6.7vw,105px);font-weight:400;letter-spacing:-.085em;line-height:1}
+.atelier-site .at-section-head p{max-width:300px;color:var(--at-muted);font-size:13px}
+.atelier-site .at-filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:30px}
+.atelier-site .at-filters button{border:1px solid var(--at-line);border-radius:100px;padding:10px 17px;font:500 11px 'IBM Plex Mono',monospace;transition:background .2s,color .2s,border-color .2s}
+.atelier-site .at-filters button[aria-pressed=true],.atelier-site .at-filters button:hover{background:var(--at-ink);color:var(--at-paper);border-color:var(--at-ink)}
+.atelier-site .at-project-grid{display:grid;grid-template-columns:1fr 1fr;gap:92px 32px}
+.atelier-site .at-project-card:nth-child(even){margin-top:130px}
+.atelier-site .at-project-card button{padding:0;text-align:left;width:100%;display:block}
+.atelier-site .at-project-card .at-project-image{aspect-ratio:1.12;overflow:hidden;background:#c9c7bb;position:relative}
+.atelier-site .at-project-card:nth-child(3n) .at-project-image{aspect-ratio:.9}
+.atelier-site .at-project-image img{width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.atelier-site .at-project-card button:hover img{transform:scale(1.045)}
+.atelier-site .at-project-image span{position:absolute;right:20px;bottom:20px;width:44px;height:44px;background:var(--at-paper);display:grid;place-items:center;border-radius:50%;font-size:23px}
+.atelier-site .at-project-meta{display:flex;justify-content:space-between;gap:20px;padding-top:17px;border-top:1px solid var(--at-ink);margin-top:17px}
+.atelier-site .at-project-meta h3{font:400 clamp(29px,3vw,47px)/1 'Cormorant Garamond Variable',serif}
+.atelier-site .at-project-meta span{font:10px 'IBM Plex Mono',monospace;text-align:right;color:var(--at-muted)}
+.atelier-site .at-material{margin-top:180px;background:#303b34;color:#eae8df;padding:100px 0}
+.atelier-site .at-material-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:7vw;align-items:center}
+.atelier-site .at-material-copy h2{font:400 clamp(53px,6vw,95px)/.96 'Cormorant Garamond Variable',serif;margin:45px 0 30px}
+.atelier-site .at-material-copy p{max-width:390px;font-size:15px;line-height:1.8;color:#c6cdc4}
+.atelier-site .at-material-copy .at-number{font:12px 'IBM Plex Mono',monospace;color:#b6bcac}
+.atelier-site .at-material-image{height:690px;max-height:65vw;overflow:hidden}
+.atelier-site .at-material-image img{width:100%;height:100%}
+.atelier-site .at-process{padding-top:145px;padding-bottom:150px}
+.atelier-site .at-process-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:70px}
+.atelier-site .at-process-head h2{font:400 clamp(52px,7vw,100px)/.95 'Cormorant Garamond Variable',serif}
+.atelier-site .at-process-head p{max-width:390px;align-self:end;line-height:1.75;color:var(--at-muted)}
+.atelier-site .at-process-list{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.atelier-site .at-process-list article{border-top:1px solid var(--at-ink);padding-top:18px}
+.atelier-site .at-process-list span{font:11px 'IBM Plex Mono',monospace;color:var(--at-accent)}
+.atelier-site .at-process-list h3{font:400 38px 'Cormorant Garamond Variable',serif;margin:50px 0 12px}
+.atelier-site .at-process-list p{font-size:13px;line-height:1.7;color:var(--at-muted);max-width:300px}
+.atelier-site .at-statement{background:var(--at-accent);color:#f2e9dd;padding:110px 0 100px}
+.atelier-site .at-statement p{font:400 clamp(54px,8vw,135px)/.94 'Cormorant Garamond Variable',serif;letter-spacing:-.04em;max-width:1270px}
+.atelier-site .at-statement .at-kicker{display:block;margin-bottom:45px}
+.atelier-site .at-footer{padding-top:100px;padding-bottom:35px}
+.atelier-site .at-footer h2{font-size:clamp(64px,10vw,160px);font-weight:400;letter-spacing:-.09em;line-height:1;margin-bottom:30px}
+.atelier-site .at-footer a.at-mail{display:inline-block;font:400 clamp(26px,4vw,56px) 'Cormorant Garamond Variable',serif;border-bottom:1px solid var(--at-ink);padding-bottom:8px}
+.atelier-site .at-footer-bottom{border-top:1px solid var(--at-line);margin-top:110px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;font:11px 'IBM Plex Mono',monospace}
+.atelier-site .at-footer-bottom a{text-decoration:underline;text-underline-offset:4px}
+.atelier-site .at-dialog{width:min(1180px,calc(100vw - 32px));max-width:none!important;max-height:calc(100dvh - 32px)!important;background:var(--at-paper);color:var(--at-ink);overflow:auto}
+.atelier-site .at-dialog-top{display:flex;justify-content:space-between;align-items:center;padding:15px 24px;border-bottom:1px solid var(--at-line)}
+.atelier-site .at-dialog-top button{font-size:28px;line-height:1;padding:5px}
+.atelier-site .at-dialog-image{height:min(60vh,650px);position:relative;background:#acae9f}
+.atelier-site .at-dialog-image img{width:100%;height:100%}
+.atelier-site .at-gallery-controls{position:absolute;bottom:20px;right:20px;display:flex;gap:5px}
+.atelier-site .at-gallery-controls button{width:49px;height:49px;background:var(--at-paper);font-size:24px}
+.atelier-site .at-dialog-copy{padding:30px 34px 38px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.atelier-site .at-dialog-copy h2{font:400 clamp(41px,5vw,70px)/1 'Cormorant Garamond Variable',serif;margin:12px 0}
+.atelier-site .at-dialog-copy p{line-height:1.7;max-width:470px;font-size:14px}
+.atelier-site .at-gallery-count{font:11px 'IBM Plex Mono',monospace;margin-top:17px}
+@media(max-width:900px){.atelier-site .at-shell{width:min(100% - 44px,1600px)}.atelier-site .at-hero{padding-top:65px}.atelier-site .at-hero-top{grid-template-columns:1fr;gap:42px}.atelier-site .at-hero-note{margin-left:0}.atelier-site .at-intro{grid-template-columns:1fr;gap:35px;padding-block:105px}.atelier-site .at-material-grid{grid-template-columns:1fr;gap:50px}.atelier-site .at-material-image{height:560px;max-height:none}.atelier-site .at-process-list{gap:15px}}
+@media(max-width:700px){.atelier-site .at-header{height:74px}.atelier-site .at-brand{font-size:24px}.atelier-site .at-menu-toggle{display:block;font:11px 'IBM Plex Mono',monospace;border:1px solid var(--at-ink);padding:10px 12px}.atelier-site .at-nav{display:none;position:absolute;top:74px;left:-22px;right:-22px;background:var(--at-paper);padding:30px 22px 38px;border-bottom:1px solid var(--at-ink);flex-direction:column;align-items:stretch;gap:23px}.atelier-site .at-nav[data-open=true]{display:flex}.atelier-site .at-nav a,.atelier-site .at-nav button{font-size:17px;text-align:left}.atelier-site .at-nav .at-contact-link{text-align:center}.atelier-site .at-hero{padding-top:63px}.atelier-site .at-hero h1{font-size:clamp(68px,17vw,110px)}.atelier-site .at-hero-top{padding-bottom:34px}.atelier-site .at-hero-visual{min-height:520px;height:70vh}.atelier-site .at-image-label{left:20px;right:20px;bottom:22px}.atelier-site .at-image-label strong{font-size:26px}.atelier-site .at-intro{padding-block:90px 100px}.atelier-site .at-intro h2{font-size:48px}.atelier-site .at-section-head{display:block;margin-bottom:35px}.atelier-site .at-section-head p{margin-top:15px}.atelier-site .at-project-grid{grid-template-columns:1fr;gap:55px}.atelier-site .at-project-card:nth-child(even){margin-top:0}.atelier-site .at-project-card .at-project-image,.atelier-site .at-project-card:nth-child(3n) .at-project-image{aspect-ratio:1.06}.atelier-site .at-material{margin-top:100px;padding:80px 0}.atelier-site .at-material-image{height:420px}.atelier-site .at-process{padding-block:100px}.atelier-site .at-process-head{grid-template-columns:1fr;gap:20px}.atelier-site .at-process-list{grid-template-columns:1fr;gap:40px}.atelier-site .at-process-list h3{margin-top:25px}.atelier-site .at-statement{padding:80px 0}.atelier-site .at-statement p{font-size:53px}.atelier-site .at-footer{padding-top:75px}.atelier-site .at-footer-bottom{margin-top:80px;flex-direction:column}.atelier-site .at-dialog-copy{grid-template-columns:1fr}.atelier-site .at-dialog-image{height:48vh}}

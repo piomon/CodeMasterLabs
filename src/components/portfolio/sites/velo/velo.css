@@ -1,0 +1,103 @@
+.project-site.velo-site{--site-paper:#e9e9df;--site-ink:#171b19;--v-acid:#d8ff45;--v-dark:#171b19;--v-muted:#777b70;background:var(--site-paper);color:var(--v-dark);font-family:'DM Sans Variable',sans-serif;line-height:1.45;overflow:hidden}
+.velo-site::selection{background:var(--v-acid);color:var(--v-dark)}
+.velo-site .v-mono{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.velo-site .v-head{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:-.015em;line-height:.92}
+.velo-site .v-container{width:min(100% - 8vw,1500px);margin-inline:auto}
+.velo-site .v-header{position:absolute;z-index:10;top:0;left:0;right:0;color:#f6f5ec;display:flex;align-items:center;justify-content:space-between;padding:25px 4vw;border-bottom:1px solid #ffffff58}
+.velo-site .v-logo{font:42px/.8 'Anton',Impact,sans-serif;letter-spacing:-.035em}
+.velo-site .v-logo span{color:var(--v-acid)}
+.velo-site .v-nav{display:flex;align-items:center;gap:34px}
+.velo-site .v-nav a{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
+.velo-site .v-nav a:hover{color:var(--v-acid)}
+.velo-site .v-nav .v-nav-cta{background:var(--v-acid);color:var(--v-dark);padding:14px 18px}
+.velo-site .v-menu{display:none;background:none;border:1px solid #ffffff66;color:inherit;padding:9px 12px}
+.velo-site .v-hero{position:relative;min-height:min(920px,100svh);min-height:max(690px,100svh);color:#f5f5ed;background:#222a25;display:flex;align-items:end}
+.velo-site .v-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,17,17,.75),rgba(9,17,17,.12) 75%),linear-gradient(0deg,rgba(9,17,17,.65),transparent 60%),url('/images/showcase/velo-hero.webp') center 46%/cover}
+.velo-site .v-hero-content{position:relative;z-index:1;padding:150px 4vw 65px;width:100%}
+.velo-site .v-hero-top{display:flex;align-items:center;gap:18px;margin-bottom:25px;color:var(--v-acid)}
+.velo-site .v-hero-top::before{content:"";display:block;width:42px;height:2px;background:currentColor}
+.velo-site .v-hero h1{font-size:clamp(90px,14.5vw,240px);max-width:1200px}
+.velo-site .v-hero-bottom{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-top:28px}
+.velo-site .v-hero-bottom p{font-size:clamp(18px,2vw,27px);font-weight:500;max-width:500px;line-height:1.3}
+.velo-site .v-arrow-link{display:inline-flex;align-items:center;justify-content:space-between;gap:38px;min-width:210px;padding:17px 0;border-top:1px solid currentColor;border-bottom:1px solid currentColor;font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;transition:gap .25s}
+.velo-site .v-arrow-link:hover{gap:55px}
+.velo-site .v-arrow-link span:last-child{font-size:22px;font-family:'DM Sans Variable',sans-serif;font-weight:400;line-height:.5}
+.velo-site .v-ticker{background:var(--v-acid);color:var(--v-dark);padding:13px 0;overflow:hidden;white-space:nowrap}
+.velo-site .v-ticker-track{display:flex;width:max-content;gap:40px;animation:v-marquee 28s linear infinite}
+.velo-site .v-ticker span{font:14px 'Anton',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.velo-site .v-ticker b{font:18px 'Anton',sans-serif}
+@keyframes v-marquee{to{transform:translateX(-50%)}}
+.velo-site .v-intro{padding:130px 0 145px;display:grid;grid-template-columns:1fr 1.45fr;gap:9vw;align-items:start}
+.velo-site .v-intro .v-label{padding-top:13px;border-top:2px solid var(--v-dark);max-width:170px}
+.velo-site .v-intro h2{font-size:clamp(56px,7vw,115px);margin-bottom:38px}
+.velo-site .v-intro h2 em{font-style:normal;color:#92978b}
+.velo-site .v-intro p{font-size:19px;max-width:580px;line-height:1.55}
+.velo-site .v-section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:45px}
+.velo-site .v-section-head h2{font-size:clamp(58px,8vw,120px)}
+.velo-site .v-section-head p{max-width:260px;color:var(--v-muted);font-size:14px}
+.velo-site .v-collection{padding:0 0 130px}
+.velo-site .v-model-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:12px}
+.velo-site .v-model{background:#d9dbd0;min-width:0;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.velo-site .v-model:first-child{background:#d8ff45}
+.velo-site .v-model:nth-child(2){background:#cecec1}
+.velo-site .v-model:nth-child(3){background:#c6d1ca}
+.velo-site .v-model-image{height:310px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.velo-site .v-model-image img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;transition:transform .5s}
+.velo-site .v-model:hover .v-model-image img{transform:scale(1.055)}
+.velo-site .v-model-image .v-bike-art{width:88%;height:auto;max-height:230px}
+.velo-site .v-model-info{padding:24px 26px 27px;border-top:1px solid #151a1740;display:flex;flex-direction:column;flex:1}
+.velo-site .v-model-line{display:flex;justify-content:space-between;align-items:start;gap:10px}
+.velo-site .v-model h3{font:42px/.98 'Anton',sans-serif;text-transform:uppercase}
+.velo-site .v-model .v-model-desc{font-size:13px;line-height:1.5;max-width:250px;margin:18px 0 28px}
+.velo-site .v-model-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.velo-site .v-model button,.velo-site .v-solid-btn{border:0;background:var(--v-dark);color:#f4f4ee;padding:13px 17px;text-transform:uppercase;font:11px 'IBM Plex Mono',monospace;letter-spacing:.035em;transition:background .2s,color .2s}
+.velo-site .v-model button:hover,.velo-site .v-solid-btn:hover{background:#485442;color:var(--v-acid)}
+.velo-site .v-manifesto{background:var(--v-dark);color:#eeefe5;display:grid;grid-template-columns:1fr 1fr;min-height:610px}
+.velo-site .v-manifesto-image{background:url('/images/showcase/velo-detail.webp') center/cover;min-height:500px}
+.velo-site .v-manifesto-content{padding:7vw;display:flex;flex-direction:column;justify-content:space-between;gap:90px}
+.velo-site .v-manifesto-content h2{font-size:clamp(58px,6.5vw,110px)}
+.velo-site .v-manifesto-content h2 span{color:var(--v-acid)}
+.velo-site .v-manifesto-content p{font-size:18px;max-width:430px;line-height:1.5;color:#c4c8bd;margin-bottom:30px}
+.velo-site .v-config{padding:130px 0 140px;background:#f0f0e7}
+.velo-site .v-config-head{margin-bottom:55px}
+.velo-site .v-config-head h2{font-size:clamp(70px,10vw,160px)}
+.velo-site .v-config-head p{font-size:17px;max-width:510px;margin-top:20px}
+.velo-site .v-config-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(350px,.8fr);gap:0;border:1px solid #222a22}
+.velo-site .v-config-visual{position:relative;background:var(--v-config-bg,#d8ff45);min-height:620px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:30px;transition:background .35s}
+.velo-site .v-config-visual .v-config-no{font:clamp(90px,13vw,230px)/1 'Anton',sans-serif;opacity:.13;position:absolute;right:18px;top:55px}
+.velo-site .v-config-visual img{position:relative;z-index:1;width:110%;height:430px;object-fit:contain;align-self:center;mix-blend-mode:multiply;filter:var(--v-bike-filter,none);transition:filter .35s,transform .35s}
+.velo-site .v-config-visual:hover img{transform:scale(1.035)}
+.velo-site .v-config-visual .v-visual-foot{position:relative;z-index:2;display:flex;justify-content:space-between;gap:15px}
+.velo-site .v-config-panel{padding:36px 38px;background:#e9e9df}
+.velo-site .v-config-panel h3{font:35px 'Anton',sans-serif;text-transform:uppercase;margin:0 0 29px}
+.velo-site .v-fieldset{border:0;padding:22px 0;margin:0;border-top:1px solid #b7bbaf}
+.velo-site .v-fieldset legend{float:left;width:100%;font:11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;margin-bottom:17px}
+.velo-site .v-options{display:flex;flex-wrap:wrap;gap:7px;clear:both}
+.velo-site .v-option{background:transparent;border:1px solid #a9ada0;color:var(--v-dark);padding:11px 14px;font-size:13px;min-height:44px}
+.velo-site .v-option[aria-pressed=true]{background:var(--v-dark);color:#f4f4eb;border-color:var(--v-dark)}
+.velo-site .v-swatches{display:flex;gap:11px;clear:both}
+.velo-site .v-swatch{width:43px;height:43px;border-radius:50%;border:2px solid transparent;padding:4px;background:transparent}
+.velo-site .v-swatch span{display:block;width:100%;height:100%;border-radius:50%;background:var(--swatch)}
+.velo-site .v-swatch[aria-pressed=true]{border-color:var(--v-dark)}
+.velo-site .v-swatch-label{display:block;margin-top:11px;font-size:12px}
+.velo-site .v-summary{border-top:2px solid var(--v-dark);padding-top:20px;margin-top:12px}
+.velo-site .v-summary-row{display:flex;justify-content:space-between;gap:12px;margin-bottom:9px;font-size:13px}
+.velo-site .v-summary-total{display:flex;justify-content:space-between;align-items:baseline;gap:15px;border-top:1px solid #adb0a4;padding-top:18px;margin-top:16px;font:32px 'Anton',sans-serif}
+.velo-site .v-summary-note{font-size:11px;color:#676d63;margin:12px 0 19px;line-height:1.5}
+.velo-site .v-save{width:100%;background:var(--v-dark);color:var(--v-acid);padding:19px;border:0;font:12px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em}
+.velo-site .v-save:hover{background:#414b3c}
+.velo-site .v-save-status{min-height:20px;font-size:12px;margin-top:12px}
+.velo-site .v-spec{padding:110px 0;background:var(--v-acid)}
+.velo-site .v-spec h2{font-size:clamp(60px,9vw,140px);margin-bottom:65px}
+.velo-site .v-spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.velo-site .v-spec-item{border-top:2px solid var(--v-dark);padding-top:18px}
+.velo-site .v-spec-item strong{display:block;font:55px 'Anton',sans-serif;margin:15px 0}
+.velo-site .v-spec-item p{max-width:320px;font-size:14px}
+.velo-site .v-end{background:#171b19;color:#eeefe8;padding:100px 0 35px}
+.velo-site .v-end h2{font-size:clamp(85px,15vw,240px);line-height:.85;margin:35px 0 65px}
+.velo-site .v-end h2 span{color:var(--v-acid)}
+.velo-site .v-end-bottom{display:flex;justify-content:space-between;align-items:end;gap:30px;border-top:1px solid #81877a;padding-top:28px}
+.velo-site .v-end-bottom p{max-width:360px;color:#c0c6b9}
+.velo-site .v-footer{background:#171b19;color:#aeb5a6;border-top:1px solid #41483f;padding:25px 4vw;display:flex;justify-content:space-between;gap:20px;font:11px 'IBM Plex Mono',monospace;text-transform:uppercase}
+@media(max-width:950px){.velo-site .v-model-grid{grid-template-columns:1fr 1fr}.velo-site .v-model:first-child{grid-column:span 2}.velo-site .v-config-layout{grid-template-columns:1fr}.velo-site .v-config-visual{min-height:480px}.velo-site .v-config-visual img{height:350px}.velo-site .v-manifesto-content{padding:6vw}}
+@media(max-width:700px){.velo-site .v-container{width:calc(100% - 40px)}.velo-site .v-header{padding:22px 20px}.velo-site .v-logo{font-size:36px}.velo-site .v-menu{display:block}.velo-site .v-nav{display:none;position:absolute;top:76px;left:0;right:0;background:#171b19;padding:25px 20px;flex-direction:column;align-items:stretch;gap:22px}.velo-site .v-nav[data-open=true]{display:flex}.velo-site .v-nav .v-nav-cta{text-align:center}.velo-site .v-hero{min-height:750px;min-height:100svh}.velo-site .v-hero::before{background:linear-gradient(0deg,rgba(9,17,17,.8),rgba(9,17,17,.1) 80%),url('/images/showcase/velo-hero.webp') 62% center/cover}.velo-site .v-hero-content{padding:120px 20px 45px}.velo-site .v-hero h1{font-size:clamp(78px,20vw,135px)}.velo-site .v-hero-bottom{display:block}.velo-site .v-hero-bottom p{font-size:19px;margin-bottom:35px}.velo-site .v-intro{display:block;padding:90px 0}.velo-site .v-intro .v-label{margin-bottom:55px}.velo-site .v-intro h2{font-size:clamp(60px,15vw,90px)}.velo-site .v-intro p{font-size:16px}.velo-site .v-section-head{display:block}.velo-site .v-section-head p{margin-top:20px}.velo-site .v-collection{padding-bottom:90px}.velo-site .v-model-grid{grid-template-columns:1fr}.velo-site .v-model:first-child{grid-column:auto}.velo-site .v-model-image{height:290px}.velo-site .v-manifesto{grid-template-columns:1fr}.velo-site .v-manifesto-image{min-height:380px}.velo-site .v-manifesto-content{padding:70px 20px;gap:60px}.velo-site .v-config{padding:85px 0}.velo-site .v-config-head h2{font-size:clamp(66px,17vw,110px)}.velo-site .v-config-visual{min-height:350px;padding:18px}.velo-site .v-config-visual img{height:245px;width:115%}.velo-site .v-config-panel{padding:25px 19px}.velo-site .v-spec{padding:80px 0}.velo-site .v-spec-grid{grid-template-columns:1fr;gap:35px}.velo-site .v-spec h2{margin-bottom:48px}.velo-site .v-end{padding-top:90px}.velo-site .v-end-bottom{display:block}.velo-site .v-end-bottom p{margin-bottom:30px}.velo-site .v-footer{padding:25px 20px;display:block}.velo-site .v-footer span{display:block;margin-bottom:10px}}

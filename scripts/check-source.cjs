@@ -1,0 +1,10 @@
+const fs=require('node:fs'),path=require('node:path');
+const ts=require(process.env.TYPESCRIPT_PATH||'typescript');
+const root=path.resolve(__dirname,'..');
+const files=[];function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,entry.name);if(entry.isDirectory())walk(file);else if(/\.tsx?$/.test(file)&&!file.endsWith('.d.ts'))files.push(file)}}
+walk(path.join(root,'src'));walk(path.join(root,'scripts'));walk(path.join(root,'tests'));files.push(path.join(root,'playwright.config.ts'));
+const diagnostics=[],missingImports=[];
+for(const file of files){const source=fs.readFileSync(file,'utf8'),relative=path.relative(root,file),result=ts.transpileModule(source,{fileName:relative,reportDiagnostics:true,compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,jsx:ts.JsxEmit.ReactJSX,isolatedModules:true}});for(const d of result.diagnostics||[])diagnostics.push({file:relative,code:d.code,message:ts.flattenDiagnosticMessageText(d.messageText,' ')});
+ const parsed=ts.createSourceFile(file,source,ts.ScriptTarget.Latest,true);for(const statement of parsed.statements){if(!ts.isImportDeclaration(statement)||!ts.isStringLiteral(statement.moduleSpecifier))continue;const name=statement.moduleSpecifier.text;let base;if(name.startsWith('@/'))base=path.join(root,'src',name.slice(2));else if(name==='@payload-config')base=path.join(root,'src/payload.config');else if(name.startsWith('.'))base=path.resolve(path.dirname(file),name);if(base&&!['','.ts','.tsx','.js','.mjs','.css','.json','/index.ts','/index.tsx'].some(ext=>fs.existsSync(base+ext)))missingImports.push({file:relative,import:name});}}
+const report={scope:'Syntax transpilation and local import resolution only. This is not a dependency-aware TypeScript check, build or runtime integration test.',files:files.length,diagnostics,missingImports};
+fs.mkdirSync(path.join(root,'reports'),{recursive:true});fs.writeFileSync(path.join(root,'reports/source-check.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));process.exitCode=diagnostics.length||missingImports.length?1:0;

@@ -1,0 +1,88 @@
+.project-site.maison-site{--ms-cream:#f2e8d9;--ms-ink:#453d34;--ms-rust:#9d553d;--ms-peach:#e3bfa7;--ms-line:#c9b8a5;background:var(--ms-cream);color:var(--ms-ink);font-family:'DM Sans Variable',sans-serif;line-height:1.5;overflow:hidden}
+.maison-site button{border:0;background:none;color:inherit}
+.maison-site .ms-shell{width:min(100% - 112px,1540px);margin-inline:auto}
+.maison-site .ms-serif{font-family:'Cormorant Garamond Variable',serif;font-weight:400}
+.maison-site .ms-eyebrow{font:600 10px/1.4 'DM Sans Variable',sans-serif;letter-spacing:.19em;text-transform:uppercase}
+.maison-site .ms-nav{height:86px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:10}
+.maison-site .ms-logo{font:500 34px/1 'Cormorant Garamond Variable',serif;letter-spacing:.12em}
+.maison-site .ms-links{display:flex;align-items:center;gap:35px}
+.maison-site .ms-links a{font-size:12px;transition:opacity .2s}.maison-site .ms-links a:hover{opacity:.55}
+.maison-site .ms-link-cta,.maison-site .ms-solid-cta{background:var(--ms-rust)!important;color:#f9f0e3!important;padding:13px 21px;border-radius:2px;font:600 11px 'DM Sans Variable',sans-serif!important;letter-spacing:.08em;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center;gap:22px;transition:transform .25s,background .25s}
+.maison-site .ms-link-cta:hover,.maison-site .ms-solid-cta:hover{transform:translateY(-2px);background:#783d2e!important}
+.maison-site .ms-menu{display:none}
+.maison-site .ms-hero{position:relative;min-height:min(790px,84svh);display:flex;align-items:center;overflow:hidden;background:#a77d62}
+.maison-site .ms-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.maison-site .ms-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(32,29,24,.58),rgba(32,29,24,.05) 72%),linear-gradient(0deg,rgba(32,29,24,.25),transparent 40%)}
+.maison-site .ms-hero-content{position:relative;z-index:1;color:#f9eee0;padding-block:85px}
+.maison-site .ms-hero h1{font:400 clamp(75px,10vw,157px)/.81 'Cormorant Garamond Variable',serif;letter-spacing:-.05em;max-width:900px;margin:34px 0}
+.maison-site .ms-hero h1 i{font-weight:400}
+.maison-site .ms-hero p{font-size:15px;max-width:360px;line-height:1.7;margin-bottom:34px}
+.maison-site .ms-hero-bottom{position:absolute;z-index:1;bottom:25px;left:0;right:0;color:#f9eee0;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.08em}
+.maison-site .ms-welcome{padding-block:155px;display:grid;grid-template-columns:.85fr 1.15fr;gap:9vw}
+.maison-site .ms-welcome aside{padding-top:12px}
+.maison-site .ms-welcome aside span{display:block;width:64px;height:1px;background:var(--ms-rust);margin:23px 0}
+.maison-site .ms-welcome aside p{max-width:240px;color:#847567;font-size:13px;line-height:1.7}
+.maison-site .ms-welcome h2{font:400 clamp(48px,6vw,88px)/.97 'Cormorant Garamond Variable',serif;letter-spacing:-.035em}
+.maison-site .ms-welcome h2 em{color:var(--ms-rust)}
+.maison-site .ms-welcome .ms-body{max-width:510px;font-size:15px;line-height:1.85;margin-top:38px;color:#786a5e}
+.maison-site .ms-suites{padding-bottom:135px}
+.maison-site .ms-section-title{text-align:center;margin-bottom:58px}
+.maison-site .ms-section-title h2{font:400 clamp(64px,8vw,110px)/.92 'Cormorant Garamond Variable',serif;margin:12px 0 18px}
+.maison-site .ms-section-title p{max-width:410px;margin:auto;color:#806f60;font-size:14px;line-height:1.7}
+.maison-site .ms-suite-feature{display:grid;grid-template-columns:1.3fr .7fr;min-height:620px;background:#e4d1bc}
+.maison-site .ms-suite-feature>img{width:100%;height:100%;min-height:620px;object-fit:cover}
+.maison-site .ms-suite-copy{padding:clamp(35px,5vw,85px);display:flex;flex-direction:column;align-items:start;justify-content:center}
+.maison-site .ms-suite-copy .ms-no{font:400 65px 'Cormorant Garamond Variable',serif;color:#ae7e65}
+.maison-site .ms-suite-copy h3{font:400 clamp(45px,5vw,75px)/.95 'Cormorant Garamond Variable',serif;margin:24px 0}
+.maison-site .ms-suite-copy p{font-size:14px;line-height:1.8;max-width:340px}
+.maison-site .ms-suite-copy .ms-details{font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin:28px 0 35px;padding-top:20px;border-top:1px solid #b99e87;width:100%}
+.maison-site .ms-suite-copy button{border-bottom:1px solid var(--ms-ink);font-size:12px;padding:0 0 7px}
+.maison-site .ms-suite-secondary{display:grid;grid-template-columns:.65fr 1.35fr;background:#d5b9a3;margin-top:24px}
+.maison-site .ms-suite-secondary>img{width:100%;height:100%;min-height:480px;object-fit:cover;order:2}
+.maison-site .ms-suite-secondary .ms-suite-copy{order:1}
+.maison-site .ms-moment{background:#704e3e;color:#f7e8d5;padding-block:115px}
+.maison-site .ms-moment-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:9vw;align-items:center}
+.maison-site .ms-moment h2{font:400 clamp(65px,8vw,118px)/.89 'Cormorant Garamond Variable',serif;margin:28px 0}
+.maison-site .ms-moment p{font-size:14px;line-height:1.8;max-width:340px;color:#e2cab7}
+.maison-site .ms-moment-grid img{width:100%;height:580px}
+.maison-site .ms-moment ul{list-style:none;padding:0;margin:38px 0 0;max-width:350px}
+.maison-site .ms-moment li{padding:12px 0;border-top:1px solid #b58d77;font:12px 'DM Sans Variable',sans-serif}
+.maison-site .ms-moment li:before{content:'—';margin-right:15px}
+.maison-site .ms-note{padding-block:145px;text-align:center}
+.maison-site .ms-note .ms-ornament{color:var(--ms-rust);font:65px 'Cormorant Garamond Variable',serif;line-height:.8}
+.maison-site .ms-note blockquote{font:400 clamp(38px,5vw,72px)/1.09 'Cormorant Garamond Variable',serif;max-width:960px;margin:32px auto;letter-spacing:-.025em}
+.maison-site .ms-note p{font-size:13px;color:#897a6a}
+.maison-site .ms-planner{background:#ddc0a9;padding-block:110px}
+.maison-site .ms-planner-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:7vw;align-items:start}
+.maison-site .ms-planner-intro h2{font:400 clamp(70px,7vw,113px)/.85 'Cormorant Garamond Variable',serif;margin:22px 0}
+.maison-site .ms-planner-intro p{max-width:320px;line-height:1.8;font-size:14px}
+.maison-site .ms-planner-card{background:#f6eddf;padding:42px;box-shadow:12px 12px 0 #c6a88f}
+.maison-site .ms-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:19px}
+.maison-site .ms-field{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}
+.maison-site .ms-field label,.maison-site .ms-select-label{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.maison-site .ms-field input,.maison-site .ms-field select{width:100%;border:1px solid #bba997;border-radius:0;background:transparent;color:var(--ms-ink);padding:13px 12px;min-height:49px;color-scheme:light}
+.maison-site .ms-field input:focus,.maison-site .ms-field select:focus{outline:2px solid var(--ms-rust);outline-offset:2px}
+.maison-site .ms-suite-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 23px}
+.maison-site .ms-suite-options button{text-align:left;border:1px solid #bba997;padding:16px;transition:background .2s}
+.maison-site .ms-suite-options button[aria-pressed=true]{background:#ddc0a9;border-color:#845743}
+.maison-site .ms-suite-options strong,.maison-site .ms-suite-options span{display:block}
+.maison-site .ms-suite-options strong{font:400 24px 'Cormorant Garamond Variable',serif}
+.maison-site .ms-suite-options span{font-size:11px;margin-top:5px}
+.maison-site .ms-error{color:#8c2f27;font-size:12px;margin:0 0 15px!important;font-weight:600}
+.maison-site .ms-plan-summary{border-top:1px solid #bba997;margin-top:25px;padding-top:22px}
+.maison-site .ms-plan-summary h3{font:400 35px 'Cormorant Garamond Variable',serif;margin-bottom:12px}
+.maison-site .ms-plan-summary dl{display:grid;grid-template-columns:1fr auto;gap:9px;font-size:13px;margin:0}.maison-site .ms-plan-summary dt{color:#746455}.maison-site .ms-plan-summary dd{margin:0;text-align:right}
+.maison-site .ms-plan-summary .ms-total{border-top:1px solid #bba997;padding-top:13px;margin-top:9px;font-weight:700;font-size:17px}
+.maison-site .ms-plan-summary p{font-size:11px;line-height:1.6;color:#746455;margin:20px 0}
+.maison-site .ms-plan-actions{display:flex;gap:9px;flex-wrap:wrap}
+.maison-site .ms-plan-actions button{border:1px solid var(--ms-ink);padding:11px 15px;font-size:11px;font-weight:600}
+.maison-site .ms-saved{font-size:12px;color:#45613e;margin-top:12px!important}
+.maison-site .ms-footer{padding-top:115px;padding-bottom:35px;background:#463e35;color:#f1e4d1}
+.maison-site .ms-footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.maison-site .ms-footer h2{font:400 clamp(70px,9vw,145px)/.86 'Cormorant Garamond Variable',serif;letter-spacing:-.04em;margin:26px 0}
+.maison-site .ms-footer p{max-width:300px;color:#cbbbae;line-height:1.8;font-size:13px}
+.maison-site .ms-footer-links{display:flex;flex-direction:column;align-items:start;justify-content:end;gap:15px}
+.maison-site .ms-footer-links a{font:400 clamp(22px,2.5vw,38px) 'Cormorant Garamond Variable',serif;border-bottom:1px solid #968779}
+.maison-site .ms-footer-bottom{margin-top:115px;padding-top:20px;border-top:1px solid #8b7b6d;display:flex;justify-content:space-between;gap:20px;font-size:11px;color:#cbbbae}
+@media(max-width:900px){.maison-site .ms-shell{width:min(100% - 48px,1540px)}.maison-site .ms-welcome{gap:40px}.maison-site .ms-suite-feature,.maison-site .ms-suite-secondary{grid-template-columns:1fr 1fr}.maison-site .ms-suite-feature>img{min-height:520px}.maison-site .ms-planner-grid{gap:35px}}
+@media(max-width:700px){.maison-site .ms-nav{height:72px}.maison-site .ms-logo{font-size:29px}.maison-site .ms-menu{display:block;border:1px solid var(--ms-ink);padding:9px 13px;font-size:11px;text-transform:uppercase;letter-spacing:.08em}.maison-site .ms-links{display:none;position:absolute;top:72px;left:-24px;right:-24px;background:var(--ms-cream);padding:25px 24px 35px;flex-direction:column;align-items:stretch;gap:23px;border-bottom:1px solid var(--ms-line)}.maison-site .ms-links[data-open=true]{display:flex}.maison-site .ms-links a{font-size:17px}.maison-site .ms-hero{min-height:700px}.maison-site .ms-hero>img{object-position:58% center}.maison-site .ms-hero:after{background:linear-gradient(90deg,rgba(32,29,24,.59),rgba(32,29,24,.16)),linear-gradient(0deg,rgba(32,29,24,.27),transparent 40%)}.maison-site .ms-hero h1{font-size:77px}.maison-site .ms-hero-bottom{font-size:10px}.maison-site .ms-welcome{padding-block:100px;grid-template-columns:1fr;gap:45px}.maison-site .ms-welcome h2{font-size:57px}.maison-site .ms-section-title h2{font-size:70px}.maison-site .ms-suites{padding-bottom:90px}.maison-site .ms-suite-feature,.maison-site .ms-suite-secondary{display:flex;flex-direction:column}.maison-site .ms-suite-feature>img,.maison-site .ms-suite-secondary>img{order:0;height:420px;min-height:0}.maison-site .ms-suite-copy,.maison-site .ms-suite-secondary .ms-suite-copy{order:1;padding:35px 27px 42px}.maison-site .ms-suite-copy .ms-no{font-size:44px}.maison-site .ms-suite-copy h3{margin:10px 0 19px}.maison-site .ms-moment{padding-block:90px}.maison-site .ms-moment-grid{grid-template-columns:1fr;gap:45px}.maison-site .ms-moment-grid img{height:440px}.maison-site .ms-note{padding-block:100px}.maison-site .ms-note blockquote{font-size:45px}.maison-site .ms-planner{padding-block:90px}.maison-site .ms-planner-grid{grid-template-columns:1fr;gap:40px}.maison-site .ms-planner-card{padding:25px;box-shadow:7px 7px 0 #c6a88f}.maison-site .ms-form-grid{grid-template-columns:1fr;gap:0}.maison-site .ms-footer{padding-top:90px}.maison-site .ms-footer-grid{grid-template-columns:1fr;gap:55px}.maison-site .ms-footer-bottom{margin-top:80px;flex-direction:column}}

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>CodeMasterLabs — audyt 2.2.0 / 29.09.2026</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f3f5f7;color:#182a38;font:17px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:#142c3c;color:white;padding:38px max(24px,calc((100vw - 1020px)/2));}
+header small{letter-spacing:.13em;text-transform:uppercase;color:#bdd1dc}header p{font-size:24px;margin:.6em 0 0;font-weight:650}
+main{max-width:1100px;margin:32px auto;background:white;border:1px solid #dfe6eb;padding:48px 56px;box-shadow:0 8px 25px #142c3c08}
+h1{font-size:2rem;line-height:1.25;margin-top:10px}h2{font-size:1.5rem;line-height:1.35;border-top:1px solid #dfe6eb;padding-top:28px;margin-top:42px}h3{font-size:1.16rem;line-height:1.45;margin-top:28px}
+a{color:#075d82;text-decoration-thickness:1px;text-underline-offset:3px}p,li,td{overflow-wrap:anywhere}code{font-size:.88em;background:#edf2f6;padding:2px 5px;border-radius:3px;overflow-wrap:anywhere}pre{background:#edf2f6;padding:18px;white-space:pre-wrap;overflow:auto;border-left:3px solid #416782}pre code{padding:0;background:none}table{border-collapse:collapse;width:100%;font-size:.92em;margin:24px 0}th,td{padding:12px 14px;text-align:left;vertical-align:top;border:1px solid #d7e1e8}th{background:#eaf0f5}nav{padding:18px 25px;background:#f4f7f9;margin-bottom:32px}nav ol{padding-left:24px;columns:2;column-gap:36px}nav li{break-inside:avoid;margin:7px 0;font-size:.9em}
+.notice{border-left:5px solid #a66916;padding:15px 20px;background:#fff7e8;margin:0 0 28px}footer{max-width:1100px;margin:24px auto 42px;padding:0 25px;color:#596e7c;font-size:14px}
+@media(max-width:700px){body{font-size:16px}main{margin:0;padding:24px 18px;border:0}h1{font-size:1.7rem}nav ol{columns:1}table{font-size:.8em}th,td{padding:8px}header{padding:24px}}
+@media print{body{background:white;font-size:10pt}header{background:white;color:black;padding:0}header small{color:#444}main{max-width:none;border:0;box-shadow:none;margin:0;padding:0}nav{display:none}h2,h3{break-after:avoid}tr{break-inside:avoid}a{color:inherit}footer{font-size:8pt}}
+</style></head><body><header><small>CodeMasterLabs / przegląd techniczny / 29 września 2026</small><p>Audyt źródeł i pakiet poprawek 2.2.0</p></header>
+<main><div class="notice"><strong>Status: źródło po poprawkach, bez zakończonego odbioru produkcyjnego.</strong><br>170 zaliczonych testów komponentowych. Brak potwierdzonego pełnego builda, skanu obrazów i wdrożenia na VPS. Liczniki podatności: nieznane.</div>
+<nav aria-label="Spis treści"><strong>Spis treści</strong><ol><li><a href="#section-1">1. Werdykt i granice odpowiedzialności</a></li><li><a href="#section-2">2. Pochodzenie, kompletność i zakres przeglądu</a></li><li><a href="#section-3">3. Metoda klasyfikowania ustaleń</a></li><li><a href="#section-4">4. Formularze, tokeny i ponowienia</a></li><li><a href="#section-5">5. Wiadomości, moderacja i retencja</a></li><li><a href="#section-6">6. Załączniki i kontrola dostępu</a></li><li><a href="#section-7">7. Baza danych i zawartość CMS</a></li><li><a href="#section-8">8. Zależności, build i pochodzenie obrazów</a></li><li><a href="#section-9">9. Wdrożenie i dowody akceptacji</a></li><li><a href="#section-10">10. Domeny, treści, SEO i elementy komercyjne</a></li><li><a href="#section-11">11. Wyniki testów — co naprawdę wykonano</a></li><li><a href="#section-12">12. Warunki domknięcia profesjonalnego wydania</a></li><li><a href="#section-13">13. Instalacja i przekazanie</a></li><li><a href="#section-14">14. Źródła i dowody</a></li></ol></nav><h1>CodeMasterLabs — audyt techniczny i pakiet poprawek 2.2.0</h1>
+<p><strong>Data opracowania: 29 września 2026 r.</strong><br />
+<strong>Materiał wejściowy:</strong> <code>CodeMaster-VPS (1)(4).zip</code><br />
+<strong>Rodzaj rezultatu:</strong> poprawione źródła, instalator pojedynczego VPS, testy i dokumentacja operacyjna.<br />
+<strong>Status publikacji:</strong> <strong>ZABLOKOWANA / NIEZWERYFIKOWANA PRODUKCYJNIE</strong>.<br />
+<strong><code>COMMERCIAL_RELEASE_READY = false</code></strong></p>
+<h2 id="section-1">1. Werdykt i granice odpowiedzialności</h2>
+<p>W paczce wykonano rzeczywiste zmiany w kodzie, a nie tylko zmianę nazwy ZIP-a, opisu czy flagi gotowości. Rozbudowano obsługę formularzy, dostarczanie powiadomień, politykę załączników, migracje SQLite, proces budowania i zabezpieczenia instalatora. Przygotowano konfigurację dla <code>codemasterlabs.pl</code> oraz <code>codemasterlabs.com</code>. Zachowano wszystkie 32 pliki katalogu <code>public/</code> bajt w bajt.</p>
+<p>W dostępnym środowisku przechodzi <strong>145 testów Node i 25 testów Python — razem 170; bez błędów i pominięć</strong>. Zestaw wejściowy obejmował 89 testów Node i 10 testów Python. Dodano więc 71 testów. Wyniki te dotyczą komponentów, kontraktów i operacji na syntetycznej bazie SQLite. Nie są wynikiem uruchomienia całej strony na produkcyjnym stosie Next.js/Payload.</p>
+<p><strong>Nie potwierdzono „zero Critical / High / Medium” w gotowej aplikacji.</strong> Nie wykonano udanego pobrania zależności, pełnego builda, skanu faktycznie zainstalowanego drzewa npm ani obrazów Docker, pełnego E2E i wdrożenia na VPS. Liczniki podatności pozostają <strong>nieznane</strong>, a nie równe zero. Brak błędu w teście jednostkowym nie dowodzi nieobecności podatności w systemie.</p>
+<p>Dodatkowo na 30 września 2026 r. zapowiedziano kolejną poprawkę bezpieczeństwa Next.js. W publicznym komunikacie producent podał planowane wersje i poziomy istotności; szczegółowe zakresy podatnych konfiguracji mają towarzyszyć wydaniu. Nie przypisuję automatycznie wszystkich zapowiedzianych podatności tej aplikacji. Stosuję zachowawczą blokadę jej publicznej publikacji do czasu aktualizacji i ponownej weryfikacji. [S1]</p>
+<p><strong>To nie jest jeszcze bezwarunkowo gotowy, skompilowany i zaakceptowany release „wrzuć i działa”.</strong> To wydanie źródłowe z poprawkami i bramkami kontrolnymi. Gdy brakuje dowodu lub wystąpi błąd, instalator ma przerwać operację, a nie udawać sukces. Nie obniżono progów bezpieczeństwa w celu uzyskania zielonego raportu.</p>
+<h2 id="section-2">2. Pochodzenie, kompletność i zakres przeglądu</h2>
+<p>Wejściowe archiwum ma 6 271 658 bajtów i 286 plików. Rozpakowywanie i pakowanie wykonano z kontrolą ścieżek. Sumy SHA-256 plików wejściowych zapisano w <code>reports/input-inventory.json</code>; zmiany plik po pliku znajdują się w <code>reports/change-inventory.json</code>. Lista różnic w czytelnej postaci to <code>docs/FILE-CHANGES.md</code>.</p>
+<p>SHA-256 wejściowego ZIP-a:</p>
+<p><code>183f07132599b2341bab8e838bee6e5a439ae02513f831ec963595b8c537977c</code></p>
+<p>Nie uzyskano autoryzowanego dostępu do repozytorium zdalnego. Nie tworzono ani nie przedstawiano fikcyjnego identyfikatora commitu Git. Ta paczka jest identyfikowana przez pochodzenie archiwum, wersję i sumy plików. Kopia poprzednich deklaracji wydania znajduje się wyłącznie w <code>reports/historical-input/</code> i nie jest bieżącym dowodem testowym.</p>
+<p>Przegląd odbył się wieloprzebiegowo: inwentaryzacja; analiza punktów wejścia i granic zaufania; porównanie schematu bazy z kolekcjami; przegląd powiadomień i ponowień; kontrola wdrożenia, kopii i odtwarzania; implementacja poprawek; regresja; ponowna kontrola artefaktu. Automatyczna analiza składni i lokalnych importów obejmuje pliki TypeScript/TSX w zakresie raportowanym przez <code>scripts/check-source.cjs</code>. Ścisłe sprawdzanie typów obejmuje osobny <code>tsconfig.domain.json</code>, nie pełny framework.</p>
+<p>Ręczny przegląd był skoncentrowany na API kontaktu i opinii, tokenach, walidacji danych, załącznikach, ACL, schematach kolekcji, seeding/migracjach, powiadomieniach, kliencie formularzy oraz narzędziach VPS. <strong>Nie oznaczono każdej linii aplikacji jako niezależnie ręcznie zweryfikowanej.</strong> Inwentaryzacja lub transpile każdego pliku nie jest równoznaczne z audytem bezpieczeństwa każdej jego ścieżki wykonania. Nie wykonano niezależnego testu penetracyjnego.</p>
+<h3 id="sub-037ff106ad">Czy usunięto grafiki lub screenshots?</h3>
+<p>W obecnym wejściowym ZIP-ie nie ma folderu <code>screenshots/</code>. W starszej dużej paczce znaleziono 83 pliki zrzutów. W obecnym <code>src/</code> nie znaleziono statycznych odwołań do <code>screenshots/</code>; wynik zapisano w <code>reports/screenshots-reference-check.json</code>. Nie było jednak produkcyjnej bazy CMS, dlatego nie można wykluczyć odwołań zapisanych w niewidocznych danych z innej instalacji.</p>
+<p>W tym wydaniu nie usuwano żadnego z 32 plików <code>public/</code>: 29 obrazów rastrowych i 3 SVG. Zachowano również warianty obrazów, nawet gdy wyglądają na podobne. <code>reports/public-assets-comparison.json</code> dokumentuje zgodność bajtową. Nie przywrócono 83 zrzutów jako plików wykonywalnej aplikacji — nie były częścią badanego wejścia i nie stwierdzono ich statycznego użycia.</p>
+<p>Rozmiaru ZIP-a nie należy traktować jako miary kompletności programu. W tej paczce nie ma <code>node_modules</code>, gotowych obrazów, <code>.next</code>, prywatnej bazy ani sekretów. Zależności i build mają powstać w kontrolowanym procesie na docelowym środowisku.</p>
+<h2 id="section-3">3. Metoda klasyfikowania ustaleń</h2>
+<p>Poniższe poziomy są oceną ryzyka dla tego projektu, a nie wyliczonym CVSS i nie stanowią automatycznie identyfikatorów CVE. <strong>High</strong> oznacza ryzyko utraty/ujawnienia danych, obejścia istotnej kontroli albo poważnej zawodności wdrożenia. <strong>Medium</strong> oznacza istotny problem niezawodności, ochrony danych, przeciążenia, konfiguracji lub integralności procesu. Uwagi jakościowe i organizacyjne są oznaczane osobno.</p>
+<p>„Poprawiono w kodzie” znaczy, że zmiana istnieje i przeszła wskazaną kontrolę komponentową. <strong>Nie oznacza „zamknięto produkcyjnie”</strong>. Zamknięcie wymaga uruchomienia rzeczywistych zależności i scenariusza na środowisku docelowym. Obszary niezweryfikowane nie zostały uznane za ryzyka zaakceptowane przez właściciela.</p>
+<h2 id="section-4">4. Formularze, tokeny i ponowienia</h2>
+<h3 id="sub-b582150729">F01 — powtórny zapis zgłoszenia po utracie odpowiedzi — High</h3>
+<p>Problem: klient może nie otrzymać odpowiedzi mimo zapisu zgłoszenia. Wygenerowanie nowego klucza i automatyczne ponowienie może utworzyć drugi lead. Zmieniono zarówno klienta, jak i serwer. Token pozostaje ten sam po niejednoznacznym błędzie sieciowym; zapis jest identyfikowany unikalnym kluczem. Powtórzenie identycznej treści odsyła do istniejącego rezultatu. Zmiana treści lub załącznika dla użytego klucza kończy się konfliktem, zamiast nadpisywać wcześniejsze dane.</p>
+<p>Pliki: <code>src/app/api/contact/route.ts</code>, <code>src/lib/submission-policy.ts</code>, komponenty formularza i chatu. Testy wykonują rzeczywisty handler z zastępczą implementacją CMS, w tym ponowienie i konflikt. Pełne zachowanie ograniczenia unikalności, transakcji oraz serializacji uploadu w zainstalowanym Payload wymaga E2E.</p>
+<h3 id="sub-32ae58d974">F02 — duplikaty i prywatność opinii — Medium</h3>
+<p>Dodano unikalny <code>submissionKey</code>, rozpoznawanie powtórzonej treści i obsługę wyścigu przy zapisie opinii. Publiczne zgłoszenie nadal tworzy szkic, a nie natychmiast opublikowaną opinię. W publicznej odpowiedzi zwracane są tylko dozwolone pola; dowody zgody i klucz techniczny nie powinny być publicznymi danymi. Opinie redakcyjne bez klucza nadal mogą istnieć.</p>
+<p>Potwierdzono kontrakt handlera, moderację i unikalność nullable w syntetycznym SQLite. Pozostaje test anonimowego odczytu i uprawnień w prawdziwym API Payload.</p>
+<h3 id="sub-c4d03672e3">F03 — rozdzielenie terminu nowego zgłoszenia i odzyskania potwierdzenia — Medium</h3>
+<p>Nowe zgłoszenie wymaga tokenu nie starszego niż 30 minut. Odzyskanie potwierdzenia wcześniej zapisanego, identycznego zgłoszenia dopuszcza token do 24 godzin. Starszy token nie otwiera nowej możliwości utworzenia rekordu. Nie zastosowano nieograniczonej ważności ani wyłączenia podpisu.</p>
+<p>Klient odnawia token po jednoznacznym komunikacie o nieważności/wygaśnięciu, a nie po każdym błędzie połączenia. Testy obejmują granice ważności i brak zgody na nowy zapis z tokenem dopuszczonym tylko do odzyskania potwierdzenia.</p>
+<h3 id="sub-63882cc581">F04 — czytanie body przed kontrolą rozmiaru i czasu — High</h3>
+<p>Dodano <code>src/lib/http-body.ts</code>: ograniczanie rzeczywiście odczytanych bajtów, kontrolę <code>Content-Length</code>, ograniczenie czasu czytania i anulowanie strumienia. Kontakt ma limit żądania 6 MiB, pojedynczy załącznik 5 MiB, a JSON opinii 12 KiB. Odrzucane są zduplikowane i nieznane pola formularza.</p>
+<p>Wyniki obejmują nadmiarowe body, niespójny nagłówek długości, wolny strumień i duplikaty pól. Nie wykonano sieciowego testu obciążeniowego ani pomiaru pamięci parsera multipart przy wielu równoczesnych żądaniach. Ograniczenia Nginx są dodatkową warstwą, nie substytutem kontroli aplikacji.</p>
+<h3 id="sub-de65c8cd97">F05 — błędna klasyfikacja wyjątków bazy — Medium</h3>
+<p>Rozpoznawanie konfliktu unikalności nie utożsamia już dowolnego błędu integralności z duplikatem. Błędy <code>CHECK</code> i kluczy obcych nie są zwracane jako udane ponowienie. Przejście po przyczynach wyjątku ma ograniczoną głębokość i wykrywa cykle.</p>
+<p>Testy obejmują unikalność, błędy innego typu i cykliczny łańcuch przyczyn. Integracyjne mapowanie błędów konkretnej wersji adaptera jest nadal do potwierdzenia.</p>
+<h3 id="sub-4821361c04">F06 — zawieszenie lub niejednoznaczna obsługa formularza w przeglądarce — Medium</h3>
+<p>Pobranie tokenu ma własny timeout; wysłanie kontaktu i opinii ma ograniczony czas. Czas wysłania opinii zaczyna się po zakończeniu wyzwania antybotowego, aby samo oczekiwanie na człowieka nie zużyło całego limitu POST. Zabezpieczono ponowne kliknięcia. Zamknięcie i ponowne otwarcie chatu nie resetuje bez potrzeby tokenu niejednoznacznego wysłania.</p>
+<p>Komunikaty dla znanych awarii sieci i challenge nie przekazują użytkownikowi surowych technicznych wyjątków. Pozostaje ręczny test słabego łącza, klawiatury, czytnika ekranu i powrotu do formularza na telefonie.</p>
+<h2 id="section-5">5. Wiadomości, moderacja i retencja</h2>
+<h3 id="sub-2af7e4aba3">F07 — zależność zapisu zgłoszenia od jednorazowej wysyłki SMTP — High</h3>
+<p>Zapis leada i dostarczenie powiadomienia są oddzielone. Nowy rekord jest zapisywany ze stanem powiadomienia <code>pending</code>. Osobny worker przetwarza kolejkę, zapisuje próby i ponawia z rosnącą przerwą. Po ośmiu próbach rekord otrzymuje stan <code>failed</code>; administrator nie traci samego zgłoszenia.</p>
+<p>Pliki: <code>src/lib/lead-notification.ts</code>, <code>scripts/notifications.ts</code>, kolekcja Leads i migracja 003. Testy potwierdzają przejścia stanów, awarię SMTP, pomijanie wysłanych i starych rekordów oraz opóźnienie kolejnej próby. Nie potwierdzono doręczenia do rzeczywistej skrzynki.</p>
+<h3 id="sub-d006ed932d">F08 — niekontrolowane ponowne powiadomienia po migracji — Medium</h3>
+<p>Stare leady otrzymują stan <code>legacy</code>. Migracja nie wysyła automatycznie wiadomości o całej historycznej bazie. Zwykły worker pomija <code>legacy</code> i <code>sent</code>. Dla świadomego ponowienia istnieje osobna komenda <code>retry-notification ID</code>, dopuszczająca jeden rekord w stanie <code>failed</code>.</p>
+<p>Zapewniana semantyka e-mail jest <strong>co najmniej jednokrotna</strong>, nie „dokładnie raz”. Awaria po akceptacji SMTP, lecz przed utrwaleniem sukcesu może spowodować drugie powiadomienie. Nie powoduje to drugiego leada. Nie ukryto tej granicy gwarancji.</p>
+<h3 id="sub-29a68ea4d9">F09 — zbyt dużo danych osobowych w powiadomieniach i alarmach — Medium</h3>
+<p>Powiadomienie dla operatora zawiera identyfikator i odsyłacz do CMS, zamiast kopiować pełną treść zgłoszenia i załącznik do kolejnych systemów. Kody błędów workerów i alertów mają charakter techniczny. Testy sprawdzają brak wybranych danych osobowych w budowanej wiadomości.</p>
+<p>Nie wykonano pełnego audytu logów wszystkich zewnętrznych bibliotek, hostingu i SMTP. Podłączenie monitoringu błędów wymaga osobnej konfiguracji redakcji danych, cookies, tokenów i treści formularzy.</p>
+<h3 id="sub-eded66ed92">F10 — niejawna lub niespójna retencja — Medium</h3>
+<p><code>LEAD_RETENTION_DAYS</code> musi przed publikacją otrzymać rzeczywistą wartość zatwierdzoną przez właściciela. Mechanizm dotyczy zamkniętych zgłoszeń i czasu ich aktualizacji. Nie wymyślono biznesowego okresu retencji, nie włączono automatycznego kasowania całej bazy i nie zatwierdzono polityki prywatności za użytkownika.</p>
+<p>Cleanup jest ograniczony liczbą partii, usuwa wygasłe próby formularza oraz stare osierocone pliki prywatne, które nie są przypisane do leada. Należy osobno uwzględnić opóźnienie usunięcia danych z kopii zapasowych. Nie wykonano testu retencji na rzeczywistych danych klienta.</p>
+<h2 id="section-6">6. Załączniki i kontrola dostępu</h2>
+<h3 id="sub-c7edbb83e2">F11 — powierzchowne uznawanie PDF za bezpieczny — High</h3>
+<p>Kontrola PDF została rozszerzona o strukturę odczytaną przez qpdf jako JSON v2. <code>src/lib/pdf-policy.ts</code> analizuje znormalizowane obiekty i odrzuca wybrane aktywne mechanizmy, m.in. JavaScript, akcje otwarcia, uruchamianie programów, osadzone pliki, formularze/XFA, akcje zdalne i szyfrowanie. Analiza ma limity liczby odwiedzanych obiektów, czasu procesu oraz wielkości jego wyjścia.</p>
+<p>To <strong>restrykcyjna polityka przyjmowania statycznych PDF</strong>, a nie certyfikowany sanitizer ani gwarancja, że każdy zaakceptowany dokument jest nieszkodliwy. Część poprawnych biznesowo PDF z formularzami może zostać odrzucona. Testowano politykę na reprezentacjach obiektów; nie uruchomiono tutaj rzeczywistego qpdf i silnika antywirusowego na całym korpusie plików. Dokumentacja qpdf opisuje JSON jako reprezentację struktury dokumentu, nie jako automatyczne oczyszczenie. [S3]</p>
+<h3 id="sub-ba35da2199">F12 — nieograniczona równoległość kosztownych skanów — Medium</h3>
+<p>W procesie aplikacji jednocześnie mogą działać najwyżej dwa skany załączników. Przekroczenie limitu jest jawną niedostępnością, a nie przyjęciem pliku bez skanowania. Zachowano kontrolę MIME i sygnatur, dekodowanie obrazów, limit pikseli oraz wymóg odpowiedzi <code>CLEAN</code> od antywirusa.</p>
+<p>To ograniczenie jest lokalne dla procesu. Docelowa architektura ma pojedynczą instancję aplikacji. Nie wolno traktować tej blokady jako rozproszonego limitera dla wielu serwerów. Trzeba zmierzyć przepustowość i RAM na VPS.</p>
+<h3 id="sub-007dd5f8ff">F13 — rozbieżność publicznych i prywatnych plików — High, obszar kontroli</h3>
+<p>Prywatne załączniki pozostają poza <code>public/</code>; nazwy serwerowe są losowe. Dostęp powinien następować przez chronioną trasę, a nie przez przewidywalny statyczny adres. Klucz zgłoszenia i hash pliku służą porównaniu identyczności ponowienia, nie zastępują autoryzacji odczytu.</p>
+<p>Przejrzano granice dostępu i utrzymano odmowę publicznych operacji administracyjnych. Wymagany pozostaje rzeczywisty test anonimowego odczytu, pobrania załącznika po zalogowaniu, nagłówków odpowiedzi oraz dostępu do pliku po odtworzeniu kopii. Nie oznaczono tego obszaru jako zweryfikowanego pentestem.</p>
+<h3 id="sub-eb328a8a9a">F14 — konta administratorów i wersje dokumentów — High, wzmocnienie ochrony</h3>
+<p>Dodano jawne <code>readVersions</code> w odpowiednich kontrolach dostępu. Zakładanie konta przez anonimowe żądanie jest blokowane poza lokalnym, świadomie oznaczonym bootstrapem. Walidacja hasła wymaga 14–128 znaków i odrzuca znaki sterujące. Zachowano ograniczenie prób logowania i czas blokady.</p>
+<p>Jawne ACL wersji to wzmocnienie ochrony; samo jego dodanie nie stanowi dowodu, że poprzednia paczka ujawniała wszystkie wersje. Nie wykonano prawdziwego logowania, resetu hasła, enumeracji API ani audytu sesji na zainstalowanym Payload. Rekomendowana dodatkowa ochrona panelu i MFA zależy od świadomie wybranej integracji — nie dodano pozornej funkcji MFA.</p>
+<h3 id="sub-e4c4b626f3">F15 — niebezpieczne linki redakcyjne i zaufanie do nagłówków — Medium</h3>
+<p>Wspólna walidacja linków odrzuca znaki sterujące, backslash, zakodowane nowe linie i dane logowania w URL. Wartości z CMS nie są dowolnie wykonywanym schematem linku. Walidacja IP używa mechanizmu parsera IP, nie liberalnego wyrażenia regularnego.</p>
+<p>Nginx nadpisuje <code>X-Real-IP</code> i <code>X-Forwarded-For</code>; usuwa zaufanie do nagłówka Cloudflare przesłanego przez klienta. Ta konfiguracja zakłada bezpośredni reverse proxy na VPS. Dodanie CDN/proxy wymaga osobnej listy zaufanych adresów, nie prostego włączenia czyjegoś nagłówka IP.</p>
+<h3 id="sub-5879c4480e">F16 — cache prywatnych odpowiedzi — Medium</h3>
+<p>Proxy aplikacji obejmuje <code>/api/</code> polityką prywatnego cache/no-store. Nadal chronione są panel i prywatne odpowiedzi; nie poluzowano CSP przez usunięcie nonce czy globalne dopuszczenie niebezpiecznych skryptów. Pozostaje walidacja nagłówków na rzeczywistym HTTPS, w przeglądarce i ewentualnym CDN.</p>
+<h2 id="section-7">7. Baza danych i zawartość CMS</h2>
+<h3 id="sub-f8a638a327">F17 — schema kolejek i opinii bez migracji — High</h3>
+<p>Dodano <code>20260929_003_submission_delivery.sql</code> oraz odpowiadającą jej migrację TypeScript, z rejestracją w indeksie. Powstały pola statusu/prób/terminów powiadomienia, klucz zgłoszenia opinii i pola dowodu zgody, w tym odpowiednie pola wersjonowanych opinii. Utworzono indeksy i unikalność klucza.</p>
+<p>Testy rzeczywiście wykonują SQL na świeżym SQLite, sprawdzają przeniesienie wcześniejszych rekordów, brak historycznej wysyłki oraz nullable unikalność. Sprawdzają także zgodność list SQL i TypeScript. <strong>Nie uruchomiono migratora Payload z docelowymi zależnościami</strong>, dlatego nie jest to dowód zgodności całego schematu frameworka. Typy Payload są ponownie generowane podczas builda.</p>
+<h3 id="sub-895f9caa53">F18 — pozorne wsparcie dwóch silników bazy — Medium</h3>
+<p>Usunięto deklarowane wsparcie PostgreSQL z tej ścieżki wdrożenia i zależność adaptera, zamiast zostawiać nieweryfikowalny drugi wariant. Produkcyjny instalator obsługuje jawnie <strong>SQLite na jednym VPS</strong>; inny URL bazy jest odrzucany. Produkcyjne automatyczne schema push i drop pozostają wyłączone.</p>
+<p>To świadome ograniczenie zakresu, nie gwarancja dużej skali. Wiele instancji, wysoka dostępność, georeplikacja lub rozbudowane transakcje biznesowe wymagają osobnego projektu, migracji i testów.</p>
+<h3 id="sub-bfc42bdf28">F19 — seeding częściowo edytowanego serwisu — Medium</h3>
+<p>Rozpoznawanie już edytowanej konfiguracji nie opiera się wyłącznie na liczbie rekordów. Uwzględnia znaczące pola globals, aby ograniczyć ryzyko nadpisania częściowo wypełnionej strony. Test regresyjny potwierdza zachowanie danych i brak oznaczenia zakończenia seeda po awarii.</p>
+<p>ZIP nie zawiera produkcyjnej bazy, więc nie zaimportowano starych leadów, haseł ani redakcyjnych zmian z innej instalacji. Instalator odmawia bezrefleksyjnego nałożenia migracji początkowej na bazę bez zgodnej historii. Nie gwarantuje automatycznej migracji każdej starszej, niewersjonowanej bazy.</p>
+<h2 id="section-8">8. Zależności, build i pochodzenie obrazów</h2>
+<h3 id="sub-5880266ca5">F20 — brak aktualnego root lockfile — High, nadal blokuje akceptację</h3>
+<p>Wejście nie zawiera kompletnego, aktualnego <code>package-lock.json</code> w katalogu głównym. <code>release/package-lock.bootstrap.json</code> jest materiałem historycznym. Nie został podpisany jako zgodny z aktualnym zestawem Payload tylko dlatego, że zawiera listę pakietów.</p>
+<p>Resolver pracuje w katalogu tymczasowym, odpytuje npm, kontroluje spójność root dependencies i integralność metadanych, a następnie atomowo zapisuje aktualny lock. Dopiero wtedy wolno wykonać <code>npm ci</code>. Bez dostępu do npm proces kończy się błędem. W tym środowisku nie udało się wykonać rzeczywistej instalacji — <strong>lock nadal wymaga utworzenia i zatwierdzenia na środowisku z dostępem do rejestru</strong>. Do czasu jego zapisania zależności zakresowe nie są zamrożonym, odtwarzalnym release'em.</p>
+<h3 id="sub-858e5950a4">F21 — skany pomijające Medium i błędy narzędzia — High</h3>
+<p>Audyt npm obejmuje zarówno graf produkcyjny, jak i komplet zależności potrzebnych operatorowi/testom. Wymaga poprawnego JSON i spójnych liczników. Nieznany wynik, błąd sieci i niekompletna odpowiedź nie oznaczają czystego audytu. Próg blokujący obejmuje <code>moderate</code>, <code>high</code> i <code>critical</code>.</p>
+<p>Obrazy aplikacji, operatora i ClamAV są skanowane przez Trivy z progiem <code>MEDIUM,HIGH,CRITICAL</code>, bez ukrycia niewyeliminowanych podatności. Dodano SBOM grafu npm oraz osobne CycloneDX SBOM finalnych obrazów. <strong>Wykonano testy interpretacji raportu, ale nie rzeczywisty skan zainstalowanych zależności/obrazów.</strong> W raporcie nie ma wymyślonego wyniku „0”.</p>
+<h3 id="sub-4a73bd782c">F22 — aktualizacja Next.js i właściwa kolejność wydania — High, blokada ostrożnościowa</h3>
+<p>Deklarowana wersja w źródle to Next.js <code>16.3.6</code>. Producent wskazuje ją jako poprawkę z 22 września; na 30 września zapowiedziano <code>16.3.7</code> / <code>15.5.27</code>. [S1, S2] <code>UPDATE-SECURITY.sh</code> pobiera wyłącznie już opublikowaną stabilną wersję patch z obecnej linii major/minor. Nie wpisuje nieistniejącej paczki i nie przeskakuje samowolnie na inny major.</p>
+<p>Publiczne <code>publish</code> wymaga co najmniej <code>16.3.7</code> i ponownych testów. Od 30 września również start nowej instalacji blokuje starszą wersję. Sam updater zmienia źródło, nie buduje i nie udowadnia braku luk. Po aktualizacji wymagane są resolver, clean install, audyty, build i odbiór. Nie wolno usuwać bramki, aby obejść nieopublikowaną poprawkę.</p>
+<p>Payload pozostaje przypięty do <code>3.90.2</code>. Poprawka bezpieczeństwa rodziny 3.x z 18 września zawierała także wymagania migracyjne; dlatego sam wyższy numer paczki nie zastępuje wykonania migracji. [S4]</p>
+<h3 id="sub-d170c1ed59">F23 — status „gotowe” bez kompilacji i odbioru — High, nadal niezamknięte produkcyjnie</h3>
+<p>Build Docker ma regenerować typy/importmapę, wykonywać audyt, lint, testy, sprawdzanie źródeł, build Next i pełny typecheck. Osobny obraz testowy ma wykonywać E2E na rzeczywistym obrazie aplikacji i jednorazowej bazie, nie na danych produkcyjnych.</p>
+<p>Nie ma tu działającego Docker Engine ani pobranych zależności. Stąd pełny build, ESLint frameworka, rzeczywiste E2E, testy axe i pomiary przeglądarkowe są <code>NOT_RUN</code>. Dodanie tych kroków do skryptu nie zamienia ich w <code>PASS</code>. Błąd wykryty na tym etapie na VPS może wymagać kolejnej poprawki kodu.</p>
+<h2 id="section-9">9. Wdrożenie i dowody akceptacji</h2>
+<h3 id="sub-e12867396c">F24 — źródła zależne od przypadkowego katalogu uploadu — Medium</h3>
+<p>Źródła po rozwiązaniu locka są odkładane pod <code>/opt/codemaster/releases/&lt;SHA256&gt;/</code>, z kontrolą treści i praw. Sekrety, cache i dowody nie stają się częścią identyfikatora kodu. Symbole i niebezpieczne ścieżki są odrzucane. Timery odwołują się do zachowanego wydania, nie do katalogu pobranych plików użytkownika.</p>
+<p>Instalator nie służy do edycji zainstalowanego wydania w miejscu. Poprawkę należy przygotować w świeżo rozpakowanym źródle i ponownie przeprowadzić deployment. Aktualizacja starej instalacji bez zgodnego manifestu i historii migracji wymaga świadomego przeniesienia danych.</p>
+<h3 id="sub-e6f0ea1fa5">F25 — akceptacja oparta na starym raporcie — High</h3>
+<p>Dowód akceptacji jest wiązany z wydaniem, hashem źródeł, konfiguracją oraz czasem. Publikacja odrzuca raporty starsze niż 24 godziny lub niedopasowane do obecnego kodu/konfiguracji/obrazu. Potwierdzenia właściciela zapisuje jako deklaracje, nie jako niezależne testy wykonane przez audytora.</p>
+<p>Zmiana istotnego <code>.env</code> po teście unieważnia wcześniejszy odbiór. Trzeba ponowić odpowiednie kroki; nie wystarczy ręcznie dopisać <code>PASS</code> w pliku. Testy sprawdzają odrzucanie starych i niedopasowanych dowodów.</p>
+<h3 id="sub-e7439e0648">F26 — niewłaściwy host, aliasy i ochrona prywatnego podglądu — Medium</h3>
+<p>Nginx ma jawny host główny, aliasy 308 i odrzucenie nieznanych nazw. Certyfikat ma obejmować wszystkie skonfigurowane nazwy. Pierwszy podgląd jest za dodatkowym hasłem Nginx i <code>noindex</code>; publiczna promocja jest osobną operacją. Dodano limity połączeń/żądań, ograniczenia API logowania i blokadę nieużywanych ścieżek GraphQL/rejestracji.</p>
+<p>Wykonano testy generowanego tekstu konfiguracji, nie <code>nginx -t</code> na serwerze ani rzeczywisty handshake TLS. Zewnętrzny CDN i jego cache muszą być osobno sprawdzone. Hasło podglądu nie zastępuje poprawki bezpieczeństwa zależności.</p>
+<h3 id="sub-2fd4a766bf">F27 — utrata zgodności bazy i plików w kopii — High</h3>
+<p>Backup zatrzymuje zapisy aplikacji, korzysta z API kopii SQLite, sprawdza integralność i kopiuje media/prywatne pliki. Archiwum najpierw powstaje jako ukryty plik częściowy; dopiero po ukończeniu pojawia się finalna nazwa i suma kontrolna. Operacje zapisujące korzystają ze wspólnej blokady.</p>
+<p>To oznacza krótkie okno niedostępności podczas kopii, nie zero-downtime. Backup obejmuje bazę i pliki, ale nie jest kopią całego VPS ani kompletem sekretów. Testy komponentowe nie zastępują odtworzenia faktycznych danych z kontenerem.</p>
+<h3 id="sub-ae10203b8d">F28 — niebezpieczne lub niedopasowane archiwum odtwarzania — High</h3>
+<p>Odtwarzanie odrzuca traversal, linki, pliki urządzeń, zduplikowane nazwy, nieoczekiwane ścieżki i nadmierny rozmiar. Weryfikuje hash, SQLite i zgodność obrazu/źródła. Przywracane dane nie zastępują bieżących bez jawnego <code>--confirm-restore</code>. Dotychczasowe katalogi są zachowywane do kontroli.</p>
+<p>Po odtworzeniu strona wraca do trybu prywatnego i wymaga ponownej akceptacji. Weryfikacja hash chroni przed przypadkowym uszkodzeniem, nie jest podpisem zaufanego wydawcy. Atakujący mający kontrolę nad backupem i plikiem hash nie jest powstrzymywany samą sumą SHA-256.</p>
+<h3 id="sub-35327a8653">F29 — kopia tylko na jednym VPS, brak pewności alarmowania — High, zależność zewnętrzna</h3>
+<p>Dodano/utrzymano obsługę szyfrowanego backupu off-site przez restic oraz alerty awarii usług. Monitor sprawdza m.in. stan aplikacji, dysk, pamięć, certyfikat, świeżość kopii i zaległą kolejkę powiadomień. Worker, cleanup, backup i monitor mają timery systemd.</p>
+<p><strong>Repozytorium zewnętrzne, klucz szyfrowania i odbiorca alarmów nie zostały utworzone.</strong> Śmierć całego VPS uniemożliwi lokalnemu monitorowi powiadomienie. Dlatego niezależny monitoring i bezpieczna kopia sekretów pozostają wymaganiem właściciela. Akceptacja HTTP webhooka nie jest dowodem przeczytania alarmu przez człowieka.</p>
+<h2 id="section-10">10. Domeny, treści, SEO i elementy komercyjne</h2>
+<h3 id="sub-d1a0a368ba">F30 — nieprawidłowy adres kontaktowy i identyfikacja marki — Medium</h3>
+<p>Dostarczone domeny to <code>codemasterlabs.pl</code> i <code>codemasterlabs.com</code>; nie są dowodem posiadania <code>codemaster.pl</code>. Usunięto użycie starego adresu jako produkcyjnego domyślnego kontaktu. Zastępczy <code>contact@example.invalid</code> ma nie udawać istniejącej skrzynki i jest blokowany przed publikacją.</p>
+<p>Instalator pyta o istniejący publiczny adres kontaktowy i realne dane SMTP. Nie tworzy skrzynki, rekordów MX ani podpisu DKIM. Dane prawne i rzeczywiste kontakty trzeba zatwierdzić w CMS.</p>
+<h3 id="sub-4c35a4b71b">F31 — niespójne canonical i alternatywy językowe — Medium</h3>
+<p>Za główną domenę przyjęto <strong><code>codemasterlabs.pl</code></strong>. <code>codemasterlabs.com</code>, <code>www.codemasterlabs.pl</code> i <code>www.codemasterlabs.com</code> mają przekierowanie 308 do tej samej ścieżki na domenie głównej. Obie domeny nie tworzą dwóch konkurujących kopii strony.</p>
+<p>Poprawiono mapowanie ścieżek PL/EN, canonical i hreflang, a sitemapę rozszerzono o stronicowane pobieranie zawartości. Ma ona jawny limit ochronny; nie jest nieograniczonym generatorem milionów URL. Należy sprawdzić finalne nagłówki, robots, ścieżki i indeksowanie na działającym serwerze.</p>
+<p>Podział <code>.pl</code> jako polska i <code>.com</code> jako angielska wersja <strong>nie jest w tym wydaniu wdrożony</strong>. Język EN pozostaje ścieżką w istniejącej architekturze. Inny wybór domeny głównej wymaga zmiany <code>release/deployment-defaults.json</code> przed pierwszą konfiguracją; po instalacji trzeba spójnie zmienić zapisane dane hosta, URL, certyfikat i odbiór.</p>
+<h3 id="sub-afa65e347a">F32 — marketingowe demonstracje mylone z produktem biznesowym — uwaga zakresowa</h3>
+<p>Zachowano wygląd, sceny 3D, portfolio i demonstracyjne miniaplikacje. Nie przebudowano ich na system płatności, CRM, portal klienta, e-commerce lub aplikację wieloużytkownikową tylko dlatego, że całość trafi na VPS. Stan demonstracyjny zapisany w przeglądarce nie jest gwarantowaną trwałą bazą biznesową.</p>
+<p>Przed sprzedażą określonego modułu jako produktu trzeba wskazać role, model danych, uprawnienia, historię zmian, usługi płatnicze, rozliczenia, SLA i rzeczywiste integracje. Ta paczka jest serwisem firmowym z CMS, formularzem, opiniami i demonstracjami — nie dowodem realizacji nieuzgodnionego systemu transakcyjnego.</p>
+<h2 id="section-11">11. Wyniki testów — co naprawdę wykonano</h2>
+<table>
+<thead>
+<tr>
+  <th>Kontrola</th>
+  <th>Wynik w środowisku opracowania</th>
+  <th>Interpretacja</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Testy Node</td>
+  <td>145 PASS, 0 FAIL, 0 SKIP</td>
+  <td>Komponenty, kontrakty, handler z zastępczym CMS</td>
+</tr>
+<tr>
+  <td>Testy Python</td>
+  <td>25 PASS</td>
+  <td>Operacje komponentowe, konfiguracja i rzeczywisty syntetyczny SQLite</td>
+</tr>
+<tr>
+  <td>Składnia TS/TSX i lokalne importy</td>
+  <td>PASS; liczba plików w <code>source-check.json</code></td>
+  <td>Nie pełny typecheck frameworka</td>
+</tr>
+<tr>
+  <td>Ścisły typecheck domenowy</td>
+  <td>PASS</td>
+  <td>Tylko zakres <code>tsconfig.domain.json</code></td>
+</tr>
+<tr>
+  <td>Składnia powłoki, Python, JS narzędzi</td>
+  <td>PASS</td>
+  <td>Nie wykonanie tych narzędzi na VPS</td>
+</tr>
+<tr>
+  <td>Wzorce sekretów bieżących źródeł</td>
+  <td>PASS, brak trafień zdefiniowanych wzorców</td>
+  <td>Nie pełna analiza entropii ani historii Git</td>
+</tr>
+<tr>
+  <td>Porównanie <code>public/</code></td>
+  <td>32/32 identyczne</td>
+  <td>Nie dowód praw autorskich</td>
+</tr>
+<tr>
+  <td>Instalacja npm offline</td>
+  <td>FAIL, diagnostyczna</td>
+  <td>Brak aktualnego root locka/zależności</td>
+</tr>
+<tr>
+  <td>Łączność z npm</td>
+  <td>FAIL w tym środowisku</td>
+  <td>Nie potwierdza awarii internetu użytkownika</td>
+</tr>
+<tr>
+  <td>Pełny lint/typecheck/build Next/Payload</td>
+  <td>NOT_RUN</td>
+  <td>Warunek dalszej akceptacji</td>
+</tr>
+<tr>
+  <td>Docker, skan obrazów, prawdziwy E2E</td>
+  <td>NOT_RUN</td>
+  <td>Brak silnika i zbudowanych obrazów</td>
+</tr>
+<tr>
+  <td>SMTP, Turnstile publiczny, TLS i DNS</td>
+  <td>NOT_RUN</td>
+  <td>Potrzebne rzeczywiste konta i VPS</td>
+</tr>
+<tr>
+  <td>Pełne restore, rollback, off-site</td>
+  <td>NOT_RUN</td>
+  <td>Nie zastępowano ich testem syntetycznej bazy</td>
+</tr>
+</tbody>
+</table>
+<p>Wszystkie aktualne logi znajdują się w <code>reports/verification/</code>. Zestaw bramek generowany na podstawie wykonania jest w <code>docs/RELEASE-GATES.md</code>. <code>scripts/verify-local.py</code> zwraca kod różny od zera, kiedy nie ma pełnej podstawy do stwierdzenia gotowości. Nie jest to sprzeczne z 170 zaliczonymi testami — inny jest zakres testu komponentu i kompletnej akceptacji systemu.</p>
+<p>Nie wykonano benchmarku obciążeniowego, audytu wydajności na telefonie, pomiaru LCP/CLS/INP, ręcznej kontroli 320 px/zoom/klawiatury, wizualnego porównania wszystkich scen WebGL ani kompletnego audytu dostępności. Nie wpisano zmyślonego Lighthouse 100/100 czy zgodności WCAG.</p>
+<h2 id="section-12">12. Warunki domknięcia profesjonalnego wydania</h2>
+<p>Najpierw trzeba pobrać opublikowaną poprawkę Next, rozwiązać i zapisać lock, wykonać czyste pobranie zależności oraz wszystkie audyty i build. Każde trafienie Medium/High/Critical musi zostać rozpatrzone i usunięte albo projekt ma pozostać nieopublikowany; ta paczka nie akceptuje takich wyjątków za właściciela. Skaner może ujawnić zależność systemową bez dostępnej poprawki — nie wolno wtedy automatycznie wyłączać skanowania.</p>
+<p>Następnie wymagane są prawdziwe migracje świeżej i wcześniejszej zgodnej bazy, E2E na dokładnym obrazie oraz testy anonimowych uprawnień, formularzy, opinii, resetu hasła, załączników i awarii dostawców. Testy muszą potwierdzić rzeczywistą konfigurację, nie jedynie środowisko z mockiem.</p>
+<p>Kolejny etap to kompletne HTTPS dla czterech nazw, poprawne przekierowania, realny Turnstile, działający SMTP, odbiór wiadomości i uwierzytelnienie poczty. Następnie odtworzenie całej aplikacji wraz z prywatnym plikiem i sprawdzony rollback na staging, niezależne backupy, klucze ratunkowe oraz monitoring spoza VPS.</p>
+<p>Właściciel musi zatwierdzić nazwę podmiotu, adres i kontakt, informacje o przetwarzaniu danych i dostawcach, okresy retencji, warunki prezentowania opinii, prawa do materiałów oraz prawdziwość portfolio. Nie udzielono opinii prawnej i nie zadeklarowano automatycznej zgodności prawnej. <code>ASSET-PROVENANCE.md</code> jest inwentarzem, nie kompletnym zestawem licencji.</p>
+<p>Dla utrzymania przez software house potrzebne są ponadto: uzgodnione SLO/RPO/RTO, odpowiedzialny operator i zastępstwo, cykl aktualizacji zależności, kontrola repozytorium/PR, runbook incydentu, monitorowanie kosztów/dysku i plan pojemności. Repozytorium, branch protection, podpisy obrazów, zewnętrzny system błędów i proces organizacyjny nie zostały skonfigurowane w cudzym koncie.</p>
+<h2 id="section-13">13. Instalacja i przekazanie</h2>
+<p>Instrukcja dla użytkownika jest w <code>START-TUTAJ.md</code>. Instalacja jest interaktywna, wymaga sudo, dostępu do rejestrów, DNS wszystkich nazw, działającego SMTP i kluczy Turnstile. Jest przeznaczona na dedykowany Ubuntu VPS. Nie uruchamiaj jej bez przeglądu na serwerze z innymi aplikacjami: instaluje pakiety, modyfikuje Nginx i reguły sieciowe.</p>
+<p>Konfiguracja produkcyjna trafia do <code>/etc/codemaster</code>, dane do <code>/var/lib/codemaster</code>, kopie do <code>/var/backups/codemaster</code>, a raporty odbioru do <code>/var/lib/codemaster-evidence</code>. Zainstalowane źródła są wersjonowane katalogiem o sumie treści. Nie wolno kasować tych katalogów i obrazów potrzebnych do odtworzenia.</p>
+<p>Po konfiguracji off-site i rzeczywistej retencji należy ponowić odbiór zmienionej konfiguracji. <code>publish</code> jest odrębną, świadomą operacją. Nie uruchamia się automatycznie na końcu samego rozpakowania ZIP-a. Gdy instalator przerwie pracę, zachowaj log błędu bez haseł i danych osobowych; nie obchodź bramek i nie usuwaj bazy.</p>
+<p><strong>Zakres ukończony:</strong> poprawki źródeł i narzędzi, dodatkowe testy komponentowe, dowody lokalnego wykonania, obsługa podanych domen i dokumentacja. <strong>Zakres nadal otwarty:</strong> pełny, zbudowany i zweryfikowany runtime oraz usługi/akceptacja na rzeczywistym VPS. Ten podział jest częścią rezultatu, nie ukrytą adnotacją.</p>
+<h2 id="section-14">14. Źródła i dowody</h2>
+<p><strong>Dowody własne:</strong> pliki w <code>reports/verification/</code>, <code>reports/input-inventory.json</code>, <code>reports/change-inventory.json</code>, <code>reports/public-assets-comparison.json</code>, <code>reports/screenshots-reference-check.json</code>; implementacja i testy wskazane powyżej. Dowody historyczne z wejścia nie są bieżącym wynikiem.</p>
+<p><strong>S1.</strong> Next.js, „Upcoming Next.js September Security Release”, 23.09.2026, zweryfikowano 29.09.2026:<br />
+<code>https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026</code></p>
+<p><strong>S2.</strong> Next.js, oficjalny wykaz komunikatów bezpieczeństwa, w tym wydanie z 22.09.2026, zweryfikowano 29.09.2026:<br />
+<code>https://nextjs.org/blog/tag/security</code></p>
+<p><strong>S3.</strong> qpdf, dokumentacja reprezentacji JSON, zweryfikowano 29.09.2026:<br />
+<code>https://qpdf.readthedocs.io/en/stable/json.html</code></p>
+<p><strong>S4.</strong> Payload, „Payload Security Update Available for 3.x and 4.0”, 18.09.2026, zweryfikowano 29.09.2026:<br />
+<code>https://payloadcms.com/posts/blog/payload-security-update-available-for-3x-and-40</code></p>
+<p>Daty i zapowiedziane wydania nie są gwarancją przyszłej dostępności pakietu. Stan zależności trzeba ponownie sprawdzić w momencie rzeczywistego wdrożenia.</p>
+</main>
+<footer>Raport wygenerowano z docs/AUDIT.md. Dokument offline: bez JavaScript, zewnętrznych zasobów i śledzenia. Dowody testów są dołączone do ZIP-a.</footer></body></html>

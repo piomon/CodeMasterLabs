@@ -1,0 +1,28 @@
+/* Native modal remains in the FORMA DOM for theme inheritance, but renders in the top layer. */
+.forma-app dialog.f-dialog{
+ position:fixed;
+ inset:0;
+ margin:auto;
+ padding:0;
+ border:0;
+ box-sizing:border-box;
+ max-width:calc(100vw - 32px);
+ max-height:calc(100dvh - 32px);
+ overflow:auto;
+ overscroll-behavior:contain;
+}
+.forma-app dialog.f-dialog::backdrop{background:#1a211dcc}
+.forma-app dialog.f-dialog.f-dialog-confirm{padding:42px}
+.forma-app .f-section-heading h1{
+ font:400 clamp(30px,3.2vw,46px)/1.1 Georgia,serif;
+ letter-spacing:-.04em;
+ margin:8px 0 0;
+ color:var(--f-ink);
+}
+.forma-app .f-card-visual{height:170px}
+.forma-app .f-card-visual svg{width:min(90%,240px);height:auto;top:56%;opacity:1}
+@media(max-width:600px){
+ .forma-app dialog.f-dialog.f-dialog-confirm{padding:38px 22px 24px}
+ .forma-app dialog.f-dialog .f-dialog-content{padding:20px}
+ .forma-app .f-card-visual{height:160px}
+}

@@ -1,0 +1,105 @@
+# NODE_IMAGE is resolved to an immutable digest by INSTALL-VPS.sh.
+ARG NODE_IMAGE=invalid.invalid/codemaster-runtime-base-required
+ARG PLAYWRIGHT_IMAGE=invalid.invalid/codemaster-playwright-image-required
+FROM ${NODE_IMAGE} AS dependencies
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1 NPM_CONFIG_UPDATE_NOTIFIER=false
+
+# Wolfi toolchain used for reproducible dependency installation/build.
+RUN apk add --no-cache \
+    nodejs-22 \
+    npm \
+    go \
+    ca-certificates-bundle
+
+COPY package.json package-lock.json .npmrc ./
+
+RUN npm ci --include=dev --no-fund \
+    && test "$(node -p "require('./node_modules/esbuild/package.json').version")" = "0.25.12" \
+    && test "$(node -p "require('./node_modules/@esbuild/linux-x64/package.json').version")" = "0.25.12"
+
+# Keep the exact esbuild 0.25.12 JavaScript/API version required by the
+# reviewed dependency tree, but rebuild its Linux executable from the
+# exact upstream v0.25.12 source with Wolfi's patched Go compiler.
+#
+# CGO is disabled so the resulting executable does not inherit libc
+# dependencies from the build environment.
+RUN mkdir -p /secure-bin \
+    && GOTOOLCHAIN=local \
+       CGO_ENABLED=0 \
+       GOPROXY=https://proxy.golang.org,direct \
+       GOSUMDB=sum.golang.org \
+       GOBIN=/secure-bin \
+       go install github.com/evanw/esbuild/cmd/esbuild@v0.25.12 \
+    && test "$(/secure-bin/esbuild --version)" = "0.25.12" \
+    && install -m 0755 \
+       /secure-bin/esbuild \
+       /app/node_modules/@esbuild/linux-x64/bin/esbuild \
+    && test "$(/app/node_modules/@esbuild/linux-x64/bin/esbuild --version)" = "0.25.12" \
+    && node -e "const e=require('esbuild');const r=e.transformSync('const x: number = 1',{loader:'ts'});if(!r.code)process.exit(1)" \
+    && echo "Secure esbuild 0.25.12 rebuild completed."
+
+FROM dependencies AS build
+COPY . .
+ARG NEXT_PUBLIC_SERVER_URL
+# Build credentials are ephemeral and never become runtime environment values.
+RUN test -n "$NEXT_PUBLIC_SERVER_URL" && export NODE_ENV=production NEXT_PUBLIC_SERVER_URL="$NEXT_PUBLIC_SERVER_URL" \
+    PAYLOAD_SECRET="$(node -e "process.stdout.write(require('crypto').randomBytes(48).toString('hex'))")" \
+    DATABASE_URL=file:/tmp/build-only.db ALLOW_SQLITE_PRODUCTION=single-node SEED_CONTENT=false PAYLOAD_DROP_DATABASE=false \
+    && npm run generate:types && npm run generate:importmap \
+    && node scripts/audit-dependencies.mjs && npm run lint && npm test && npm run check:source && npm run build && npm run typecheck \
+    && rm -f .env .env.local .next/standalone/.env .next/standalone/.env.local
+
+FROM ${NODE_IMAGE} AS base
+WORKDIR /app
+ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 SEED_CONTENT=false PAYLOAD_DROP_DATABASE=false HOSTNAME=0.0.0.0 PORT=3000
+# qpdf validates PDF structure; antivirus scanning uses the isolated ClamAV service.
+# Numeric UID/GID intentionally avoid requiring passwd/group accounts in the image.
+RUN apk add --no-cache \
+    nodejs-22 \
+    npm \
+    qpdf \
+    ca-certificates-bundle \
+    && qpdf --json-help >/dev/null \
+    && mkdir -p /data /app/media /app/private-uploads /app/quarantine /app/.next/cache \
+    && chown -R 10001:10001 /data /app
+
+FROM base AS app
+COPY --from=build --chown=10001:10001 /app/.next/standalone ./
+COPY --from=build --chown=10001:10001 /app/.next/static ./.next/static
+COPY --from=build --chown=10001:10001 /app/public ./public
+COPY --from=build --chown=10001:10001 /app/docker/production-preflight.mjs /app/docker/env-validation.mjs ./
+USER 10001:10001
+EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=8s --start-period=60s --retries=3 CMD node -e "fetch('http://127.0.0.1:3000/api/health',{signal:AbortSignal.timeout(5000)}).then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
+CMD ["node", "--import", "./production-preflight.mjs", "server.js"]
+
+FROM base AS ops
+COPY --from=build --chown=10001:10001 /app/node_modules ./node_modules
+COPY --from=build --chown=10001:10001 /app/package.json /app/package-lock.json /app/tsconfig.json /app/next.config.mjs ./
+COPY --from=build --chown=10001:10001 /app/src ./src
+COPY --from=build --chown=10001:10001 /app/scripts ./scripts
+COPY --from=build --chown=10001:10001 /app/tests ./tests
+COPY --from=build --chown=10001:10001 /app/docker ./docker
+COPY --from=build --chown=10001:10001 /app/playwright.config.ts ./
+USER 10001:10001
+CMD ["npm", "run", "migrate"]
+
+FROM ${PLAYWRIGHT_IMAGE} AS test
+WORKDIR /app
+USER root
+ENV NODE_ENV=test \
+    NEXT_TELEMETRY_DISABLED=1 \
+    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+ARG PLAYWRIGHT_VERSION
+
+# Browsers and their OS libraries come from the official,
+# version-matched Playwright image. Application dependencies
+# come from the already validated CodeMaster build stage.
+COPY --from=build /app /app
+
+RUN test "$(node -p "require('./node_modules/@playwright/test/package.json').version")" = "$PLAYWRIGHT_VERSION" \
+    && test -d /ms-playwright \
+    && node node_modules/@playwright/test/cli.js --version
+
+CMD ["node", "node_modules/@playwright/test/cli.js", "test", "--reporter=json"]

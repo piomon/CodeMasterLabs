@@ -1,0 +1,45 @@
+/* Restore the Bot identity from the owner's original project, without the legacy command-pill selectors. */
+.robot-launcher.robot-launcher--bot{
+ position:fixed;right:max(24px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));
+ z-index:60;width:60px;height:60px;padding:0;display:grid;place-items:center;
+ border:1px solid #b6c4de70;border-radius:50%;color:#f1f5ff;cursor:pointer;
+ background:linear-gradient(145deg,#444f63,#1b2330 58%,#11161e);
+ box-shadow:inset 0 1px 0 #ffffff45,0 8px 30px #0009,0 0 25px #91b3f022;
+ filter:none;transition:transform .25s,box-shadow .25s,opacity .2s;
+}
+.robot-launcher.robot-launcher--bot::before{content:none}
+.robot-launcher--bot .robot-glyph{display:grid;place-items:center}
+.robot-launcher--bot .robot-bot-icon{display:block;width:29px;height:29px}
+.robot-launcher--bot .robot-spark{
+ position:absolute;right:11px;top:9px;width:8px;height:8px;
+ background:#dceaff;clip-path:polygon(50% 0,63% 37%,100% 50%,63% 63%,50% 100%,37% 63%,0 50%,37% 37%);
+}
+.robot-launcher--bot .robot-tooltip{
+ position:absolute;right:74px;top:50%;transform:translate(5px,-50%);
+ opacity:0;pointer-events:none;white-space:nowrap;padding:10px 14px;
+ background:#171c25;border:1px solid #ffffff28;border-radius:5px;color:#e4e8ef;
+ font:500 12px/1.4 var(--font);box-shadow:0 4px 16px #0006;
+ transition:opacity .2s,transform .2s;
+}
+.robot-launcher--bot:hover,.robot-launcher--bot:focus-visible{box-shadow:inset 0 1px 0 #ffffff60,0 9px 35px #000a,0 0 35px #91b3f03b}
+.robot-launcher--bot[data-animated=true]:hover{transform:translateY(-3px)}
+.robot-launcher--bot:hover .robot-tooltip,.robot-launcher--bot:focus-visible .robot-tooltip{opacity:1;transform:translate(0,-50%)}
+.robot-launcher--bot[aria-expanded=true]{opacity:0;pointer-events:none}
+.robot-dialog .robot-small.robot-small--bot{
+ display:grid;place-items:center;width:40px;height:40px;flex-shrink:0;border-radius:50%;
+ border:1px solid #abb7cf50;background:#262e3d;color:#dce7fb;
+}
+.robot-dialog .robot-small--bot::before{content:none}
+.robot-dialog .robot-small--bot .robot-glyph{display:grid;place-items:center}
+.robot-dialog .robot-small--bot .robot-bot-icon{display:block;width:24px;height:24px;animation:none}
+@media(max-width:600px){
+ .robot-launcher.robot-launcher--bot{right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));width:54px;height:54px}
+ .robot-launcher--bot .robot-bot-icon{width:26px;height:26px}
+}
+@media(prefers-reduced-motion:reduce){
+ .robot-launcher.robot-launcher--bot,.robot-launcher--bot .robot-tooltip{transition:none}
+ .robot-launcher--bot[data-animated=true]:hover{transform:none}
+}
+.robot-launcher.robot-launcher--bot{width:68px;height:68px;border-radius:22px;background:linear-gradient(145deg,#314763,#111b2b);border-color:#92b8e966}
+.robot-launcher--bot .robot-bot-icon{width:41px;height:41px;filter:drop-shadow(0 0 7px #95c9ff55)}
+@media(max-width:1100px),(pointer:coarse){.robot-launcher.robot-launcher--bot{width:54px;height:54px;border-radius:18px}.robot-launcher--bot .robot-bot-icon{width:32px;height:32px}}

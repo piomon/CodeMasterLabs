@@ -1,0 +1,61 @@
+name: CodeMaster source verification
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      NODE_IMAGE: ${{ vars.NODE_IMAGE }}
+      CLAMAV_IMAGE: ${{ vars.CLAMAV_IMAGE }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # pinned v4.2.2 (workflow execution not verified in this archive)
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Require a committed resolved lock and approved immutable bases
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f package-lock.json
+          [[ "$NODE_IMAGE" =~ @sha256:[a-f0-9]{64}$ ]]
+          [[ "$CLAMAV_IMAGE" =~ @sha256:[a-f0-9]{64}$ ]]
+          python3 scripts/secret-scan.py
+          python3 -m unittest discover -s tests/vps -v
+      - name: ClamAV for isolated source acceptance
+        run: |
+          set -eu
+          docker run -d --name cm-ci-clam -p 127.0.0.1:3310:3310 "$CLAMAV_IMAGE"
+          ready=0
+          for attempt in $(seq 1 120); do
+            if docker exec cm-ci-clam clamdscan --ping=1; then ready=1; break; fi
+            sleep 5
+          done
+          test "$ready" = 1
+      - name: npm ci, audit, real source build and complete source E2E
+        run: |
+          docker run --rm --network host -v "$PWD:/app" -w /app \
+            -e CLAMAV_HOST=127.0.0.1 -e CLAMAV_PORT=3310 "$NODE_IMAGE" \
+            sh -ec 'apt-get update && apt-get install -y --no-install-recommends qpdf && npm ci && node scripts/audit-dependencies.mjs && node node_modules/@playwright/test/cli.js install --with-deps chromium && npm run release:verify'
+      - name: Build standalone artifact (VPS exact-image acceptance remains separately required)
+        run: |
+          docker build --build-arg NODE_IMAGE="$NODE_IMAGE" \
+            --build-arg NEXT_PUBLIC_SERVER_URL=https://acceptance.example \
+            -f Dockerfile.production --target app -t codemaster:ci-${{ github.sha }} .
+      - name: Stop disposable antivirus
+        if: always()
+        run: docker rm -f cm-ci-clam || true
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # pinned v4.6.2 (workflow execution not verified in this archive)
+        if: always()
+        with:
+          name: source-gate-evidence
+          path: reports/
+          retention-days: 14

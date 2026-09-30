@@ -1,0 +1,12 @@
+CODEMASTERLABS 2.3.0-FUNCTIONAL | 29.09.2026
+
+START-LOKALNIE.md: aplikacja i odbior bez Docker/VPS.
+docs/FUNCTIONAL-AUDIT.html: aktualny raport funkcjonalny.
+reports/functional/: wykonane testy i rzeczywisty diff.
+
+203 testy Node + 42 izolowane wykonania Chromium: PASS.
+PELNA APLIKACJA NEXT/REACT/PAYLOAD: NIEODEBRANA.
+COMMERCIAL_RELEASE_READY=false
+FULL_APP_FUNCTIONALLY_ACCEPTED=false
+
+Stare instrukcje VPS zachowano, ale nie sa potrzebne do lokalnego odbioru.

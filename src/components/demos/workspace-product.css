@@ -1,0 +1,168 @@
+/* CodeMaster workspaces: a self-contained, light product surface. */
+.studio-demo {
+  --wp-bg:#f5f7fa; --wp-paper:#fff; --wp-text:#17253a; --wp-muted:#627185;
+  --wp-line:#dfe5ed; --wp-blue:#2459bd; --wp-blue-soft:#eaf1ff;
+  color:var(--wp-text); font-family:"DM Sans",system-ui,sans-serif;
+}
+.studio-demo.demo-page { background:#eef2f7; color:var(--wp-text); min-height:100dvh; }
+.studio-demo .workspace-outer-title { color:#53647b; }
+.studio-demo .workspace-outer-title a { color:#2459bd; }
+.studio-demo .workspace-frame { display:grid;grid-template-columns:205px minmax(0,1fr);background:var(--wp-paper);color:var(--wp-text);border:1px solid #dce4ef;border-radius:12px;box-shadow:0 18px 65px #1e355418;overflow:hidden;min-height:690px }
+.studio-demo .workspace-sidebar {background:#f5f7fb;border-right:1px solid var(--wp-line);padding:22px 12px;min-width:0;color:var(--wp-text)}
+.studio-demo .workspace-brand {padding:0 10px;margin-bottom:37px;gap:10px;color:#1c2d46;font-size:10px;font-weight:750}
+.studio-demo .workspace-brand>span {background:#2459bd;color:white;border:0;border-radius:9px;font:700 18px "Space Grotesk",sans-serif;letter-spacing:-.08em;width:37px;height:37px}
+.studio-demo .workspace-brand small {font-family:inherit;color:#7c899b;font-size:10px}
+.studio-demo .workspace-sidebar>p {color:#8b98a9;font-size:10px;font-weight:700;letter-spacing:.12em;margin-left:13px}
+.studio-demo .workspace-sidebar nav {gap:3px}
+.studio-demo .workspace-sidebar nav a {min-height:44px;color:#506078;font-size:12px;font-weight:600;border-radius:7px;padding:9px 11px;gap:9px;line-height:1.25}
+.studio-demo .workspace-sidebar nav a span:first-child {font:10px "IBM Plex Mono",monospace;color:#a1afc0}
+.studio-demo .workspace-sidebar nav a span:last-child {color:#a8b7c9}
+.studio-demo .workspace-sidebar nav a[aria-current] {background:#e7efff;color:#174ca9}
+.studio-demo .workspace-sidebar nav a:hover {background:#eaf0f9}
+.studio-demo .workspace-local {padding:18px 11px 0;margin-top:auto;color:#64738a;font-size:11px;line-height:1.5;border-top:1px solid #e0e6ef}
+.studio-demo .workspace-local>strong {color:#263c58}
+.studio-demo .workspace-local>p {margin:8px 0}
+.studio-demo .workspace-local>small {color:#718099}
+.studio-demo .workspace-local-dot {background:#3d74cf}
+.studio-demo .workspace-content {display:flex;flex-direction:column;background:#fff;color:var(--wp-text);min-width:0}
+.studio-demo .workspace-heading {padding:25px 30px 17px;align-items:center}
+.studio-demo .workspace-heading .eyebrow {color:#6b82a3;font:700 10px "IBM Plex Mono",monospace;letter-spacing:.08em}
+.studio-demo .workspace-heading h1,.studio-demo .workspace-heading h3 {font-family:"Space Grotesk","DM Sans",sans-serif;font-size:27px;line-height:1.18;color:#192b44;letter-spacing:-.045em;margin:7px 0 0;font-weight:650}
+.studio-demo .workspace-heading .workspace-heading-description {font-size:11px;line-height:1.4;color:#6d7e93;margin:6px 0 0}
+.studio-demo .workspace-badge {background:#edf3ff;border:1px solid #d4e2fc;color:#2759ab;border-radius:5px;font:700 10px "IBM Plex Mono",monospace;letter-spacing:.025em;padding:7px 9px}
+.studio-demo .workspace-metrics {background:#f7f9fc;border:1px solid #e3e9f2;border-radius:9px;margin:0 30px 17px}
+.studio-demo .workspace-metrics>div {padding:13px 18px;border-right:1px solid #e1e7ef}
+.studio-demo .workspace-metrics span {color:#687a93;font-size:11px;font-weight:600}
+.studio-demo .workspace-metrics strong {color:#1d324e;font-family:"Space Grotesk",sans-serif;font-size:25px;font-weight:650;margin-top:2px}
+.studio-demo .workspace-toolbar {border-color:#e5eaf1;padding:0 30px;min-height:53px}
+.studio-demo .workspace-toolbar button {color:#718098;font-size:12px;font-weight:650;padding:16px 0;border-bottom-width:2px}
+.studio-demo .workspace-toolbar button[aria-pressed=true] {color:#2358b5;border-bottom-color:#3469cb}
+.studio-demo .workspace-toolbar small {color:#8291a4;background:#edf1f7;border-radius:5px;padding:2px 5px}
+.studio-demo .workspace-search {background:#f6f8fb;border:1px solid #e0e7f0;border-radius:7px;padding:0 10px;color:#8594a7;max-width:240px}
+.studio-demo .workspace-search input {background:transparent;color:#263a55;font-size:12px;padding:8px 0;min-height:34px}
+.studio-demo .workspace-search input::placeholder {color:#8a99ac}
+.studio-demo .workspace-body {padding:22px 30px 28px;min-height:340px;flex:1}
+.studio-demo .workspace-body h2 {font-family:"Space Grotesk",sans-serif;font-size:19px;color:#172a43;letter-spacing:-.035em}
+.studio-demo .workspace-body h3 {font-size:12px;color:#344965;font-weight:700}
+.studio-demo .workspace-body p {color:#586a81;font-size:12px;line-height:1.65}
+.studio-demo .workspace-body label {color:#4c607a;font-size:11px;font-weight:700;gap:6px}
+.studio-demo .workspace-body input:not([type=file]),.studio-demo .workspace-body textarea,.studio-demo .workspace-body select {font-family:inherit;background:#fff;border:1px solid #d6dfeb;color:#1b2f49;border-radius:6px;min-height:38px;padding:8px 11px;font-size:12px;box-shadow:0 1px 2px #213d5b08}
+.studio-demo .workspace-body input::placeholder,.studio-demo .workspace-body textarea::placeholder {color:#93a1b3}
+.studio-demo .workspace-body button,.studio-demo .workspace-footer button,.studio-demo .workspace-reset button {font-family:inherit;min-height:34px;padding:7px 12px;font-size:11px;font-weight:700;background:#fff;border:1px solid #d7e0eb;color:#354c6b;border-radius:6px;line-height:1.4}
+.studio-demo .workspace-body button:hover:not(:disabled),.studio-demo .workspace-footer button:hover {background:#f2f6fc;border-color:#9fb7d8;color:#1b4eaa}
+.studio-demo .workspace-body button.workspace-primary,.studio-demo .workspace-reset button.workspace-primary {background:#2459bd;border-color:#2459bd;color:white}
+.studio-demo .workspace-body button.workspace-primary:hover:not(:disabled),.studio-demo .workspace-reset button.workspace-primary:hover {background:#194baf;border-color:#194baf;color:white}
+.studio-demo button:disabled {cursor:not-allowed;opacity:.52}
+.studio-demo button:focus-visible,.studio-demo a:focus-visible,.studio-demo input:focus-visible,.studio-demo select:focus-visible,.studio-demo textarea:focus-visible {outline:2px solid #3473db;outline-offset:2px}
+.studio-demo .workspace-add {margin-bottom:18px;gap:10px}
+.studio-demo .workspace-add button {min-height:38px}
+.studio-demo .workspace-filters {gap:6px;margin-bottom:14px}
+.studio-demo .workspace-filters button {min-height:29px;border-color:transparent;background:#f3f6fa;color:#60728a;font-size:11px;padding:5px 10px}
+.studio-demo .workspace-filters button[aria-pressed=true] {background:#e8f0ff;border-color:#bad0f5;color:#1f57b1}
+.studio-demo .workspace-filters small {color:inherit;opacity:.75}
+.studio-demo .workspace-table {border:1px solid #e3e9f1;border-radius:8px;overflow:hidden}
+.studio-demo .workspace-section-intro {display:flex;align-items:baseline;gap:12px;margin:0 0 9px;color:#233953}
+.studio-demo .workspace-section-intro strong {font-size:13px}
+.studio-demo .workspace-section-intro span {font-size:11px;color:#8593a5}
+.studio-demo .workspace-table-head,.studio-demo .workspace-task {grid-template-columns:minmax(0,1fr) 72px 130px;gap:12px;padding-inline:16px}
+.studio-demo .workspace-table-head {background:#f8fafc;padding-block:10px;color:#7c8ba0;font:700 10px "IBM Plex Mono",monospace}
+.studio-demo .workspace-task {border-top:1px solid #e9edf3;padding-block:12px;min-height:61px}
+.studio-demo .workspace-task strong {color:#243750;font-size:12px;font-weight:650;line-height:1.4}
+.studio-demo .workspace-task small {color:#71839d;font:10px "IBM Plex Mono",monospace;margin-bottom:2px}
+.studio-demo .workspace-avatar {background:#e9eef8;color:#3b5b8b;font:700 10px "DM Sans",sans-serif;width:29px;height:29px}
+.studio-demo .workspace-task select {font-size:11px;min-height:32px;padding:5px 9px}
+.studio-demo .workspace-empty {padding:30px 18px;text-align:center;background:#f8fafc;color:#6d7e94}
+.studio-demo .workspace-approval {display:grid;grid-template-columns:215px minmax(0,1fr);gap:18px}
+.studio-demo .workspace-inbox {border:1px solid #e2e8f0;border-radius:8px;background:#fafbfd;overflow:hidden;align-self:start}
+.studio-demo .workspace-inbox-title {padding:12px 13px;border-bottom:1px solid #e3eaf3;font-size:11px;font-weight:750;color:#324964;display:flex;justify-content:space-between}
+.studio-demo .workspace-inbox-title span {color:#416eb7}
+.studio-demo .workspace-inbox button {display:flex;flex-direction:column;align-items:flex-start;width:100%;text-align:left;border:0;border-bottom:1px solid #e6ebf2;border-radius:0;padding:13px;background:transparent;gap:4px}
+.studio-demo .workspace-inbox button[aria-pressed=true] {background:#ebf2ff;box-shadow:inset 3px 0 #346bd0}
+.studio-demo .workspace-inbox button small {font-size:10px;color:#2a60b4;font-weight:700}
+.studio-demo .workspace-inbox button strong {font-size:12px;color:#263953;line-height:1.35}
+.studio-demo .workspace-inbox button span {font-size:10px;color:#73849d}
+.studio-demo .workspace-proposal {border:1px solid #dfe6ef;border-radius:9px;padding:20px;background:#fff;min-width:0;box-shadow:0 5px 18px #243d5a08}
+.studio-demo .workspace-panel-kicker {font:700 10px "IBM Plex Mono",monospace;letter-spacing:.1em;color:#3970c8;margin-bottom:9px}
+.studio-demo .workspace-proposal h2 {font-size:20px;margin-bottom:16px}
+.studio-demo .workspace-document-meta {display:flex;flex-wrap:wrap;gap:6px 18px;border-block:1px solid #e8edf3;padding:10px 0;color:#677b94;font-size:10px}
+.studio-demo .workspace-proposal h3 {margin:15px 0 6px}
+.studio-demo .workspace-proposal p {margin:0 0 8px}
+.studio-demo .workspace-proposed {background:#f1f6ff;border-left:3px solid #3c70cf;padding:3px 15px 8px;margin:17px 0;border-radius:0 5px 5px 0}
+.studio-demo .workspace-caption {color:#8290a1!important;font-size:10px!important;line-height:1.55!important}
+.studio-demo .workspace-actions {display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.studio-demo .workspace-decision {color:#2459a4!important;background:#edf4ff;padding:12px;border-radius:6px;font-weight:700}
+.studio-demo .workspace-commerce {display:grid;grid-template-columns:minmax(0,1fr) 215px;gap:15px}
+.studio-demo .workspace-products {display:grid;gap:8px}
+.studio-demo .workspace-product {display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;border:1px solid #e0e7f0;border-radius:8px;background:#fff;padding:14px 16px}
+.studio-demo .workspace-product-icon {display:none}
+.studio-demo .workspace-product>div:first-child {grid-column:1;min-width:0}
+.studio-demo .workspace-product small {font:10px "IBM Plex Mono",monospace;color:#8494a9}
+.studio-demo .workspace-product h2 {font-size:14px;margin:3px 0;color:#233752}
+.studio-demo .workspace-product strong {color:#2458a9;font-size:13px}
+.studio-demo .workspace-product p {margin:4px 0 0;font-size:11px}
+.studio-demo .workspace-quantity {display:flex;align-items:center;gap:5px;grid-column:2;grid-row:1}
+.studio-demo .workspace-quantity button {width:28px;padding:3px;min-height:28px}
+.studio-demo .workspace-quantity output {min-width:20px;text-align:center;color:#233a58;font-size:12px;font-weight:700}
+.studio-demo .workspace-product .workspace-text-button {grid-column:2;justify-self:end;background:transparent;border:0;padding:2px;color:#2d63b7;min-height:22px}
+.studio-demo .workspace-checkout {border:1px solid #dce6f4;border-radius:8px;background:#f5f8fe;padding:18px;align-self:start}
+.studio-demo .workspace-checkout h2 {margin-bottom:20px}
+.studio-demo .workspace-checkout>div {display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #dfe6f0;font-size:11px;color:#61728a}
+.studio-demo .workspace-checkout>div strong {color:#1e314b;font-size:13px}
+.studio-demo .workspace-checkout button {width:100%;margin-top:17px}
+.studio-demo .workspace-order-list {margin-top:22px;border:1px solid #e2e8f0;border-radius:8px;padding:16px}
+.studio-demo .workspace-order-list h2 {font-size:15px;margin-bottom:11px}
+.studio-demo .workspace-order-list>div {display:flex;align-items:center;gap:14px;padding:10px 0;border-top:1px solid #ebeff4;font-size:11px;color:#61728a}
+.studio-demo .workspace-order-list>div strong {color:#223750;margin-left:auto}
+.studio-demo .workspace-portal {display:grid;grid-template-columns:minmax(0,1fr) minmax(235px,.85fr);gap:17px}
+.studio-demo .workspace-portal>article,.studio-demo .workspace-feedback {border:1px solid #e0e7f0;border-radius:8px;padding:20px;min-width:0}
+.studio-demo .workspace-milestones {display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:19px 0;border-block:1px solid #e8edf3;padding-block:15px}
+.studio-demo .workspace-milestones>div {font-size:10px;color:#8d9cb0;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+.studio-demo .workspace-milestones>div.complete {color:#2f61b3}
+.studio-demo .workspace-milestones>div span {background:#edf2f8;color:#8092a9;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:11px}
+.studio-demo .workspace-milestones>div.complete span {background:#e6efff;color:#255db6}
+.studio-demo .workspace-review-list {background:#f7f9fc;border:1px solid #e5ebf3;border-radius:6px;padding:11px 13px;margin-bottom:13px;font-size:11px;color:#354b68}
+.studio-demo .workspace-review-list strong {display:block;margin-bottom:6px}
+.studio-demo .workspace-review-list ul {padding-left:17px;margin:0;line-height:1.7;color:#60718a}
+.studio-demo .workspace-file-panel {border-top:1px solid #e7ecf3;margin-top:20px;padding-top:14px}
+.studio-demo .workspace-file-panel input {font-size:10px;color:#536a86;max-width:100%}
+.studio-demo .workspace-file {display:flex;justify-content:space-between;gap:8px;background:#f5f8fc;border-radius:5px;padding:9px;margin-top:6px;font-size:11px;color:#344b69;overflow-wrap:anywhere}
+.studio-demo .workspace-file small {white-space:nowrap;color:#8292a8}
+.studio-demo .workspace-feedback form {display:grid;gap:11px;margin:17px 0}
+.studio-demo .workspace-feedback textarea {width:100%;resize:vertical}
+.studio-demo .workspace-feedback form button {justify-self:start}
+.studio-demo .workspace-feedback-thread {border-top:1px solid #e5eaf2;padding-top:12px;font-size:11px;color:#354c68}
+.studio-demo .workspace-note {display:flex;align-items:flex-start;gap:9px;border-top:1px solid #e7edf4;padding:12px 0}
+.studio-demo .workspace-note p {margin:0;overflow-wrap:anywhere}
+.studio-demo .workspace-activity {max-width:700px}
+.studio-demo .workspace-activity h2 {margin-bottom:2px}
+.studio-demo .workspace-activity>div:not(.workspace-empty) {display:flex;align-items:center;gap:11px;border-bottom:1px solid #e6ebf2;padding:13px 2px;font-size:12px;color:#263b56}
+.studio-demo .workspace-activity-dot {width:7px;height:7px;border-radius:50%;background:#4c7bce;flex:none}
+.studio-demo .workspace-activity time {margin-left:auto;color:#8393a8;font:10px "IBM Plex Mono",monospace;white-space:nowrap}
+.studio-demo .workspace-footer {background:#fafbfd;border-top:1px solid #e3e9f0;color:#8090a2;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.studio-demo .workspace-footer p {color:#7c8b9f;font-size:10px;margin:0}
+.studio-demo .workspace-footer>div {display:flex;gap:7px}
+.studio-demo .workspace-footer button {background:transparent;border:0;color:#3966aa;min-height:29px;padding:4px 6px;font-size:10px}
+.studio-demo.embedded-workspace {padding:0!important;margin:0;min-height:0;background:#fff;width:100%;height:100%;overflow:hidden}
+.studio-demo.embedded-workspace .workspace-frame {border:0;border-radius:0;box-shadow:none;width:100%;height:100%;min-height:0}
+.studio-demo.embedded-workspace .workspace-content {overflow-y:auto;min-height:0}
+.studio-demo.embedded-workspace .workspace-sidebar {overflow-y:auto}
+@media(max-width:800px) {
+ .studio-demo:not(.embedded-workspace) .workspace-frame {grid-template-columns:1fr}
+ .studio-demo:not(.embedded-workspace) .workspace-sidebar {border-right:0;border-bottom:1px solid #dfe6ef}
+ .studio-demo:not(.embedded-workspace) .workspace-sidebar nav {display:flex;overflow-x:auto}
+ .studio-demo:not(.embedded-workspace) .workspace-sidebar nav a {white-space:nowrap}
+ .studio-demo:not(.embedded-workspace) .workspace-brand {margin-bottom:16px}
+ .studio-demo:not(.embedded-workspace) .workspace-local {display:none}
+}
+@media(max-width:580px) {
+ .studio-demo:not(.embedded-workspace) .workspace-heading,.studio-demo:not(.embedded-workspace) .workspace-body {padding-inline:17px}
+ .studio-demo:not(.embedded-workspace) .workspace-metrics {margin-inline:17px}
+ .studio-demo:not(.embedded-workspace) .workspace-toolbar,.studio-demo:not(.embedded-workspace) .workspace-footer {padding-inline:17px}
+ .studio-demo:not(.embedded-workspace) .workspace-heading h1 {font-size:22px}
+ .studio-demo:not(.embedded-workspace) .workspace-approval,.studio-demo:not(.embedded-workspace) .workspace-commerce,.studio-demo:not(.embedded-workspace) .workspace-portal {grid-template-columns:1fr}
+ .studio-demo:not(.embedded-workspace) .workspace-metrics>div {padding:10px}
+ .studio-demo:not(.embedded-workspace) .workspace-metrics strong {font-size:19px}
+ .studio-demo:not(.embedded-workspace) .workspace-table-head,.studio-demo:not(.embedded-workspace) .workspace-task {grid-template-columns:minmax(0,1fr) 35px 110px;gap:7px;padding-inline:9px}
+ .studio-demo:not(.embedded-workspace) .workspace-add {flex-wrap:wrap}
+ .studio-demo:not(.embedded-workspace) .workspace-footer {flex-wrap:wrap}
+}
