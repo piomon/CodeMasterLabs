@@ -165,15 +165,17 @@
   transform:scale(1.18);
  }
 }
+/* CM_WCAG_MOTION_CONTRAST_20261001
+ * Keep the entrance movement but never fade readable text.
+ * This preserves WCAG contrast throughout the animation.
+ */
 @keyframes cmMessageBubbleIn{
  0%{
-  opacity:0;
   transform:
    translateY(9px)
    scale(.94);
  }
  100%{
-  opacity:1;
   transform:
    translateY(0)
    scale(1);
