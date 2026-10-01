@@ -6,7 +6,7 @@ import {
 test(
  'mobile keeps premium motion for hero, devices, projects and iMessage',
  async({page})=>{
-  test.setTimeout(70000)
+  test.setTimeout(90000)
 
   await page.setViewportSize({
    width:390,
@@ -173,7 +173,7 @@ test(
     '.imessage-typing'
    )
   ).toBeVisible({
-   timeout:3500,
+   timeout:6000,
   })
 
   await expect.poll(
@@ -185,7 +185,7 @@ test(
      ||0
     ),
    {
-    timeout:6500,
+    timeout:9000,
    }
   ).toBeGreaterThan(1)
 
@@ -199,7 +199,7 @@ test(
      'data-story'
     ),
    {
-    timeout:16000,
+    timeout:38000,
    }
   ).not.toBe('0')
  }

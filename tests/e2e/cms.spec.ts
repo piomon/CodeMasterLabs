@@ -16,6 +16,6 @@ test('CMS edit is visible on the public homepage and can be restored',async({pag
  const existing=await (await client.get('/api/globals/site-settings?locale=pl')).json(),value='Synthetic acceptance: one process, one system.'
  try{
   expect((await client.post('/api/globals/site-settings?locale=pl',{headers:{Origin:origin},data:{heroLead:value}})).status()).toBe(200)
-  await page.goto('/');await expect(page.locator('.hero-lead')).toHaveText(value)
+  await page.goto('/');await expect(page.locator('.hero-client-line')).toHaveText(value)
  }finally{await client.post('/api/globals/site-settings?locale=pl',{headers:{Origin:origin},data:{heroLead:existing.heroLead}})}
 })

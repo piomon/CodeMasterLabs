@@ -29,7 +29,8 @@ export function ParticleHero({settings:s,home,locale}:{settings:Settings;home:Ho
  // CODEMASTER_PREMIUM_MOTION_20261001
  const legacyBusinessLead=pick(locale,'CodeMaster to software house tworzący aplikacje, strony WWW, systemy dla firm i rozwiązania AI. Prowadzimy projekt od koncepcji i testów po wdrożenie oraz wsparcie.','CodeMaster is a software house building custom apps, websites, business systems and AI solutions. We take projects from concept and testing through launch and ongoing support.')
  const defaultBusinessLead=pick(locale,'Tworzymy nowoczesne strony, aplikacje i systemy, które ułatwiają pracę, wspierają sprzedaż i rozwijają się razem z Twoją firmą — od pierwszego pomysłu po bezpieczne wdrożenie.','We create modern websites, applications and systems that simplify work, support sales and grow with your business — from the first idea to a secure launch.')
- const businessLead=s.heroLead.trim()===legacyBusinessLead?defaultBusinessLead:s.heroLead
+ const previousBusinessLead=pick(locale,'Tworzymy aplikacje webowe, strony WWW i systemy dla firm, które upraszczają pracę, wspierają sprzedaż i rosną razem z Twoim biznesem — od pomysłu po bezpieczne wdrożenie i dalszy rozwój.','We build web applications, websites and business systems that simplify work, support sales and grow with your company — from the first idea through secure launch and ongoing development.')
+ const businessLead=[legacyBusinessLead,previousBusinessLead].includes(s.heroLead.trim())?defaultBusinessLead:s.heroLead
  return <section className="hero cosmic-hero" id="top" aria-labelledby="hero-heading">
   <div className="hero-content container">
    <p className="eyebrow hero-eyebrow"><span className="status-dot"/>{s.heroEyebrow}</p>
