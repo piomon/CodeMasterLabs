@@ -8,7 +8,7 @@ ENV NEXT_TELEMETRY_DISABLED=1 NPM_CONFIG_UPDATE_NOTIFIER=false
 # Wolfi toolchain used for reproducible dependency installation/build.
 RUN apk add --no-cache \
     nodejs-22 \
-    npm \
+    'npm-12>=12.1.0-r2' \
     go \
     ca-certificates-bundle
 
@@ -57,7 +57,7 @@ ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 SEED_CONTENT=false PAYLOAD_DRO
 # Numeric UID/GID intentionally avoid requiring passwd/group accounts in the image.
 RUN apk add --no-cache \
     nodejs-22 \
-    npm \
+    'npm-12>=12.1.0-r2' \
     qpdf \
     ca-certificates-bundle \
     && qpdf --json-help >/dev/null \
