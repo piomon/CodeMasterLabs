@@ -26,6 +26,11 @@ export function ParticleHero({settings:s,home,locale}:{settings:Settings;home:Ho
  },[visualEnabled,s.heroTitle])
 
  const lines=s.heroTitle.split(/\r?\n/).filter(line=>line.trim())
+ // CODEMASTER_PREMIUM_MOTION_20261001
+ const signatureLine=pick(locale,'Technologia, która pracuje dla Ciebie.','Technology that works for you.')
+ const legacyBusinessLead=pick(locale,'CodeMaster to software house tworzący aplikacje, strony WWW, systemy dla firm i rozwiązania AI. Prowadzimy projekt od koncepcji i testów po wdrożenie oraz wsparcie.','CodeMaster is a software house building custom apps, websites, business systems and AI solutions. We take projects from concept and testing through launch and ongoing support.')
+ const defaultBusinessLead=pick(locale,'Tworzymy aplikacje webowe, strony WWW i systemy dla firm, które upraszczają pracę, wspierają sprzedaż i rosną razem z Twoim biznesem — od pomysłu po bezpieczne wdrożenie i dalszy rozwój.','We build web applications, websites and business systems that simplify work, support sales and grow with your company — from the first idea through secure launch and ongoing development.')
+ const businessLead=s.heroLead.trim()===legacyBusinessLead?defaultBusinessLead:s.heroLead
  return <section className="hero cosmic-hero" id="top" aria-labelledby="hero-heading">
   <div className="hero-content container">
    <p className="eyebrow hero-eyebrow"><span className="status-dot"/>{s.heroEyebrow}</p>
@@ -33,7 +38,10 @@ export function ParticleHero({settings:s,home,locale}:{settings:Settings;home:Ho
     <h1 id="hero-heading" ref={heading}>{lines.map((line,i)=><span key={i} data-particle-line="">{line}</span>)}</h1>
     <canvas ref={canvas} aria-hidden="true"/>
    </div>
-   <p className="hero-lead">{s.heroLead}</p>
+   <div className="hero-business-copy" data-animated-copy="handwritten">
+    <p className="hero-script-line"><span>{signatureLine}</span></p>
+    <p className="hero-lead">{businessLead}</p>
+   </div>
    <div className="hero-actions">
     <Button href={`${pagePath(locale,'home')}#product`} event="hero_cta">{['Zobacz koncepcje','Explore concepts','View concepts'].includes(s.primaryCTA)?pick(locale,'Zobacz realizacje','Explore our work'):s.primaryCTA}</Button>
     <Button href={`${pagePath(locale,'home')}#contact`} variant="secondary" event="hero_cta">{s.secondaryCTA}</Button>

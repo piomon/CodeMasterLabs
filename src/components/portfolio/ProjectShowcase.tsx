@@ -1,6 +1,8 @@
 'use client'
 import {useEffect,useRef,useState,type CSSProperties,type ReactNode} from 'react'
 import type {Locale} from '@/types/site'
+import {useMotion} from '../animation/MotionProvider'
+import {useReducedMotion} from '@/hooks/useReducedMotion'
 import {DeviceViewport} from './DeviceViewport'
 import {SHOWCASE_PROJECTS,projectSource,projectUrl,type ProjectId} from './project-data'
 import './showcase.css'
@@ -27,7 +29,35 @@ export function ProjectShowcase({locale,children}:{locale:Locale;children?:React
  const [copied,setCopied]=useState(false)
  const [copyError,setCopyError]=useState(false)
  const [hydrated,setHydrated]=useState(false)
+ // CODEMASTER_PREMIUM_MOTION_20261001
+ const [inView,setInView]=useState(false)
+ const showcase=useRef<HTMLElement>(null)
+ const {paused}=useMotion()
+ const prefersReduced=useReducedMotion()
+ const motionOff=paused||prefersReduced
  useEffect(()=>setHydrated(true),[])
+ useEffect(()=>{
+  const element=showcase.current
+  if(!element)return
+  const observer=new IntersectionObserver(
+   ([entry])=>setInView(Boolean(entry?.isIntersecting)),
+   {rootMargin:'220px 0px',threshold:.08}
+  )
+  observer.observe(element)
+  return()=>observer.disconnect()
+ },[])
+ useEffect(()=>{
+  if(!hydrated||motionOff||mode!=='preview'||!inView)return
+  const timer=window.setTimeout(()=>{
+   setCopied(false)
+   setCopyError(false)
+   setSelected(current=>{
+    const currentIndex=SHOWCASE_PROJECTS.findIndex(item=>item.id===current)
+    return SHOWCASE_PROJECTS[(currentIndex+1)%SHOWCASE_PROJECTS.length]?.id||current
+   })
+  },10000)
+  return()=>window.clearTimeout(timer)
+ },[selected,hydrated,motionOff,mode,inView])
  const project=SHOWCASE_PROJECTS.find(item=>item.id===selected)!
  const index=SHOWCASE_PROJECTS.indexOf(project)
  const pl=locale==='pl'
@@ -59,7 +89,7 @@ export function ProjectShowcase({locale,children}:{locale:Locale;children?:React
    </div>}
  </div>
  const mobile=<ProjectFrame key={selected} id={selected} locale={locale} mobile/>
- return <section className="project-showcase" id="product" aria-labelledby="showcase-heading">
+ return <section ref={showcase} className="project-showcase" id="product" aria-labelledby="showcase-heading" data-project={selected} data-project-autoplay={motionOff?'off':'on'}>
   <span className="home-anchor" id="work" aria-hidden="true"/>
   <div className="showcase-heading container">
    <div><p className="eyebrow">01 / {pl?'REALIZACJE':'SELECTED WORK'}</p><h2 id="showcase-heading">{pl?'Różne marki.':'Different brands.'}<br/><em>{pl?'Wyjątkowe doświadczenia.':'Distinct experiences.'}</em></h2></div>
