@@ -22,7 +22,7 @@ test(
 
   await expect(
    hero.locator(
-    '[data-animated-copy="handwritten"]'
+    '[data-animated-copy="led-power"]'
    )
   ).toBeVisible()
 

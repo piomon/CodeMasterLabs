@@ -38,8 +38,8 @@ export function ParticleHero({settings:s,home,locale}:{settings:Settings;home:Ho
     <h1 id="hero-heading" ref={heading}>{lines.map((line,i)=><span key={i} data-particle-line="">{line}</span>)}</h1>
     <canvas ref={canvas} aria-hidden="true"/>
    </div>
-   <div className="hero-business-copy" data-animated-copy="handwritten">
-    <p className="hero-script-line hero-client-line"><span>{businessLead}</span></p>
+   <div className="hero-business-copy" data-animated-copy="led-power">
+    <p className="hero-power-line hero-client-line"><span>{businessLead}</span></p>
    </div>
    <div className="hero-actions">
     <Button href={`${pagePath(locale,'home')}#product`} event="hero_cta">{['Zobacz koncepcje','Explore concepts','View concepts'].includes(s.primaryCTA)?pick(locale,'Zobacz realizacje','Explore our work'):s.primaryCTA}</Button>

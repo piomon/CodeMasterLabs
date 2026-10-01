@@ -823,3 +823,677 @@ h1 [data-particle-line]{
  }
 
 }
+
+
+/* ============================================================
+   CODEMASTER_LED_POWER_ON_20261001
+
+   Premium cold-white LED ignition.
+   The text exists immediately, struggles to power on,
+   flickers irregularly, catches full current and finally
+   stabilises as a clean silver-white software-house headline.
+   ============================================================ */
+
+
+.hero.cosmic-hero
+.hero-business-copy[data-animated-copy="led-power"]{
+ position:relative;
+ z-index:2;
+ width:min(100%,840px);
+ margin:
+  clamp(29px,4vh,43px)
+  auto
+  32px;
+}
+
+
+/*
+ * Completely separate visual class.
+ * Old hero-script-line handwriting rules cannot match this node.
+ */
+
+.hero.cosmic-hero
+.hero-business-copy[data-animated-copy="led-power"]
+.hero-power-line.hero-client-line{
+ position:relative;
+ display:block;
+
+ width:min(100%,810px);
+ max-width:810px;
+
+ margin:0 auto;
+
+ padding:
+  0
+  10px
+  12px;
+
+ color:#dce1e9;
+
+ font-family:
+  "Space Grotesk Variable",
+  Arial,
+  sans-serif;
+
+ font-size:
+  clamp(
+   18px,
+   1.55vw,
+   25px
+  );
+
+ font-style:normal;
+ font-weight:450;
+
+ line-height:1.52;
+ letter-spacing:.012em;
+
+ text-align:center;
+ text-wrap:balance;
+
+ text-shadow:none;
+}
+
+
+.home-main
+.hero.cosmic-hero
+.hero-business-copy[data-animated-copy="led-power"]
+.hero-power-line.hero-client-line>span{
+ position:relative;
+
+ display:block;
+
+ width:100%;
+
+ isolation:isolate;
+
+ white-space:normal;
+ text-wrap:balance;
+
+ clip-path:none!important;
+ -webkit-clip-path:none!important;
+
+ color:#dce1e9;
+
+ opacity:1;
+
+ filter:
+  brightness(1)
+  saturate(.94);
+
+ transform:
+  translateZ(0);
+
+ transform-origin:center;
+
+ will-change:
+  color,
+  opacity,
+  filter,
+  text-shadow;
+
+ animation:
+  cmLedPowerOn
+  3.4s
+  linear
+  .68s
+  both!important;
+}
+
+
+/*
+ * Soft electrical aura behind the letters.
+ * It is not a neon border and not a visible rectangle.
+ */
+
+.home-main
+.hero.cosmic-hero
+.hero-business-copy[data-animated-copy="led-power"]
+.hero-power-line.hero-client-line>span::before{
+ content:"";
+
+ position:absolute;
+ z-index:-1;
+
+ inset:
+  -26%
+  -7%
+  -22%;
+
+ border-radius:50%;
+
+ background:
+  radial-gradient(
+   ellipse at 50% 50%,
+   rgba(247,249,255,.22) 0%,
+   rgba(219,228,248,.11) 27%,
+   rgba(165,185,224,.045) 49%,
+   transparent 73%
+  );
+
+ opacity:0;
+
+ filter:
+  blur(18px);
+
+ transform:
+  scaleX(.42)
+  scaleY(.7);
+
+ pointer-events:none;
+
+ animation:
+  cmLedPowerHalo
+  3.4s
+  linear
+  .68s
+  both;
+}
+
+
+/*
+ * Very soft energy pass.
+ * It only helps the "current is finding its path" feeling.
+ */
+
+.home-main
+.hero.cosmic-hero
+.hero-business-copy[data-animated-copy="led-power"]
+.hero-power-line.hero-client-line>span::after{
+ content:"";
+
+ position:absolute;
+ z-index:1;
+
+ top:-7px;
+ bottom:-7px;
+
+ left:-16%;
+
+ width:28%;
+
+ border-radius:50%;
+
+ background:
+  linear-gradient(
+   90deg,
+   transparent 0%,
+   rgba(208,221,248,.025) 22%,
+   rgba(239,244,255,.15) 44%,
+   rgba(255,255,255,.28) 50%,
+   rgba(230,238,255,.12) 57%,
+   rgba(192,210,244,.02) 78%,
+   transparent 100%
+  );
+
+ opacity:0;
+
+ filter:
+  blur(11px);
+
+ mix-blend-mode:screen;
+
+ pointer-events:none;
+
+ transform:
+  translateX(0)
+  scaleY(.82);
+
+ animation:
+  cmLedCurrentPass
+  2.45s
+  cubic-bezier(.16,.78,.2,1)
+  1.02s
+  both;
+}
+
+
+/* ------------------------------------------------------------
+   MAIN LED IGNITION
+
+   Deliberately irregular.
+   Several failed starts -> stronger catches -> final stable power.
+   ------------------------------------------------------------ */
+
+@keyframes cmLedPowerOn{
+
+ 0%{
+  color:#626873;
+  opacity:.34;
+
+  filter:
+   brightness(.68)
+   saturate(.72);
+
+  text-shadow:none;
+ }
+
+ 4%{
+  color:#f7f9fd;
+  opacity:.91;
+
+  filter:
+   brightness(1.48)
+   saturate(.94);
+
+  text-shadow:
+   0 0 5px rgba(255,255,255,.52),
+   0 0 14px rgba(222,232,253,.35),
+   0 0 32px rgba(151,178,229,.16);
+ }
+
+ 7%{
+  color:#707782;
+  opacity:.39;
+
+  filter:
+   brightness(.72)
+   saturate(.74);
+
+  text-shadow:none;
+ }
+
+ 12%{
+  color:#c9cfd9;
+  opacity:.69;
+
+  filter:
+   brightness(1.02)
+   saturate(.84);
+
+  text-shadow:
+   0 0 8px rgba(215,226,247,.11);
+ }
+
+ 16%{
+  color:#7b828d;
+  opacity:.43;
+
+  filter:
+   brightness(.76)
+   saturate(.76);
+
+  text-shadow:none;
+ }
+
+ 21%{
+  color:#fcfdff;
+  opacity:.98;
+
+  filter:
+   brightness(1.58)
+   saturate(.96);
+
+  text-shadow:
+   0 0 5px rgba(255,255,255,.64),
+   0 0 16px rgba(226,235,255,.42),
+   0 0 38px rgba(157,183,234,.19);
+ }
+
+ 24%{
+  color:#8c939e;
+  opacity:.5;
+
+  filter:
+   brightness(.81)
+   saturate(.78);
+
+  text-shadow:
+   0 0 3px rgba(220,229,246,.06);
+ }
+
+ 31%{
+  color:#d3d8e0;
+  opacity:.77;
+
+  filter:
+   brightness(1.06)
+   saturate(.87);
+
+  text-shadow:
+   0 0 9px rgba(218,229,248,.13);
+ }
+
+ 37%{
+  color:#f8faff;
+  opacity:.96;
+
+  filter:
+   brightness(1.41)
+   saturate(.95);
+
+  text-shadow:
+   0 0 5px rgba(255,255,255,.42),
+   0 0 15px rgba(224,234,253,.3),
+   0 0 31px rgba(157,182,231,.13);
+ }
+
+ 41%{
+  color:#a4abb5;
+  opacity:.61;
+
+  filter:
+   brightness(.91)
+   saturate(.82);
+
+  text-shadow:
+   0 0 5px rgba(214,225,244,.07);
+ }
+
+ 50%{
+  color:#d9dee6;
+  opacity:.84;
+
+  filter:
+   brightness(1.08)
+   saturate(.89);
+
+  text-shadow:
+   0 0 9px rgba(218,229,247,.13);
+ }
+
+ 57%{
+  color:#fbfcff;
+  opacity:1;
+
+  filter:
+   brightness(1.36)
+   saturate(.96);
+
+  text-shadow:
+   0 0 5px rgba(255,255,255,.38),
+   0 0 14px rgba(224,233,252,.27),
+   0 0 29px rgba(157,182,231,.11);
+ }
+
+ 61%{
+  color:#b9c0ca;
+  opacity:.73;
+
+  filter:
+   brightness(.97)
+   saturate(.85);
+
+  text-shadow:
+   0 0 5px rgba(215,225,244,.08);
+ }
+
+ 70%{
+  color:#e4e8ee;
+  opacity:.91;
+
+  filter:
+   brightness(1.11)
+   saturate(.91);
+
+  text-shadow:
+   0 0 9px rgba(220,230,248,.14);
+ }
+
+ 76%{
+  color:#fafbfe;
+  opacity:1;
+
+  filter:
+   brightness(1.25)
+   saturate(.95);
+
+  text-shadow:
+   0 0 4px rgba(255,255,255,.3),
+   0 0 13px rgba(222,232,251,.21);
+ }
+
+ 80%{
+  color:#c9ced7;
+  opacity:.84;
+
+  filter:
+   brightness(1.01)
+   saturate(.88);
+
+  text-shadow:
+   0 0 6px rgba(215,225,243,.08);
+ }
+
+ 87%{
+  color:#eef1f6;
+  opacity:.97;
+
+  filter:
+   brightness(1.12)
+   saturate(.92);
+
+  text-shadow:
+   0 0 9px rgba(220,230,247,.13);
+ }
+
+ 91%{
+  color:#d5dae2;
+  opacity:.91;
+
+  filter:
+   brightness(1.02)
+   saturate(.89);
+
+  text-shadow:
+   0 0 5px rgba(214,225,243,.07);
+ }
+
+ 95%{
+  color:#f3f5f9;
+  opacity:1;
+
+  filter:
+   brightness(1.13)
+   saturate(.93);
+
+  text-shadow:
+   0 0 4px rgba(255,255,255,.2),
+   0 0 12px rgba(219,230,248,.16);
+ }
+
+ 100%{
+  color:#dce1e9;
+  opacity:1;
+
+  filter:
+   brightness(1)
+   saturate(.94);
+
+  text-shadow:
+   0 0 11px rgba(211,223,244,.075),
+   0 1px 0 rgba(255,255,255,.04);
+ }
+
+}
+
+
+/* Aura flashes in sympathy with the electrical catches. */
+
+@keyframes cmLedPowerHalo{
+
+ 0%{
+  opacity:0;
+  transform:
+   scaleX(.36)
+   scaleY(.64);
+ }
+
+ 4%{
+  opacity:.18;
+ }
+
+ 8%{
+  opacity:.015;
+ }
+
+ 21%{
+  opacity:.2;
+ }
+
+ 25%{
+  opacity:.025;
+ }
+
+ 37%{
+  opacity:.14;
+ }
+
+ 42%{
+  opacity:.035;
+ }
+
+ 57%{
+  opacity:.16;
+ }
+
+ 62%{
+  opacity:.045;
+ }
+
+ 76%{
+  opacity:.11;
+ }
+
+ 81%{
+  opacity:.035;
+ }
+
+ 95%{
+  opacity:.07;
+ }
+
+ 100%{
+  opacity:0;
+
+  transform:
+   scaleX(.58)
+   scaleY(.78);
+ }
+
+}
+
+
+/* One subtle cold-white current pass. */
+
+@keyframes cmLedCurrentPass{
+
+ 0%{
+  left:-16%;
+  opacity:0;
+ }
+
+ 12%{
+  opacity:.08;
+ }
+
+ 34%{
+  opacity:.28;
+ }
+
+ 53%{
+  opacity:.42;
+ }
+
+ 72%{
+  opacity:.18;
+ }
+
+ 90%{
+  opacity:.055;
+ }
+
+ 100%{
+  left:88%;
+  opacity:0;
+ }
+
+}
+
+
+/* ------------------------------------------------------------
+   MOBILE
+   ------------------------------------------------------------ */
+
+@media(max-width:600px){
+
+ .hero.cosmic-hero
+ .hero-business-copy[data-animated-copy="led-power"]{
+  width:min(100%,365px);
+
+  margin-top:27px;
+  margin-bottom:29px;
+ }
+
+ .hero.cosmic-hero
+ .hero-business-copy[data-animated-copy="led-power"]
+ .hero-power-line.hero-client-line{
+  width:min(100%,355px);
+  max-width:355px;
+
+  padding:
+   0
+   5px
+   11px;
+
+  font-size:
+   clamp(
+    16px,
+    4.55vw,
+    19px
+   );
+
+  line-height:1.54;
+  letter-spacing:.008em;
+ }
+
+ .home-main
+ .hero.cosmic-hero
+ .hero-business-copy[data-animated-copy="led-power"]
+ .hero-power-line.hero-client-line>span::before{
+  inset:
+   -20%
+   -2%
+   -18%;
+
+  filter:
+   blur(14px);
+ }
+
+}
+
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+   ------------------------------------------------------------ */
+
+@media(prefers-reduced-motion:reduce){
+
+ .home-main
+ .hero.cosmic-hero
+ .hero-business-copy[data-animated-copy="led-power"]
+ .hero-power-line.hero-client-line>span{
+  animation:none!important;
+
+  color:#dce1e9!important;
+  opacity:1!important;
+
+  filter:none!important;
+
+  text-shadow:
+   0 0 10px rgba(212,224,245,.07)!important;
+ }
+
+ .home-main
+ .hero.cosmic-hero
+ .hero-business-copy[data-animated-copy="led-power"]
+ .hero-power-line.hero-client-line>span::before,
+ .home-main
+ .hero.cosmic-hero
+ .hero-business-copy[data-animated-copy="led-power"]
+ .hero-power-line.hero-client-line>span::after{
+  display:none!important;
+  animation:none!important;
+ }
+
+}
