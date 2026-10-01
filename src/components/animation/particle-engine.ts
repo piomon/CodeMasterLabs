@@ -366,7 +366,7 @@ export function createParticleTypography(
 
    const radius=
     first
-     ?30+(i*71%94)
+     ?12+(i*37%34)
      :1.1
 
    points.push({
@@ -454,7 +454,7 @@ export function createParticleTypography(
   )
 
   const assembling=
-   now-start<1650
+   now-start<3600
 
   const time=
    now*.001
@@ -537,7 +537,7 @@ export function createParticleTypography(
      targetX-
      p.x
     )*
-    .072*
+    (assembling ? .004 : .072)*
     dt
 
    p.vy+=
@@ -545,12 +545,12 @@ export function createParticleTypography(
      targetY-
      p.y
     )*
-    .072*
+    (assembling ? .004 : .072)*
     dt
 
    const drag=
     Math.pow(
-     .78,
+     (assembling ? .94 : .78),
      dt,
     )
 

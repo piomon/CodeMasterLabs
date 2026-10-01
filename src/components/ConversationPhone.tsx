@@ -327,7 +327,7 @@ export function ConversationPhone({
   setTyping(false)
 
   const timers:number[]=[]
-  let clock=320
+  let clock=1000
 
   messages.forEach((message,index)=>{
    if(message.side==='me'){
@@ -338,9 +338,9 @@ export function ConversationPhone({
      )
     )
 
-    clock+=720+Math.min(
-     780,
-     message.text.length*4,
+    clock+=1700+Math.min(
+     2600,
+     message.text.length*20,
     )
    }
 
@@ -355,8 +355,8 @@ export function ConversationPhone({
    )
 
    clock+=message.side==='client'
-    ?650
-    :850
+     ?1500
+     :2000
   })
 
   timers.push(
@@ -371,7 +371,7 @@ export function ConversationPhone({
 
      setCycle(value=>value+1)
     },
-    clock+2600,
+    clock+5000,
    )
   )
 

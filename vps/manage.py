@@ -355,7 +355,7 @@ server {{ listen 443 ssl default_server; listen [::]:443 ssl default_server; ser
  add_header Strict-Transport-Security "max-age=31536000" always;
  add_header X-Content-Type-Options nosniff always;
  client_max_body_size 6m; client_body_timeout 20s; send_timeout 30s;
- limit_conn cm_ip 20; limit_conn cm_server 80;
+ limit_conn cm_ip 128; limit_conn cm_server 512;
  {auth}
  {acme}
  location = /api/health {{ auth_basic off; limit_req zone=cm_health burst=10 nodelay; {proxy} }}

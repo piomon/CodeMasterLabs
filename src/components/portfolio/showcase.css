@@ -16,7 +16,7 @@
 .static-phone .project-frame{flex:1}
 .static-devices-note{color:#9ca5b3;font-size:11px;line-height:1.6;max-width:78%;margin:4px 0 14px}
 @media(max-width:600px){.static-devices{padding-inline:16px}.static-laptop{width:91%;padding-bottom:26px}.static-laptop-lid{padding:10px 4px 14px;border-radius:8px 8px 3px 3px}.static-phone{right:10px;bottom:66px;width:26%;border-radius:13px;padding:2px}.static-phone-screen{border-radius:9px}.static-device-brand{font-size:5px;bottom:3px}.static-devices-note{font-size:10px}.static-laptop-base{height:8px}}
-@media(max-width:1100px),(pointer:coarse){html{scroll-behavior:auto!important}.home-main *, .robot-widget *{animation:none!important;transition:none!important}}
+@media(max-width:1100px),(pointer:coarse){html{scroll-behavior:auto!important}}
 .home-main .hero.cosmic-hero{min-height:min(780px,100svh);padding:70px 0 0;overflow:visible}
 .home-main .hero.cosmic-hero .hero-content{position:relative;top:auto;left:auto;width:calc(100% - 2*var(--space));max-width:1200px;padding:95px 0 90px!important;margin:0 auto;text-align:center}
 .home-main .hero.cosmic-hero .hero-eyebrow{justify-content:center}
@@ -194,8 +194,8 @@
   rotateX(-82deg)
   translateY(12px);
  transition:
-  transform 1.28s cubic-bezier(.18,.82,.21,1),
-  opacity .55s ease!important;
+  transform 2.8s cubic-bezier(.18,.72,.18,1),
+  opacity 1.15s ease!important;
 }
 .home-main .static-devices[data-device-opened="true"] .static-laptop-lid{
  opacity:1;
@@ -204,8 +204,8 @@
   rotateX(0)
   translateY(0);
  transition:
-  transform 1.28s cubic-bezier(.18,.82,.21,1),
-  opacity .55s ease!important;
+  transform 2.8s cubic-bezier(.18,.72,.18,1),
+  opacity 1.15s ease!important;
 }
 .home-main .static-phone{
  will-change:transform,opacity;
@@ -217,8 +217,8 @@
   rotate(7deg)
   scale(.94);
  transition:
-  transform .8s cubic-bezier(.17,.8,.25,1) .52s,
-  opacity .55s ease .52s!important;
+  transform 1.25s cubic-bezier(.17,.8,.25,1) 1.55s,
+  opacity .9s ease 1.55s!important;
 }
 .home-main .static-devices[data-device-opened="true"] .static-phone{
  opacity:1;
@@ -227,8 +227,8 @@
   rotate(0)
   scale(1);
  transition:
-  transform .8s cubic-bezier(.17,.8,.25,1) .52s,
-  opacity .55s ease .52s!important;
+  transform 1.25s cubic-bezier(.17,.8,.25,1) 1.55s,
+  opacity .9s ease 1.55s!important;
 }
 .home-main .static-devices[data-device-opened="true"] .static-laptop-screen{
  box-shadow:
