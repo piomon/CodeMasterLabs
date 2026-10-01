@@ -72,10 +72,10 @@ export async function createDeviceScene(host:HTMLDivElement,options:SceneOptions
   if(disposed)return
   const delta=Math.min(64,previousTime?time-previousTime:16.7);previousTime=time
   if(reduced)progress=1
-  else progress+=(target-progress)*(1-Math.exp(-delta/110))
+  else progress+=(target-progress)*(1-Math.exp(-delta/480))
   if(Math.abs(target-progress)<.0005)progress=target
   render()
-  if(visible&&Math.abs(target-progress)>.0001)frame=requestAnimationFrame(tick)
+  if((visible||target>.997)&&Math.abs(target-progress)>.0001)frame=requestAnimationFrame(tick)
  }
  function schedule(){if(!frame&&!disposed){previousTime=0;frame=requestAnimationFrame(tick)}}
  function onScroll(){
@@ -99,7 +99,7 @@ export async function createDeviceScene(host:HTMLDivElement,options:SceneOptions
  const resizeObserver=new ResizeObserver(resize);resizeObserver.observe(host)
  const intersection=new IntersectionObserver(entries=>{
   visible=entries[0]?.isIntersecting??true
-  if(visible){onScroll();schedule()}else if(frame){cancelAnimationFrame(frame);frame=0}
+  if(visible){onScroll();schedule()}else if(frame&&target<=.997){cancelAnimationFrame(frame);frame=0}
  },{rootMargin:'150px'})
  intersection.observe(host)
  window.addEventListener('scroll',onScroll,{passive:true})
