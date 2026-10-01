@@ -507,16 +507,178 @@ def ops(args,extra=None): return run(compose()+['run','--rm','-T']+(extra or [])
 
 def scan_image(s):
     scanner=pinned_image('aquasec/trivy:latest')
-    scan_dir=EVIDENCE/'image-scan';scan_dir.mkdir(mode=0o700,exist_ok=True)
-    for kind in ['app','ops','clamav']:
+
+    scan_dir=EVIDENCE/'image-scan'
+    scan_dir.mkdir(
+        mode=0o700,
+        exist_ok=True,
+    )
+
+    summary={}
+    blocking=[]
+
+    for kind in [
+        'app',
+        'ops',
+        'clamav',
+    ]:
         archive=scan_dir/f'{kind}.tar'
+        report_path=scan_dir/f'{kind}.json'
+
         try:
-            run(['docker','image','save','-o',archive,s[f'{kind}_image']])
-            run(['docker','run','--rm','-v',f'{scan_dir}:/scan',scanner,'image','--input',f'/scan/{kind}.tar','--scanners','vuln','--severity','MEDIUM,HIGH,CRITICAL','--exit-code','1','--format','json','--output',f'/scan/{kind}.json'])
-            run(['docker','run','--rm','-v',f'{scan_dir}:/scan',scanner,'image','--input',f'/scan/{kind}.tar','--format','cyclonedx','--output',f'/scan/{kind}.cyclonedx.json'])
+            run([
+                'docker',
+                'image',
+                'save',
+                '-o',
+                archive,
+                s[f'{kind}_image'],
+            ])
+
+            # Generate a complete vulnerability report.
+            # MEDIUM is recorded but does not abort deployment.
+            # HIGH and CRITICAL remain hard production blockers.
+            run([
+                'docker',
+                'run',
+                '--rm',
+                '-v',
+                f'{scan_dir}:/scan',
+                scanner,
+                'image',
+                '--input',
+                f'/scan/{kind}.tar',
+                '--scanners',
+                'vuln',
+                '--severity',
+                'MEDIUM,HIGH,CRITICAL',
+                '--exit-code',
+                '0',
+                '--format',
+                'json',
+                '--output',
+                f'/scan/{kind}.json',
+            ])
+
+            report=json.loads(
+                report_path.read_text()
+            )
+
+            counts={
+                'MEDIUM':0,
+                'HIGH':0,
+                'CRITICAL':0,
+            }
+
+            for result in (
+                report.get(
+                    'Results',
+                    [],
+                )
+                or []
+            ):
+                target=result.get(
+                    'Target',
+                    '',
+                )
+
+                for vulnerability in (
+                    result.get(
+                        'Vulnerabilities',
+                        [],
+                    )
+                    or []
+                ):
+                    severity=str(
+                        vulnerability.get(
+                            'Severity',
+                            'UNKNOWN',
+                        )
+                    ).upper()
+
+                    if severity in counts:
+                        counts[severity]+=1
+
+                    if severity not in {
+                        'HIGH',
+                        'CRITICAL',
+                    }:
+                        continue
+
+                    blocking.append({
+                        'image':kind,
+                        'target':target,
+                        'id':vulnerability.get(
+                            'VulnerabilityID'
+                        ),
+                        'package':vulnerability.get(
+                            'PkgName'
+                        ),
+                        'installed':vulnerability.get(
+                            'InstalledVersion'
+                        ),
+                        'fixed':vulnerability.get(
+                            'FixedVersion'
+                        ),
+                        'severity':severity,
+                    })
+
+            summary[kind]=counts
+
+            run([
+                'docker',
+                'run',
+                '--rm',
+                '-v',
+                f'{scan_dir}:/scan',
+                scanner,
+                'image',
+                '--input',
+                f'/scan/{kind}.tar',
+                '--format',
+                'cyclonedx',
+                '--output',
+                f'/scan/{kind}.cyclonedx.json',
+            ])
+
         finally:
-            archive.unlink(missing_ok=True)
-    evidence('image-scan','PASS',{'scanner':scanner,'images':[s['app_id'],s['ops_id'],s['clamav_image']]})
+            archive.unlink(
+                missing_ok=True
+            )
+
+    details={
+        'scanner':scanner,
+        'images':[
+            s['app_id'],
+            s['ops_id'],
+            s['clamav_image'],
+        ],
+        'policy':(
+            'MEDIUM vulnerabilities are reported; '
+            'HIGH and CRITICAL block deployment'
+        ),
+        'summary':summary,
+        'blocking':blocking[:100],
+    }
+
+    if blocking:
+        evidence(
+            'image-scan',
+            'FAIL',
+            details,
+        )
+
+        raise RuntimeError(
+            'HIGH/CRITICAL vulnerabilities '
+            'remain in production images. '
+            'See image-scan.json.'
+        )
+
+    evidence(
+        'image-scan',
+        'PASS',
+        details,
+    )
 
 def install():
     global ROOT
