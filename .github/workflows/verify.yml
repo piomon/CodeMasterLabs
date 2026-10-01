@@ -33,7 +33,8 @@ jobs:
       - name: ClamAV for isolated source acceptance
         run: |
           set -eu
-          docker run -d --name cm-ci-clam -p 127.0.0.1:3310:3310 "$CLAMAV_IMAGE"
+          docker build --pull=false -f Dockerfile.clamav.production --build-arg "CLAMAV_BASE=$CLAMAV_IMAGE" -t codemaster:clamav-ci .
+          docker run -d --name cm-ci-clam -p 127.0.0.1:3310:3310 codemaster:clamav-ci
           ready=0
           for attempt in $(seq 1 120); do
             if docker exec cm-ci-clam clamdscan --ping=1; then ready=1; break; fi

@@ -722,7 +722,15 @@ def install():
 
     source_fingerprint=stage_source()
 
-    clamav=pinned_image(
+    #
+    # Official ClamAV remains the immutable upstream base.
+    # We derive a release-specific local image that upgrades only
+    # PCRE2 from the same Alpine repository.
+    #
+    # scan_image() subsequently scans the complete derived image,
+    # so HIGH / CRITICAL vulnerabilities remain hard blockers.
+    #
+    clamav_base=pinned_image(
         'clamav/clamav:stable'
     )
 
@@ -731,11 +739,27 @@ def install():
             source_fingerprint
             + node
             + resolver
-            + clamav
+            + clamav_base
+            + 'pcre2>=10.49-r0'
             + playwright
             + playwright_version
         ).encode()
     ).hexdigest()[:20]
+
+    clamav=f'codemaster:clamav-{identifier}'
+
+    run([
+        'docker',
+        'build',
+        '--pull=false',
+        '-f',
+        ROOT/'Dockerfile.clamav.production',
+        '--build-arg',
+        f'CLAMAV_BASE={clamav_base}',
+        '-t',
+        clamav,
+        ROOT,
+    ])
 
     s={
         'root':str(ROOT),

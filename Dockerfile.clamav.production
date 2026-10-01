@@ -1,0 +1,15 @@
+ARG CLAMAV_BASE
+
+FROM ${CLAMAV_BASE}
+
+#
+# Keep the official ClamAV Alpine image and patch only the vulnerable
+# PCRE2 package from the same Alpine 3.24 repositories.
+#
+# The production Trivy gate still scans the resulting complete image
+# and blocks every HIGH / CRITICAL vulnerability.
+#
+
+RUN apk update \
+ && apk upgrade --no-cache pcre2 \
+ && apk policy pcre2
