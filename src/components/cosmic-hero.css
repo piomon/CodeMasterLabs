@@ -1497,3 +1497,393 @@ h1 [data-particle-line]{
  }
 
 }
+/* ============================================================
+   CODEMASTER_HERO_BALANCE_20261002
+   ============================================================ */
+
+
+/* Supporting copy must never compete with the particle headline */
+
+.hero.cosmic-hero
+.hero-business-copy[data-animated-copy="led-power"]{
+ width:min(100%,640px);
+ margin:
+  21px
+  auto
+  22px;
+}
+
+
+.hero.cosmic-hero
+.hero-business-copy[data-animated-copy="led-power"]
+.hero-power-line.hero-client-line{
+ width:min(100%,620px);
+ max-width:620px;
+
+ padding:
+  0
+  8px
+  7px;
+
+ font-size:
+  clamp(
+   14px,
+   1.12vw,
+   16.5px
+  )!important;
+
+ line-height:1.5;
+ letter-spacing:.003em;
+
+ color:#c8cfdb;
+}
+
+
+/* CTA layout */
+
+.home-main
+.hero.cosmic-hero
+.hero-actions{
+ gap:11px;
+}
+
+
+/*
+ * Remove the heavy physical button look.
+ * Both actions become smoked translucent glass.
+ */
+
+.home-main
+.hero.cosmic-hero
+.hero-actions
+.button{
+ min-height:50px!important;
+
+ padding-inline:21px!important;
+
+ border:
+  1px
+  solid
+  rgba(190,201,220,.25)!important;
+
+ border-radius:15px!important;
+
+ color:#edf1f7!important;
+
+ background:
+  rgba(115,124,143,.085)!important;
+
+ box-shadow:
+  0 7px 20px rgba(0,0,0,.18),
+  inset 0 1px 0 rgba(255,255,255,.105)!important;
+
+ backdrop-filter:
+  blur(14px)
+  saturate(108%);
+
+ -webkit-backdrop-filter:
+  blur(14px)
+  saturate(108%);
+
+ transform:none!important;
+
+ transition:
+  transform .22s ease,
+  border-color .22s ease,
+  background .22s ease,
+  box-shadow .22s ease,
+  filter .16s ease!important;
+
+ animation:
+  cmHeroGlassLed
+  7.2s
+  linear
+  1.2s
+  infinite;
+}
+
+
+/* Remove previous decorative depth layer */
+
+.home-main
+.hero.cosmic-hero
+.hero-actions
+.button::before{
+ content:none!important;
+ display:none!important;
+ animation:none!important;
+}
+
+
+/* Primary remains only slightly brighter */
+
+.home-main
+.hero.cosmic-hero
+.hero-actions
+.button-primary{
+ color:#f6f8fc!important;
+
+ border-color:
+  rgba(211,220,235,.29)!important;
+
+ background:
+  linear-gradient(
+   180deg,
+   rgba(185,195,212,.14),
+   rgba(99,108,127,.075)
+  )!important;
+
+ box-shadow:
+  0 7px 20px rgba(0,0,0,.18),
+  inset 0 1px 0 rgba(255,255,255,.14)!important;
+}
+
+
+/* Secondary stays quieter */
+
+.home-main
+.hero.cosmic-hero
+.hero-actions
+.button-secondary{
+ color:#e3e8f1!important;
+
+ border-color:
+  rgba(167,180,202,.21)!important;
+
+ background:
+  linear-gradient(
+   180deg,
+   rgba(105,115,134,.085),
+   rgba(56,63,76,.06)
+  )!important;
+
+ box-shadow:
+  0 7px 20px rgba(0,0,0,.17),
+  inset 0 1px 0 rgba(255,255,255,.085)!important;
+
+ animation-delay:1.78s;
+}
+
+
+/* Short LED ignition flashes */
+
+@keyframes cmHeroGlassLed{
+
+ 0%,
+ 3%,
+ 6%,
+ 10%,
+ 14%,
+ 42%,
+ 47%,
+ 100%{
+  filter:
+   brightness(1);
+
+  border-color:
+   rgba(190,201,220,.25);
+
+  box-shadow:
+   0 7px 20px rgba(0,0,0,.18),
+   inset 0 1px 0 rgba(255,255,255,.105);
+ }
+
+
+ 4%{
+  filter:
+   brightness(1.14);
+
+  border-color:
+   rgba(235,241,251,.48);
+
+  box-shadow:
+   0 7px 20px rgba(0,0,0,.18),
+   0 0 15px rgba(221,231,251,.16),
+   inset 0 1px 0 rgba(255,255,255,.16);
+ }
+
+
+ 5%{
+  filter:
+   brightness(.985);
+ }
+
+
+ 8%{
+  filter:
+   brightness(1.08);
+
+  border-color:
+   rgba(215,225,241,.38);
+
+  box-shadow:
+   0 7px 20px rgba(0,0,0,.18),
+   0 0 10px rgba(215,227,250,.10),
+   inset 0 1px 0 rgba(255,255,255,.13);
+ }
+
+
+ 12%{
+  filter:
+   brightness(1.035);
+ }
+
+
+ 44%{
+  filter:
+   brightness(1.075);
+
+  border-color:
+   rgba(222,231,246,.39);
+
+  box-shadow:
+   0 7px 20px rgba(0,0,0,.18),
+   0 0 13px rgba(218,229,250,.12),
+   inset 0 1px 0 rgba(255,255,255,.14);
+ }
+
+
+ 46%{
+  filter:
+   brightness(.99);
+ }
+
+}
+
+
+/* Hover remains light */
+
+.home-main
+.hero.cosmic-hero
+.hero-actions
+.button:hover{
+ transform:
+  translateY(-2px)!important;
+
+ border-color:
+  rgba(222,231,246,.41)!important;
+
+ box-shadow:
+  0 9px 22px rgba(0,0,0,.21),
+  0 0 14px rgba(213,226,250,.09),
+  inset 0 1px 0 rgba(255,255,255,.14)!important;
+}
+
+
+.home-main
+.hero.cosmic-hero
+.hero-actions
+.button:active{
+ transform:
+  translateY(0)
+  scale(.99)!important;
+}
+
+
+/* Mobile hierarchy */
+
+@media(max-width:600px){
+
+ .hero.cosmic-hero
+ .particle-stage h1{
+  font-size:
+   clamp(
+    34px,
+    9.15vw,
+    46px
+   )!important;
+
+  line-height:1.13!important;
+ }
+
+
+ .hero.cosmic-hero
+ .hero-business-copy[data-animated-copy="led-power"]{
+  width:min(100%,326px);
+
+  margin-top:18px;
+  margin-bottom:20px;
+ }
+
+
+ .hero.cosmic-hero
+ .hero-business-copy[data-animated-copy="led-power"]
+ .hero-power-line.hero-client-line{
+  width:min(100%,316px);
+  max-width:316px;
+
+  padding:
+   0
+   3px
+   6px;
+
+  font-size:
+   clamp(
+    13.5px,
+    3.72vw,
+    15px
+   )!important;
+
+  line-height:1.49;
+
+  letter-spacing:.002em;
+ }
+
+
+ .home-main
+ .hero.cosmic-hero
+ .hero-actions{
+  width:min(100%,316px)!important;
+
+  gap:9px!important;
+
+  margin-left:auto;
+  margin-right:auto;
+ }
+
+
+ .home-main
+ .hero.cosmic-hero
+ .hero-actions
+ .button{
+  width:100%;
+
+  min-height:49px!important;
+
+  padding-inline:18px!important;
+
+  border-radius:14px!important;
+
+  font-size:11.5px!important;
+ }
+
+
+ .hero.cosmic-hero
+ .hero-trust{
+  max-width:316px;
+
+  gap:6px 12px;
+
+  margin-top:17px;
+
+  font-size:8px;
+
+  opacity:.67;
+ }
+
+}
+
+
+/* Accessibility */
+
+@media(prefers-reduced-motion:reduce){
+
+ .home-main
+ .hero.cosmic-hero
+ .hero-actions
+ .button{
+  animation:none!important;
+  filter:none!important;
+ }
+
+}
