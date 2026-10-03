@@ -11,6 +11,7 @@ import './cosmic-hero.css'
 export function ParticleHero({settings:s,home,locale}:{settings:Settings;home:HomepageContent;locale:Locale}) {
  const canvas=useRef<HTMLCanvasElement>(null)
  const heading=useRef<HTMLHeadingElement>(null)
+ const hero=useRef<HTMLElement>(null)
  const {paused,toggle}=useMotion()
  const prefersReduced=useReducedMotion()
  const visualEnabled=!prefersReduced&&!paused
@@ -32,7 +33,112 @@ export function ParticleHero({settings:s,home,locale}:{settings:Settings;home:Ho
  const defaultBusinessLead=pick(locale,'Tworzymy strony, aplikacje i systemy, które rozwijają Twój biznes.','We create websites, applications and systems that help your business grow.')
  const previousBusinessLead=pick(locale,'Tworzymy aplikacje webowe, strony WWW i systemy dla firm, które upraszczają pracę, wspierają sprzedaż i rosną razem z Twoim biznesem — od pomysłu po bezpieczne wdrożenie i dalszy rozwój.','We build web applications, websites and business systems that simplify work, support sales and grow with your company — from the first idea through secure launch and ongoing development.')
  const businessLead=[legacyBusinessLead,previousBusinessLead,verboseBusinessLead].includes(s.heroLead.trim())?defaultBusinessLead:s.heroLead
- return <section className="hero cosmic-hero" id="top" aria-labelledby="hero-heading">
+
+ // CODEMASTER_HERO_EXACT_CENTER_20261002
+ useEffect(()=>{
+  const section=hero.current
+  const title=heading.current
+  const content=
+   section?.querySelector<HTMLElement>(
+    '.hero-content'
+   )
+
+  if(!section||!title||!content)return
+
+  let frame=0
+
+  const update=()=>{
+   cancelAnimationFrame(frame)
+
+   frame=requestAnimationFrame(()=>{
+    const currentSection=hero.current
+    const currentTitle=heading.current
+
+    if(!currentSection||!currentTitle)return
+
+    // CODEMASTER_HERO_ABSOLUTE_CENTER_20261002
+    currentSection.style.setProperty(
+     '--hero-center-shift',
+     '0px',
+    )
+
+    const sectionRect=
+     currentSection.getBoundingClientRect()
+
+    const titleRect=
+     currentTitle.getBoundingClientRect()
+
+    const targetCenter=
+     sectionRect.top+
+     window.innerHeight/2
+
+    const baseCenter=
+     titleRect.top+
+     titleRect.height/2
+
+    const shift=
+     targetCenter-
+     baseCenter
+
+    currentSection.style.setProperty(
+     '--hero-center-shift',
+     `${shift.toFixed(2)}px`,
+    )
+   })
+  }
+
+  const observer=
+   typeof ResizeObserver==='undefined'
+    ?null
+    :new ResizeObserver(update)
+
+  // CODEMASTER_HERO_LAYOUT_OBSERVER_20261002
+  observer?.observe(title)
+  observer?.observe(section)
+  observer?.observe(content)
+
+  window.addEventListener(
+   'resize',
+   update,
+   {passive:true},
+  )
+
+  window.visualViewport?.addEventListener(
+   'resize',
+   update,
+   {passive:true},
+  )
+
+  void document.fonts.ready
+   .then(()=>update())
+   .catch(()=>{})
+
+  update()
+
+  return()=>{
+   cancelAnimationFrame(frame)
+
+   observer?.disconnect()
+
+   window.removeEventListener(
+    'resize',
+    update,
+   )
+
+   window.visualViewport?.removeEventListener(
+    'resize',
+    update,
+   )
+  }
+ },[
+  s.heroTitle,
+  s.heroEyebrow,
+  s.heroLead,
+  s.primaryCTA,
+  s.secondaryCTA,
+  locale,
+ ])
+ return <section ref={hero} data-light-motion={visualEnabled?'on':'off'} className="hero cosmic-hero" id="top" aria-labelledby="hero-heading">
   <div className="hero-content container">
    <p className="eyebrow hero-eyebrow"><span className="status-dot"/>{s.heroEyebrow}</p>
    <div className="particle-stage">
