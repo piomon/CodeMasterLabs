@@ -282,3 +282,143 @@
   animation:none!important;
  }
 }
+
+/* CODEMASTER_SCROLL_STABILITY_20261005 */
+
+/*
+ * Keep project changes visually polished without scaling or blurring
+ * a large iframe while the page is being scrolled.
+ */
+.home-main .project-frame{
+ animation:
+  cmProjectRevealStable
+  .18s
+  ease-out
+  both!important;
+}
+
+@keyframes cmProjectRevealStable{
+ from{
+  opacity:.94;
+  transform:none;
+  filter:none;
+ }
+ to{
+  opacity:1;
+  transform:none;
+  filter:none;
+ }
+}
+
+
+/*
+ * Give the project selector a little more breathing room below
+ * the presentation devices.
+ */
+.showcase-select{
+ margin-top:
+  clamp(
+   24px,
+   2vw,
+   32px
+  );
+}
+
+
+/*
+ * Automatic project changes must not alter the vertical rhythm
+ * of the page.
+ */
+.showcase-project-detail{
+ min-height:148px;
+}
+
+
+/*
+ * Lightweight devices are used on smaller and coarse pointer
+ * devices. Their previous long 3D transforms competed with
+ * scrolling. Keep only a short opacity entrance.
+ */
+@media(max-width:1100px),(pointer:coarse){
+
+ .home-main
+ .static-devices[data-device-opened="false"]
+ .static-laptop-lid,
+ .home-main
+ .static-devices[data-device-opened="true"]
+ .static-laptop-lid{
+  transform:none!important;
+  will-change:auto!important;
+  transition:
+   opacity
+   .18s
+   ease-out!important;
+ }
+
+ .home-main
+ .static-devices[data-device-opened="false"]
+ .static-laptop-lid{
+  opacity:.96;
+ }
+
+ .home-main
+ .static-devices[data-device-opened="true"]
+ .static-laptop-lid{
+  opacity:1;
+ }
+
+
+ .home-main
+ .static-devices[data-device-opened="false"]
+ .static-phone,
+ .home-main
+ .static-devices[data-device-opened="true"]
+ .static-phone{
+  transform:none!important;
+  will-change:auto!important;
+  transition:
+   opacity
+   .18s
+   ease-out!important;
+ }
+
+ .home-main
+ .static-devices[data-device-opened="false"]
+ .static-phone{
+  opacity:0;
+ }
+
+ .home-main
+ .static-devices[data-device-opened="true"]
+ .static-phone{
+  opacity:1;
+ }
+}
+
+
+@media(max-width:700px){
+
+ .showcase-select{
+  margin-top:22px;
+ }
+
+ .showcase-project-detail{
+  min-height:220px;
+ }
+}
+
+
+@media(prefers-reduced-motion:reduce){
+
+ .home-main .project-frame{
+  animation:none!important;
+ }
+
+ .home-main .static-laptop-lid,
+ .home-main .static-phone{
+  opacity:1!important;
+  transform:none!important;
+  transition:none!important;
+  will-change:auto!important;
+ }
+}
