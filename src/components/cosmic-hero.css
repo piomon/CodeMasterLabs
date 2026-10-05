@@ -1788,9 +1788,9 @@ h1 [data-particle-line]{
  .particle-stage h1{
   font-size:
    clamp(
-    34px,
-    9.15vw,
-    46px
+    42.5px,
+     11.4375vw,
+     57.5px
    )!important;
 
   line-height:1.13!important;
