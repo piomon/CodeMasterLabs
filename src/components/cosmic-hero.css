@@ -81,15 +81,6 @@
  mix-blend-mode:normal;
  pointer-events:none;
 }
-.hero.cosmic-hero .particle-stage[data-particles="ready"] h1,
-.hero.cosmic-hero .particle-stage[data-particles="light"] h1 {
- color:transparent;
- opacity:1;
-}
-.hero.cosmic-hero .particle-stage[data-particles="ready"] h1 [data-particle-line],
-.hero.cosmic-hero .particle-stage[data-particles="light"] h1 [data-particle-line] {
- color:transparent;
-}
 .hero.cosmic-hero .hero-lead {
  color:#b7bdca;
  max-width:610px;
@@ -210,12 +201,6 @@
  .hero.cosmic-hero .hero-bottom .scroll-cue { font-size:7px; }
 }
 @media(prefers-reduced-motion:reduce){
- .hero.cosmic-hero .particle-stage h1,
- .hero.cosmic-hero .particle-stage h1 [data-particle-line] {
-  color:#f0f2fa !important;
-  opacity:1 !important;
- }
- .hero.cosmic-hero .particle-stage canvas { display:none; }
 }
 @media print{
  .cosmic-background,.hero.cosmic-hero .particle-stage canvas { display:none !important; }
@@ -327,13 +312,6 @@
  font-size:clamp(14px,1.15vw,16px);
  line-height:1.78;
  text-wrap:balance;
-}
-.hero.cosmic-hero .particle-stage[data-particles="ready"] h1{
- color:rgba(240,244,255,.085);
- opacity:1;
-}
-.hero.cosmic-hero .particle-stage[data-particles="ready"] h1 [data-particle-line]{
- color:inherit;
 }
 .hero.cosmic-hero .hero-actions{
  gap:16px;
