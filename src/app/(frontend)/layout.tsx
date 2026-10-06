@@ -9,9 +9,7 @@ import '@fontsource-variable/space-grotesk'
 import '@fontsource/ibm-plex-mono/400.css'
 import '@fontsource/ibm-plex-mono/500.css'
 import '@fontsource/ibm-plex-mono/600.css'
-import './globals.css'
-import './studio.css'
-import './redesign.css'
+import './frontend.css'
 import '@/components/homepage.css'
 export const metadata:Metadata={metadataBase:new URL(serverURL),icons:{icon:'/icon.svg'},robots:{index:true,follow:true}}
 export const viewport:Viewport={width:'device-width',initialScale:1,themeColor:'#0a0b0e',colorScheme:'dark'}
