@@ -17,15 +17,15 @@
 .static-devices-note{color:#9ca5b3;font-size:11px;line-height:1.6;max-width:78%;margin:4px 0 14px}
 @media(max-width:600px){.static-devices{padding-inline:16px}.static-laptop{width:91%;padding-bottom:26px}.static-laptop-lid{padding:10px 4px 14px;border-radius:8px 8px 3px 3px}.static-phone{right:10px;bottom:66px;width:26%;border-radius:13px;padding:2px}.static-phone-screen{border-radius:9px}.static-device-brand{font-size:5px;bottom:3px}.static-devices-note{font-size:10px}.static-laptop-base{height:8px}}
 @media(max-width:1100px),(pointer:coarse){html{scroll-behavior:auto!important}}
-.home-main .hero.cosmic-hero{min-height:min(780px,100svh);padding:70px 0 0;overflow:visible}
-.home-main .hero.cosmic-hero .hero-content{position:relative;top:auto;left:auto;width:calc(100% - 2*var(--space));max-width:1200px;padding:95px 0 90px!important;margin:0 auto;text-align:center}
-.home-main .hero.cosmic-hero .hero-eyebrow{justify-content:center}
-.home-main .hero.cosmic-hero .particle-stage{max-width:1050px;margin:0 auto}
-.home-main .hero.cosmic-hero .particle-stage h1,.home-main .hero.cosmic-hero .particle-stage h1 [data-particle-line]{text-align:center;font-size:clamp(56.25px,6.625vw,97.5px);line-height:1.1}
-.home-main .hero.cosmic-hero .hero-lead{max-width:640px;margin:28px auto 26px;text-align:center;font-size:15px}
-.home-main .hero.cosmic-hero .hero-actions,.home-main .hero.cosmic-hero .hero-trust{justify-content:center;margin-left:auto;margin-right:auto}
-.home-main .hero.cosmic-hero .hero-trust{max-width:none}
-.home-main .hero.cosmic-hero .hero-bottom{bottom:19px}
+
+
+
+
+
+
+
+
+
 .project-showcase{position:relative;padding:65px 0 64px;scroll-margin-top:84px;border-top:1px solid #ffffff19}
 .showcase-heading{display:grid;grid-template-columns:1.5fr .55fr;gap:70px;align-items:end;padding-bottom:38px}
 .showcase-heading .eyebrow{margin-bottom:23px;font-size:10px;letter-spacing:.19em}
@@ -129,12 +129,12 @@
  .showcase-select .showcase-project-arrow{right:9px}
 }
 @media(max-width:700px){
- .home-main .hero.cosmic-hero{min-height:min(730px,100svh);padding-top:68px}
- .home-main .hero.cosmic-hero .hero-content{width:calc(100% - 40px);padding:70px 0 92px!important}
- .home-main .hero.cosmic-hero .particle-stage h1,.home-main .hero.cosmic-hero .particle-stage h1 [data-particle-line]{font-size:clamp(36.25px,10.1875vw,63.75px)}
- .home-main .hero.cosmic-hero .hero-eyebrow{font-size:8px}
- .home-main .hero.cosmic-hero .hero-lead{font-size:13px;line-height:1.7}
- .home-main .hero.cosmic-hero .hero-bottom{bottom:14px}
+
+
+
+
+
+
  .project-showcase{padding:44px 0 45px}
  .showcase-heading{grid-template-columns:1fr;gap:22px;padding-bottom:26px}
  .showcase-heading h2{font-size:clamp(31px,8vw,49px)}

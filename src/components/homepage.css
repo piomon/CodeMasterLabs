@@ -173,3 +173,37 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
  .demo-switcher-options button{text-align:left}
 }
 @media(prefers-reduced-motion:reduce){.laptop,.demo-switcher-options button,.service-expand{transition:none}}
+
+/* ============================================================
+   CODEMASTER_HERO_OWNERSHIP_20261006
+   Homepage hero layout migrated from portfolio showcase.
+   Selectors and declarations preserved.
+   Candidate validation required before commit.
+   ============================================================ */
+
+.home-main .hero.cosmic-hero{min-height:min(780px,100svh);padding:70px 0 0;overflow:visible}
+
+.home-main .hero.cosmic-hero .hero-content{position:relative;top:auto;left:auto;width:calc(100% - 2*var(--space));max-width:1200px;padding:95px 0 90px!important;margin:0 auto;text-align:center}
+
+.home-main .hero.cosmic-hero .hero-eyebrow{justify-content:center}
+
+.home-main .hero.cosmic-hero .particle-stage{max-width:1050px;margin:0 auto}
+
+.home-main .hero.cosmic-hero .particle-stage h1,.home-main .hero.cosmic-hero .particle-stage h1 [data-particle-line]{text-align:center;font-size:clamp(56.25px,6.625vw,97.5px);line-height:1.1}
+
+.home-main .hero.cosmic-hero .hero-lead{max-width:640px;margin:28px auto 26px;text-align:center;font-size:15px}
+
+.home-main .hero.cosmic-hero .hero-actions,.home-main .hero.cosmic-hero .hero-trust{justify-content:center;margin-left:auto;margin-right:auto}
+
+.home-main .hero.cosmic-hero .hero-trust{max-width:none}
+
+.home-main .hero.cosmic-hero .hero-bottom{bottom:19px}
+
+@media(max-width:700px){
+.home-main .hero.cosmic-hero{min-height:min(730px,100svh);padding-top:68px}
+.home-main .hero.cosmic-hero .hero-content{width:calc(100% - 40px);padding:70px 0 92px!important}
+.home-main .hero.cosmic-hero .particle-stage h1,.home-main .hero.cosmic-hero .particle-stage h1 [data-particle-line]{font-size:clamp(36.25px,10.1875vw,63.75px)}
+.home-main .hero.cosmic-hero .hero-eyebrow{font-size:8px}
+.home-main .hero.cosmic-hero .hero-lead{font-size:13px;line-height:1.7}
+.home-main .hero.cosmic-hero .hero-bottom{bottom:14px}
+}
