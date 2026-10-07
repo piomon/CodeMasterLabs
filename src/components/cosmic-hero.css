@@ -81,15 +81,6 @@
  mix-blend-mode:normal;
  pointer-events:none;
 }
-.hero.cosmic-hero .hero-lead {
- color:#b7bdca;
- max-width:610px;
- margin:clamp(27px,4vh,42px) auto 27px;
- font-size:clamp(15px,1.25vw,17px);
- line-height:1.75;
- text-align:center;
- white-space:pre-line;
-}
 .hero.cosmic-hero .hero-actions {
  display:flex;
  flex-wrap:wrap;
@@ -159,12 +150,6 @@
   font-size:clamp(29px,8vw,44px);
   line-height:1.17;
   letter-spacing:-.043em;
- }
- .hero.cosmic-hero .hero-lead {
-  max-width:420px;
-  font-size:14px;
-  line-height:1.65;
-  margin:28px auto 25px;
  }
  .hero.cosmic-hero .hero-actions {
   display:flex;
@@ -305,14 +290,6 @@
   .42s
   forwards!important;
 }
-.hero.cosmic-hero .hero-business-copy .hero-lead{
- max-width:690px;
- margin:0 auto;
- color:#b9c0ce;
- font-size:clamp(14px,1.15vw,16px);
- line-height:1.78;
- text-wrap:balance;
-}
 .hero.cosmic-hero .hero-actions{
  gap:16px;
  perspective:900px;
@@ -445,11 +422,6 @@
  .hero.cosmic-hero .hero-script-line{
   font-size:clamp(17px,5.1vw,22px);
   margin-bottom:10px;
- }
- .hero.cosmic-hero .hero-business-copy .hero-lead{
-  max-width:355px;
-  font-size:13px;
-  line-height:1.67;
  }
 
 }

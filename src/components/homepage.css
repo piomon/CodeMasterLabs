@@ -41,7 +41,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .home-main .hero.cosmic-hero .hero-content{padding-top:70px;padding-bottom:80px}
 .home-main .hero.cosmic-hero .hero-eyebrow{margin-bottom:28px;color:#aeb4c0}
 .home-main .hero.cosmic-hero .particle-stage h1{font-size:clamp(51px,5.6vw,80px);line-height:1.08;color:#f2f2f0}
-.home-main .hero.cosmic-hero .hero-lead{margin-top:26px;margin-bottom:26px;color:#b6bbc5}
 .home-main .hero.cosmic-hero .hero-actions .button{border-radius:3px}
 .home-main .hero.cosmic-hero .hero-actions .button-primary{background:#e8e9eb;color:#17191d;border-color:#e8e9eb}
 .home-main .hero.cosmic-hero .hero-actions .button-secondary{background:#1b1d22b8;color:#f1f2f4;border-color:#727782}
@@ -184,7 +183,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 
 .home-main .hero.cosmic-hero .particle-stage h1,.home-main .hero.cosmic-hero .particle-stage h1 [data-particle-line]{text-align:center;font-size:clamp(56.25px,6.625vw,97.5px);line-height:1.1}
 
-.home-main .hero.cosmic-hero .hero-lead{max-width:640px;margin:28px auto 26px;text-align:center;font-size:15px}
 
 .home-main .hero.cosmic-hero .hero-actions,.home-main .hero.cosmic-hero .hero-trust{justify-content:center;margin-left:auto;margin-right:auto}
 
@@ -197,6 +195,5 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .home-main .hero.cosmic-hero .hero-content{width:calc(100% - 40px);padding:70px 0 92px!important}
 .home-main .hero.cosmic-hero .particle-stage h1,.home-main .hero.cosmic-hero .particle-stage h1 [data-particle-line]{font-size:clamp(36.25px,10.1875vw,63.75px)}
 .home-main .hero.cosmic-hero .hero-eyebrow{font-size:8px}
-.home-main .hero.cosmic-hero .hero-lead{font-size:13px;line-height:1.7}
 .home-main .hero.cosmic-hero .hero-bottom{bottom:14px}
 }
